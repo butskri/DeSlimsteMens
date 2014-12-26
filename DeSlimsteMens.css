@@ -1,0 +1,215 @@
+body {
+    background-image: url("images/background.jpg");
+    background-color: #eb0203;
+	background-repeat:no-repeat;
+	background-position:top center;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+body, .slimsteMensButton {
+	font-family: 'Francois One';
+	color: rgb(235, 221, 221);
+	text-shadow: rgb(3, 3, 3) 4px 4px 4px;
+	font-color: white;
+}
+
+.title {
+	width: 60%;
+	margin-left: 20%;
+}
+h1 {
+	text-align: center;
+	font-size: 60px;
+	
+}
+#vorigeRonde {
+	font-size: 60px;
+}
+#volgendeRonde {
+	font-size: 60px;
+}
+
+.players {
+	width: 100%;
+	position: absolute;
+	bottom: 30px;
+}
+
+.player, .selectedPlayer {
+	float: left;
+	text-align: center;
+	font-size: 32px;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+	opacity: 0.7;
+    background-color: #a80203;
+	width: 28%;
+}
+
+.player {
+	color: rgb(235, 221, 221);
+}
+
+.selectedPlayer , .selected{
+	color: #ffff66;
+}
+
+.drieZesNegenLijn1, .drieZesNegenLijn2, .drieZesNegenLijn3 {
+	text-align: center;
+	font-size: 64px;
+	height: 150px;
+}
+
+.drieZesNegenLijn1 {
+	width: 60%;
+	padding-left: 20%;
+}
+
+.drieZesNegenLijn2 {
+	width: 60%;
+	padding-left: 20%;
+}
+.drieZesNegenLijn3 {
+	width: 35%;
+	padding-left: 32.5%;
+}
+.drieZesNegen1, .drieZesNegen2, .drieZesNegen3 {
+	width: 100px;
+	padding: 40px;
+	float: left;
+}
+.drieZesNegen12{
+	margin-top: 80px;
+}
+.drieZesNegen22{
+	margin-top: 120px;
+}
+.drieZesNegen3{
+	//margin-top: 40px;
+	font-size: 80px;
+}
+
+.menu {
+	position: absolute;
+	left: 20px;
+	top: 20px;
+	opacity: 0.7;
+    background-color: #a80203;
+	padding: 1%;
+	font-size: 50px;
+}
+
+.menuHider {
+	position: absolute;
+	left: 2px;
+	top: 15px;
+}
+
+.menuitem {
+	opacity: 1;
+	padding: 5px;
+	color: white;
+}
+
+// galerij
+#deGalerij {
+}
+
+#galerijButtons {
+	padding-top: 2.5%;
+}
+
+img.galerijFoto {
+	display: block;
+	max-width: 70%;
+	max-height: 90%;
+ 	margin:0 auto;
+}
+img.verticaleFoto {
+//	height: 90%;
+}
+img.horizontaleFoto {
+//	width: 70%;
+}
+.galerijButtons {
+	display: block;
+	width: 61%;
+	margin: 0 auto;
+}
+button.slimsteMensButton {
+	text-align: center;
+	font-size: 32px;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	opacity: 0.7;
+    background-color: #a80203;
+	width: 30%;
+	border: 2px solid;
+    border-radius: 25px;
+	margin-top: 2%;
+	margin-bottom: 1%;
+}
+button.buttonLeft {
+	float: left;
+	margin-left: 17.5%;
+}
+button.buttonRight {
+	float: right;
+	margin-right: 17.5%;
+}
+.slimsteQuizConfiguratie {
+	font-size: 32px;
+	color: white;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	padding: 1%;
+	opacity: 0.7;
+    background-color: #a80203;
+	width: 30%;
+	border: 2px solid;
+    border-radius: 25px;
+	margin: 0 auto;
+	margin-top: 2%;
+	margin-bottom: 1%;
+	display: block;
+	text-align: center;
+}
+
+
+table.openDeur {
+	width: 60%;
+	margin: 0 auto;
+}
+
+table.openDeur img {
+	max-width: 300px;
+	max-height: 300px;
+}
+table.openDeur td {
+	text-align: center;
+	padding: 10px;
+}
+
+table.openDeur button {
+	font-size: 16px;
+	color: white;
+	padding: 5px 50px;
+	opacity: 0.7;
+    background-color: #a80203;
+	border: 2px solid;
+    border-radius: 25px;
+	margin: 0 auto;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	display: block;
+	text-align: center;
+}
+
+.onleesbaar {
+	text-shadow: 0px 0px 20px rgba(255,255,255,0.6), 0px 0px 60px rgba(255,255,255,0.4), 0px 0px 100px rgba(255,255,255,0.3), 0px 0px 360px rgba(255,255,255,0.3);
+	color: rgba(255,255,255,0);
+	font: 32px 'ChunkFiveRegular';
+}

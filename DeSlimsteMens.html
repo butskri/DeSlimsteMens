@@ -1,0 +1,131 @@
+<html ng-app="deSlimsteMensApp">
+<head>
+	<link rel="stylesheet" type="text/css" href="DeSlimsteMens.css">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Pacifico|Francois+One|Lato:300" />
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<!--
+	<script src="js/angular-resource.min.js"></script>
+	-->
+	<script src="js/angular.min.js"></script>
+	<script src="js/slimsteKindVan2014.js"></script>
+	<script src="js/slimsteMensVan2014.js"></script>
+	<script src="js/voorbeeldQuiz.js"></script>
+	<script src="js/controller.js"></script>
+</head>
+<body ng-controller="DeSlimsteMensCtrl">
+	<div class="title" ng-show="titelTonen()">
+		<h1>
+		<span id="vorigeRonde" class="fa fa-caret-left" ng-click="vorigeRonde()"></span>
+			&nbsp;&nbsp;&nbsp;{{huidigeRonde.title}}&nbsp;&nbsp;&nbsp;
+		<span id="volgendeRonde" class="fa fa-caret-right" ng-click="volgendeRonde()"></span>
+		</h1>
+	</div>
+	<div id="deSlimsteMensBegin" ng-show="huidigeRonde == deSlimsteMensBegin">
+		<div class="configuratieDeSlimsteMens">
+			<select class="slimsteQuizConfiguratie" ng-model="geselecteerdeQuiz" ng-options="quiz.naam for quiz in mogelijkeQuizzen">
+				<option value="">--------------- Kies een quiz ---------------</option>
+			</select>
+			<div ng-repeat="speler in players">
+				<input class="slimsteQuizConfiguratie" type="text" ng-model="speler.name" />
+			</div>
+			<input class="slimsteQuizConfiguratie" type="button" value="Start quiz!" ng-click="startQuiz()" />
+		</div>
+	</div>
+	<div id="drieZesNegenRonde" ng-show="huidigeRonde == drieZesNegenRonde">
+		<div class="drieZesNegenLijn1">
+			<div id="vraag1" ng-class="drieZesNegenRonde.styleClassVoorVraag(1)">1</div>
+			<div id="vraag2" ng-class="drieZesNegenRonde.styleClassVoorVraag(2)">2</div>
+			<div id="vraag3" ng-class="drieZesNegenRonde.styleClassVoorVraag(3)">3</div>
+			<div id="vraag4" ng-class="drieZesNegenRonde.styleClassVoorVraag(4)">4</div>
+			<div id="vraag5" ng-class="drieZesNegenRonde.styleClassVoorVraag(5)">5</div>
+			<div id="vraag6" ng-class="drieZesNegenRonde.styleClassVoorVraag(6)">6</div>
+		</div>
+		<div class="drieZesNegenLijn2">
+			<div id="vraag7" ng-class="drieZesNegenRonde.styleClassVoorVraag(7)">7</div>
+			<div id="vraag8" ng-class="drieZesNegenRonde.styleClassVoorVraag(8)">8</div>
+			<div id="vraag9" ng-class="drieZesNegenRonde.styleClassVoorVraag(9)">9</div>
+			<div id="vraag10" ng-class="drieZesNegenRonde.styleClassVoorVraag(10)">10</div>
+			<div id="vraag11" ng-class="drieZesNegenRonde.styleClassVoorVraag(11)">11</div>
+			<div id="vraag12" ng-class="drieZesNegenRonde.styleClassVoorVraag(12)">12</div>
+		</div>
+		<div class="drieZesNegenLijn3">
+			<div id="vraag13" ng-class="drieZesNegenRonde.styleClassVoorVraag(13)">13</div>
+			<div id="vraag14" ng-class="drieZesNegenRonde.styleClassVoorVraag(14)">14</div>
+			<div id="vraag15" ng-class="drieZesNegenRonde.styleClassVoorVraag(15)">15</div>
+		</div>
+	</div>
+	<div id="openDeurRonde" ng-show="huidigeRonde == openDeurRonde">
+		<table class="openDeur" ng-show="openDeurRonde.isInModusOverzicht()">
+			<tr>
+				<td>
+					<a ng-href="{{deSlimsteData.vragenOpenDeurRonde[0].urlFilm}}" target="videoWindow"><img ng-src="{{deSlimsteData.vragenOpenDeurRonde[0].urlFoto}}" /></a>
+					<button ng-click="openDeurRonde.toonAntwoorden(deSlimsteData.vragenOpenDeurRonde[0])" type="button">Naar antwoorden</button>
+				</td>
+				<td>
+					<a ng-href="{{deSlimsteData.vragenOpenDeurRonde[1].urlFilm}}" target="videoWindow"><img ng-src="{{deSlimsteData.vragenOpenDeurRonde[1].urlFoto}}" /></a>
+					<button ng-click="openDeurRonde.toonAntwoorden(deSlimsteData.vragenOpenDeurRonde[1])" type="button">Naar antwoorden</button>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<a ng-href="{{deSlimsteData.vragenOpenDeurRonde[2].urlFilm}}" target="videoWindow"><img ng-src="{{deSlimsteData.vragenOpenDeurRonde[2].urlFoto}}" /></a>
+					<button ng-click="openDeurRonde.toonAntwoorden(deSlimsteData.vragenOpenDeurRonde[2])" type="button">Naar antwoorden</button>
+				</td>
+			</tr>
+		</table>
+		<div ng-show="openDeurRonde.isInModusVideo()">
+			<video width="320" height="240" controls>
+				<source ng-src="{{openDeurRonde.huidigeVraag.urlFilm}}" type="video/mp4">
+			</video>
+			<input class="slimsteQuizConfiguratie" type="button" value="Ga naar antwoorden" ng-click="openDeurRonde.naarAntwoorden()" />
+		</div>
+		<div ng-show="openDeurRonde.isInModusAntwoord()">
+			<button ng-repeat="antwoord in openDeurRonde.antwoorden" ng-click="openDeurRonde.toonAntwoord(antwoord)"
+				type="button" class="slimsteQuizConfiguratie {{antwoord.gevonden? 'gevonden':'onleesbaar'}}">{{antwoord.omschrijving}}</button>
+			<button ng-click="openDeurRonde.terugNaarOverzicht()" type="button" class="slimsteQuizConfiguratie">Terug naar overzicht</button>
+		</div>
+	</div>
+	<div id="puzzelRonde" ng-show="huidigeRonde == puzzelRonde">
+	</div>
+	<div id="deGalerij" ng-show="huidigeRonde == deGalerij">
+		<div id="galerijButtons" ng-show="deGalerij.isButtonModus()">
+			<button ng-repeat-start="galerij in deGalerij.getGalerijen()" ng-click="deGalerij.startGalerij(galerij)"
+				type="button" class="slimsteMensButton buttonLeft">Start {{galerij.naam}}</button>
+			<button ng-repeat-end ng-click="deGalerij.overloopGalerij(galerij)"
+				type="button" class="slimsteMensButton buttonRight" >Overloop {{galerij.naam}}</button>
+		</div>
+		<div id="galerijFotos" ng-show="deGalerij.isGalerijModus()">
+			<img ng-class="deGalerij.styleClassHuidigeFoto()" ng-src="{{deGalerij.urlHuidigeFoto()}}"/>
+		</div>
+	</div>
+	<div id="collectiefGeheugen" ng-show="huidigeRonde == collectiefGeheugen">
+	</div>
+	<div id="deFinale" ng-show="huidigeRonde == deFinale">
+	</div>
+	<div class="players" ng-show="spelersTonen()">
+		<div class="{{player === selectedPlayer? 'selectedPlayer':'player'}}" ng-repeat="player in players" ng-click="select(player)">
+			<div class="name">{{player.name}}</div>
+			<div class="score">{{player.score}}</div>
+		</div>
+	</div>
+	<div class="menuHider">
+		<span class="fa fa-plus-square menuitem"  ng-hide="!menuHidden"  ng-click="menuHidden = false;"></span>
+		<span class="fa fa-minus-square menuitem" ng-hide="menuHidden" ng-click="menuHidden = true;"></span>
+	</div>
+	<div class="menu" ng-hide="menuHidden">
+		<div>
+			<span class="fa fa-chevron-circle-left menuitem" ng-click="huidigeRonde.vorige()"></span>
+			<span class="fa fa-chevron-circle-right menuitem" ng-click="huidigeRonde.volgende()"></span>
+		</div>
+		<div>
+			<span class="fa fa-play menuitem" ng-hide="timerIsRunning()" ng-click="startTimer()"></span>
+			<span class="fa fa-stop menuitem" ng-hide="!timerIsRunning()" ng-click="stopTimer()"></span>
+			<span class="fa fa-check menuitem" ng-click="spelerHeeftJuistGeantwoord()"></span>
+		</div>
+		<div>
+			<span class="fa fa-plus-circle menuitem" ng-click="addSecond()"></span>
+			<span class="fa fa-minus-circle menuitem" ng-click="minusSecond()"></span>
+		</div>
+	</div>
+</body>
+</html>
