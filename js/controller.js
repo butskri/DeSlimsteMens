@@ -1,6 +1,7 @@
 var deSlimsteMensApp = angular.module('deSlimsteMensApp', []);
 
 var slimsteQuizen = {};
+slimsteQuizen['voorbeeldQuiz.txt'] = voorbeeldQuiz;
 slimsteQuizen['deSlimsteMensVan2014.txt'] = dataDeSlimsteMensVan2014Data;
 slimsteQuizen['hetSlimsteKindVan2014.txt'] = dataHetSlimsteKindVan2014;
 
@@ -9,6 +10,7 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 	return 'window.open(\'' + url +'\')';
   }
   $scope.mogelijkeQuizzen = [
+	{naam: 'Voorbeeld quiz' , url:'voorbeeldQuiz.txt'},
 	{naam: 'De slimste mens van 2014' , url:'deSlimsteMensVan2014.txt'},
 	{naam: 'Het slimste kind van 2014', url:'hetSlimsteKindVan2014.txt'}
   ];
@@ -132,11 +134,94 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
   $scope.puzzelRonde = {
 	id: 'puzzel',
 	title: 'Puzzelronde',
+	puzzels: [],
+	huidigePuzzel: null,
+	startRonde: function() {
+		this.puzzels = $scope.deSlimsteData.puzzels;
+		for (i=0;i < this.puzzels.length;i++) {
+			if (this.puzzels[i].naam == null) {
+				this.puzzels[i].naam = 'Puzzel ' + (i+1);
+			}
+		}
+	},
 	vorigeRonde: function() {
 		return $scope.openDeurRonde;
 	},
 	volgendeRonde: function() {
 		return $scope.deGalerij;
+	},
+	isInModusOverzicht: function() {
+		return this.huidigePuzzel == null;
+	},
+	isInModusPuzzel: function() {
+		return this.huidigePuzzel != null;
+	},
+	terugNaarOverzicht: function() {
+		this.huidigePuzzel = null;
+	},
+	startPuzzel: function(puzzel) {
+		var alleHints = [];
+		var result = [];
+		for (i=0;i < puzzel.antwoorden.length;i++) {
+			antwoord = {omschrijving: puzzel.antwoorden[i].antwoord, gevonden: false, index: i+1, styleClass: 'puzzelAntwoord' + (i+1)};
+			for (j=0;j < puzzel.antwoorden[i].hints.length;j++) {
+				hint = {
+					omschrijving: puzzel.antwoorden[i].hints[j],
+					antwoord: antwoord,
+					styleClass: function() {
+						if (!this.antwoord.gevonden) {
+							return '';
+						}
+						return this.antwoord.styleClass;
+					}
+				};
+				alleHints.push(hint);
+			}
+			result.push(antwoord);
+		}
+		this.huidigePuzzel = {
+			naam: puzzel.naam,
+			antwoorden: result,
+			alleHints: this.shuffle(this.shuffle(alleHints))
+		};
+	},
+	toonAntwoord: function(antwoord) {
+		antwoord.gevonden = !antwoord.gevonden;
+		var aantalSeconden = 30;
+		if (!antwoord.gevonden) {
+			aantalSeconden = -30;
+		}
+		$scope.addSeconds(aantalSeconden);
+		if (this.alleAntwoordenGevonden()) {
+			$scope.stopTimer();
+		}
+	},
+	alleAntwoordenGevonden: function() {
+		for (i=0;i < this.huidigePuzzel.antwoorden.length;i++) {
+			if (!this.huidigePuzzel.antwoorden[i].gevonden) {
+				return false;
+			}
+		}
+		return true;
+	},
+	shuffle: function(array) {
+		var counter = array.length, temp, index;
+
+		// While there are elements in the array
+		while (counter > 0) {
+			// Pick a random index
+			index = Math.floor(Math.random() * counter);
+	
+			// Decrease counter by 1
+			counter--;
+
+			// And swap the last element with it
+			temp = array[counter];
+			array[counter] = array[index];
+			array[index] = temp;
+		}
+
+		return array;
 	}
   }
   $scope.deGalerij  = {

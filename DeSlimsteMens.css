@@ -160,7 +160,7 @@ button.buttonRight {
 	float: right;
 	margin-right: 17.5%;
 }
-.slimsteQuizConfiguratie {
+.slimsteQuizConfiguratie,.puzzelAntwoord{
 	font-size: 32px;
 	color: white;
 	padding-top: 1%;
@@ -168,7 +168,6 @@ button.buttonRight {
 	padding: 1%;
 	opacity: 0.7;
     background-color: #a80203;
-	width: 30%;
 	border: 2px solid;
     border-radius: 25px;
 	margin: 0 auto;
@@ -177,7 +176,9 @@ button.buttonRight {
 	display: block;
 	text-align: center;
 }
-
+.slimsteQuizConfiguratie {
+	width: 30%;
+}
 
 table.openDeur {
 	width: 60%;
@@ -212,4 +213,41 @@ table.openDeur button {
 	text-shadow: 0px 0px 20px rgba(255,255,255,0.6), 0px 0px 60px rgba(255,255,255,0.4), 0px 0px 100px rgba(255,255,255,0.3), 0px 0px 360px rgba(255,255,255,0.3);
 	color: rgba(255,255,255,0);
 	font: 32px 'ChunkFiveRegular';
+}
+
+.puzzelTabel {
+	position: absolute;
+	display: block;
+	left: 10%;
+	top: 15%;
+	width: 60%;
+	height: 60%;
+}
+.puzzelCel, .puzzelTabel td {
+	width: 20%;
+	height: 20%;
+    background-color: #a80203;
+	opacity: 0.7;
+	font-size: 28px;
+	text-align: center;
+}
+.puzzelAntwoorden {
+	position: absolute;
+	display: block;
+	right: 2.5%;
+	top: 25%;
+	width: 30%;
+	height: 50%;
+}
+.puzzelAntwoord1 {
+	color: rgba(253,151,200,30);
+}
+.puzzelAntwoord2 {
+	color: orange;
+}
+.puzzelAntwoord3 {
+	color: yellow;
+}
+.puzzelAntwoord {
+	width: 80%;
 }
