@@ -1,3 +1,14 @@
+Array.prototype.remove = function() {
+    var what, a = arguments, L = a.length, ax;
+    while (L && this.length) {
+        what = a[--L];
+        while ((ax = this.indexOf(what)) !== -1) {
+            this.splice(ax, 1);
+        }
+    }
+    return this;
+};
+
 var deSlimsteMensApp = angular.module('deSlimsteMensApp', []);
 
 var slimsteQuizen = {};
@@ -33,7 +44,16 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 	}
   }
   $scope.spelersTonen = function() {
-	return $scope.huidigeRonde != $scope.deSlimsteMensBegin;
+	if ($scope.huidigeRonde.spelersTonen == null) {
+		return true;
+	}
+	return $scope.huidigeRonde.spelersTonen();
+  }
+  $scope.verwijderSpeler = function(speler) {
+	if ($scope.selectedPlayer == speler) {
+		$scope.selectedPlayer = null;
+	}
+	$scope.players.remove(speler);
   }
   
   $scope.titelTonen = function() {
@@ -51,6 +71,9 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 	},
 	volgendeRonde: function() {
 		return $scope.drieZesNegenRonde;
+	},
+	spelersTonen: function() {
+		return false;
 	}
   }
   $scope.drieZesNegenRonde = {
@@ -326,11 +349,75 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
   $scope.deFinale  = {
 	id: 'deFinale',
 	title: 'De Finale',
+	indexHuidigeVraag: 0,
+	huidigeVraag: null,
+	spelersTonen: function() {
+		return !this.isSelecteerFinaleSpelersModus();
+	},
+	startFinale: function() {
+		if (!$scope.selectedPlayer) {
+			return;
+		}
+		$scope.verwijderSpeler($scope.selectedPlayer);
+		this.volgende();
+	},
+	getVragen: function() {
+		if ($scope.deSlimsteData == null) {
+			return [];
+		}
+		return $scope.deSlimsteData.finale;
+	},
 	vorigeRonde: function() {
 		return $scope.collectiefGeheugen;
 	},
 	volgendeRonde: function() {
 		return $scope.deFinale;
+	},
+	initHuidigeVraag: function() {
+		if (this.indexHuidigeVraag == 0) {
+			this.huidigeVraag = null;
+		}
+		var vraag = this.getVragen()[this.indexHuidigeVraag -1];
+		this.huidigeVraag = {
+			nummer: this.indexHuidigeVraag,
+			vraag: vraag.vraag,
+			antwoorden: $scope.toAntwoorden(vraag.antwoorden)
+		};
+	},
+	volgende: function() {
+		this.indexHuidigeVraag++;
+		this.initHuidigeVraag();
+	},
+	vorige: function() {
+		if (this.indexHuidigeVraag != 0) {
+			this.indexHuidigeVraag--;
+			this.initHuidigeVraag();
+		}
+	},
+	isVragenModus: function() {
+		return this.indexHuidigeVraag > 0;
+	},
+	isSelecteerFinaleSpelersModus: function() {
+		return this.indexHuidigeVraag == 0;
+	},
+	toonAntwoord: function(antwoord) {
+		antwoord.gevonden = !antwoord.gevonden;
+		var aantalSeconden = 20;
+		if (!antwoord.gevonden) {
+			aantalSeconden = -20;
+		}
+		$scope.addSeconds(aantalSeconden);
+		if (this.alleAntwoordenGevonden()) {
+			$scope.stopTimer();
+		}
+	},
+	alleAntwoordenGevonden: function() {
+		for (i=0;i < this.huidigeVraag.antwoorden.length;i++) {
+			if (!this.huidigeVraag.antwoorden[i].gevonden) {
+				return false;
+			}
+		}
+		return true;
 	}
   }
   

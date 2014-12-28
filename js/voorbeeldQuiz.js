@@ -27,5 +27,12 @@ var voorbeeldQuiz = {
 			{antwoord: 'Antwoord 2', hints: ['Hint 1 voor 2', 'Hint 2 voor 2', 'Hint 3 voor 2', 'Hint 4 voor 2']},
 			{antwoord: 'Antwoord 3', hints: ['Hint 1 voor 3', 'Hint 2 voor 3', 'Hint 3 voor 3', 'Hint 4 voor 3']}
 		]}
+	],
+	finale: [
+		{ vraag: 'Wat weet je over Parijs?',
+		  antwoorden: ['Frankrijk', 'Seine', 'Louvre', 'Sacré coeur', 'lichtstad'] },
+		{ vraag: 'Wat weet je over Blablabla?',
+		  antwoorden: ['Niks', 'Minder', 'Nog minder', 'Helemaal niks', 'Boem boem'] }
 	]
+
 };

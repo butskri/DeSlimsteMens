@@ -133,6 +133,26 @@
 	<div id="collectiefGeheugen" ng-show="huidigeRonde == collectiefGeheugen">
 	</div>
 	<div id="deFinale" ng-show="huidigeRonde == deFinale">
+		<div id="finaleSpelersSelecteren" ng-show="deFinale.isSelecteerFinaleSpelersModus()">
+			<div class="uitlegFinale">
+				Selecteer de afvallende speler en klik op 'Finale starten' om te beginnen aan de finale.
+			</div>
+			<div class="{{player === selectedPlayer? 'selectedPlayer':'player'}}" ng-repeat="player in players" ng-click="select(player)">
+				<div class="name">{{player.name}}</div>
+				<div class="score">{{player.score}}</div>
+			</div>
+			<button ng-click="deFinale.startFinale()" type="button" class="finaleButton" >Finale starten</button>
+		</div>
+		<div id="finaleVragen" ng-show="deFinale.isVragenModus()">
+			<div class="finaleVraag">
+				<span id="finaleVraagNr">Vraag {{deFinale.huidigeVraag.nummer}}:</span>
+				<span id="finaleVraag">{{deFinale.huidigeVraag.vraag}}</span>
+			</div>
+			<div class="finaleAntwoorden">
+				<button ng-repeat="antwoord in deFinale.huidigeVraag.antwoorden" ng-click="deFinale.toonAntwoord(antwoord)"
+					type="button" class="finaleAntwoord {{antwoord.gevonden? 'gevonden':'onleesbaar'}}">{{antwoord.omschrijving}}</button>
+			</div>
+		</div>
 	</div>
 	<div class="players" ng-show="spelersTonen()">
 		<div class="{{player === selectedPlayer? 'selectedPlayer':'player'}}" ng-repeat="player in players" ng-click="select(player)">
