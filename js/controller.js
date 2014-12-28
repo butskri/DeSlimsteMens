@@ -56,6 +56,12 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 	volgendeRonde: function() {
 		return $scope.openDeurRonde;
 	},
+	isVorigeEnabled: function() {
+		return this.huidigeVraag > 1;
+	},
+	isVolgendeEnabled: function() {
+		return this.huidigeVraag < 15;
+	},
 	vorige: function() {
 		if (this.huidigeVraag != 1) {
 			this.huidigeVraag--;
@@ -254,6 +260,12 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 	isGalerijModus: function() {
 		return this.huidigeGalerij != null;
 	},
+	isVorigeEnabled: function() {
+		return this.isGalerijModus();
+	},
+	isVolgendeEnabled: function() {
+		return this.isGalerijModus();
+	},
 	volgende: function() {
 		if (this.indexHuidigeFoto == this.huidigeGalerij.fotos.length) {
 			this.stopHuidigeGalerij();
@@ -407,6 +419,7 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 	initHuidigeVraag: function() {
 		if (this.indexHuidigeVraag == 0) {
 			this.huidigeVraag = null;
+			return ;
 		}
 		var vraag = this.getVragen()[this.indexHuidigeVraag -1];
 		this.huidigeVraag = {
@@ -414,6 +427,12 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 			vraag: vraag.vraag,
 			antwoorden: $scope.toAntwoorden(vraag.antwoorden)
 		};
+	},
+	isVorigeEnabled: function() {
+		return this.isVragenModus() && this.indexHuidigeVraag != 0;
+	},
+	isVolgendeEnabled: function() {
+		return this.isVragenModus() && (this.indexHuidigeVraag < this.getVragen().length);
 	},
 	volgende: function() {
 		if (this.teVeelSpelers()) {
@@ -509,6 +528,35 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
   $scope.startSpel();
   $scope.menuHidden = true;
   
+  $scope.vorige = function() {
+	if (this.isVorigeEnabled()) {
+		$scope.huidigeRonde.vorige();
+	}
+  }
+  $scope.volgende = function() {
+	if (this.isVolgendeEnabled()) {
+		$scope.huidigeRonde.volgende();
+	}
+  }
+  $scope.isVorigeEnabled = function() {
+	if (!$scope.huidigeRonde.vorige) {
+		return false;
+	}
+	if ($scope.huidigeRonde.isVorigeEnabled) {
+		return $scope.huidigeRonde.isVorigeEnabled();
+	}
+	return true;
+  }
+  $scope.isVolgendeEnabled = function() {
+	if (!$scope.huidigeRonde.volgende) {
+		return false;
+	}
+	if ($scope.huidigeRonde.isVolgendeEnabled) {
+		return $scope.huidigeRonde.isVolgendeEnabled();
+	}
+	return true;
+  }
+  
   var geselecteerdeSpelerCountdown = null;
   $scope.startTimer = function() {
 	if (geselecteerdeSpelerCountdown) {
@@ -534,6 +582,12 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 	return geselecteerdeSpelerCountdown != null;
   }
   
+  $scope.isAddSecondEnabled = function() {
+	return $scope.spelers.isSpelerGeselecteerd();
+  }
+  $scope.isMinusSecondEnabled = function() {
+	return $scope.spelers.isSpelerGeselecteerd();
+  }
   $scope.addSecond = function() {
 	$scope.addSeconds(1);
   }

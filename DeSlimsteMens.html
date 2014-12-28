@@ -204,8 +204,8 @@
 	</div>
 	<div class="menu" ng-hide="menuHidden">
 		<div>
-			<span class="fa fa-chevron-circle-left menuitem" ng-click="huidigeRonde.vorige()"></span>
-			<span class="fa fa-chevron-circle-right menuitem" ng-click="huidigeRonde.volgende()"></span>
+			<span class="fa fa-chevron-circle-left" ng-click="vorige()" ng-class="isVorigeEnabled()? 'menuitem':'menuitemdisabled'"></span>
+			<span class="fa fa-chevron-circle-right" ng-click="volgende()"  ng-class="isVolgendeEnabled()? 'menuitem':'menuitemdisabled'"></span>
 		</div>
 		<div>
 			<span class="fa fa-play menuitem" ng-hide="timerIsRunning()" ng-click="startTimer()"></span>
@@ -213,8 +213,8 @@
 			<span class="fa fa-check menuitem" ng-click="spelerHeeftJuistGeantwoord()"></span>
 		</div>
 		<div>
-			<span class="fa fa-plus-circle menuitem" ng-click="addSecond()"></span>
-			<span class="fa fa-minus-circle menuitem" ng-click="minusSecond()"></span>
+			<span class="fa fa-plus-circle" ng-click="addSecond()" ng-class="isAddSecondEnabled()? 'menuitem':'menuitemdisabled'"></span>
+			<span class="fa fa-minus-circle" ng-click="minusSecond()" ng-class="isMinusSecondEnabled()? 'menuitem':'menuitemdisabled'"></span>
 		</div>
 	</div>
 </body>
