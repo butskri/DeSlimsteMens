@@ -1,14 +1,3 @@
-Array.prototype.remove = function() {
-    var what, a = arguments, L = a.length, ax;
-    while (L && this.length) {
-        what = a[--L];
-        while ((ax = this.indexOf(what)) !== -1) {
-            this.splice(ax, 1);
-        }
-    }
-    return this;
-};
-
 var deSlimsteMensApp = angular.module('deSlimsteMensApp', []);
 
 var slimsteQuizen = {};
@@ -28,12 +17,9 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
   $scope.geselecteerdeQuiz = null;
   $scope.deSlimsteData = null;
   $scope.players = [
-    {'name': 'Speler 1',
-     'score': 60},
-    {'name': 'Speler 2',
-     'score': 60},
-    {'name': 'Speler 3',
-     'score': 60}
+	new Speler('Speler 1'),
+	new Speler('Speler 2'),
+	new Speler('Speler 3')
   ];
   $scope.selectedPlayer = null;
   $scope.select = function (player) {
