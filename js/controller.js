@@ -50,6 +50,9 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 	title: '3 - 6 - 9',
 	aantalSecondenVoorJuisteVraag: 10,
 	huidigeVraag: 1,
+	isStartTimerEnabled: function() {
+		return false;
+	},
 	vorigeRonde: function() {
 		return $scope.deSlimsteMensBegin;
 	},
@@ -89,6 +92,9 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 	title: 'Open deur',
 	huidigeVraag: null,
 	antwoorden: null,
+	isStartTimerEnabled: function() {
+		return this.isInModusAntwoord();
+	},
 	vorigeRonde: function() {
 		return $scope.drieZesNegenRonde;
 	},
@@ -138,6 +144,9 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 				this.puzzels[i].naam = 'Puzzel ' + (i+1);
 			}
 		}
+	},
+	isStartTimerEnabled: function() {
+		return this.isInModusPuzzel();
 	},
 	vorigeRonde: function() {
 		return $scope.openDeurRonde;
@@ -229,6 +238,9 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 				galerijen[i].naam = 'Galerij ' + (i+1);
 			}
 		}
+	},
+	isStartTimerEnabled: function() {
+		return this.isGalerijModus();
 	},
 	vorigeRonde: function() {
 		return $scope.puzzelRonde;
@@ -323,6 +335,9 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 			}
 		}
 		
+	},
+	isStartTimerEnabled: function() {
+		return this.isAntwoordModus();
 	},
 	vorigeRonde: function() {
 		return $scope.deGalerij;
@@ -559,7 +574,16 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
   
   var geselecteerdeSpelerCountdown = null;
   $scope.isStartTimerEnabled = function() {
-	return geselecteerdeSpelerCountdown == null && $scope.spelers.isSpelerGeselecteerd();
+	if (geselecteerdeSpelerCountdown != null) {
+		return false;
+	}
+	if (!$scope.spelers.isSpelerGeselecteerd()) {
+		return false;
+	}
+	if ($scope.huidigeRonde.isStartTimerEnabled) {
+		return $scope.huidigeRonde.isStartTimerEnabled();
+	}
+	return true;
   }
   $scope.startTimer = function() {
 	if (!$scope.isStartTimerEnabled()) {
