@@ -192,7 +192,7 @@
 			</p>
 		</div>
 	</div>
-	<div class="spelers" ng-show="spelersTonen()">
+	<div class="spelers aantalSpelers{{spelers.aantalSpelers()}}" ng-show="spelersTonen()">
 		<div class="{{speler.geselecteerd? 'geselecteerdeSpeler':'speler'}}" ng-repeat="speler in spelers.spelers" ng-click="spelers.selecteer(speler)">
 			<div class="name">{{speler.name}}</div>
 			<div class="score">{{speler.score}}</div>

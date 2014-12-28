@@ -51,7 +51,16 @@ h1 {
     background-color: #a80203;
 	width: 28%;
 }
-.spelers .speler, .spelers .geselecteerdeSpeler {
+.aantalSpelers2 div.speler:first-child, .aantalSpelers2 div.geselecteerdeSpeler:first-child {
+	float: left;
+	margin-left: 20%;
+}
+.aantalSpelers2 div.speler:last-child, .aantalSpelers2 div.geselecteerdeSpeler:last-child {
+	float: right;
+	margin-right: 20%;
+}
+
+.aantalSpelers3 .speler, .aantalSpelers3 .geselecteerdeSpeler {
 	float: left;
 	margin-left: 2.5%;
 	margin-right: 2.5%;
