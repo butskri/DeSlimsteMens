@@ -455,7 +455,7 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
   }
   $scope.countDown = function(){
 	if ($scope.selectedPlayer) {
-      $scope.selectedPlayer.score--;
+      $scope.selectedPlayer.addPunten(-1);
       selectedPlayerCountdown = $timeout($scope.countDown,1000);
 	} else {
 		$scope.stopTimer();
@@ -473,7 +473,7 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
   }
   $scope.addSeconds = function(seconds) {
 	if ($scope.selectedPlayer) {
-		$scope.selectedPlayer.score+=seconds;
+		$scope.selectedPlayer.addPunten(seconds);
 	}
   }
   
