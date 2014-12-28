@@ -71,3 +71,13 @@ Spelers.prototype.voegPuntenToeVoorGeselecteerdeSpeler = function(aantalPunten) 
 		this.geselecteerdeSpeler.addPunten(aantalPunten);
 	}
 };
+
+Spelers.prototype.istGebeurd = function() {
+	var aantalSpelersMetMeerDan0Punten = 0;
+	for (i=0;i < this.spelers.length;i++) {
+		if (this.spelers[i].score > 0) {
+			aantalSpelersMetMeerDan0Punten++;
+		}
+	}
+	return aantalSpelersMetMeerDan0Punten < 2;
+};

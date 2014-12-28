@@ -167,6 +167,9 @@
 					type="button" class="finaleAntwoord {{antwoord.gevonden? 'gevonden':'onleesbaar'}}">{{antwoord.omschrijving}}</button>
 			</div>
 		</div>
+		<div id="finaleTisGebeurd" ng-show="deFinale.istGebeurd()">
+			<div class="finaleGebeurd">Tis<br> gebeurd!</div>
+		</div>
 	</div>
 	<div class="spelers" ng-show="spelersTonen()">
 		<div class="{{speler.geselecteerd? 'geselecteerdeSpeler':'speler'}}" ng-repeat="speler in spelers.spelers" ng-click="spelers.selecteer(speler)">

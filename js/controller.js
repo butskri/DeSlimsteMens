@@ -426,10 +426,13 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 		}
 	},
 	isVragenModus: function() {
-		return !this.isSelecteerFinaleSpelersModus();
+		return !this.istGebeurd() && !this.isSelecteerFinaleSpelersModus();
 	},
 	isSelecteerFinaleSpelersModus: function() {
-		return this.indexHuidigeVraag == 0 || this.teVeelSpelers();
+		return !this.istGebeurd() && (this.indexHuidigeVraag == 0 || this.teVeelSpelers());
+	},
+	istGebeurd: function() {
+		return $scope.spelers.istGebeurd();
 	},
 	toonAntwoord: function(antwoord) {
 		antwoord.gevonden = !antwoord.gevonden;

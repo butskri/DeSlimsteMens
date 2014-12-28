@@ -286,3 +286,11 @@ table.openDeur button {
 .finaleButton {
 	width: 40%;
 }
+
+.finaleGebeurd {
+	margin-top: 10%;
+	margin: 0 auto;
+	font-size: 180px;
+	display: block;
+	text-align: center;
+}
