@@ -169,7 +169,7 @@ button.slimsteMensButton {
 	border: 2px solid;
     border-radius: 25px;
 }
-.slimsteQuizConfiguratie,.puzzelAntwoord,.finaleAntwoord,.finaleButton{
+.slimsteQuizConfiguratie,.puzzelAntwoord,.finaleAntwoord,.finaleButton,.collectiefGeheugenAntwoord{
 	margin: 0 auto;
 	color: white;
 	padding: 1%;
@@ -258,6 +258,10 @@ table.openDeur button {
 }
 .puzzelAntwoord {
 	width: 80%;
+}
+.collectiefGeheugenAntwoord {
+	width: 30%;
+	margin-top: 1%;
 }
 
 .finaleAntwoorden {

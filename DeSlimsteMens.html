@@ -133,6 +133,17 @@
 		</div>
 	</div>
 	<div id="collectiefGeheugen" ng-show="huidigeRonde == collectiefGeheugen">
+		<div id="collectiefGeheugenButtons" ng-show="collectiefGeheugen.isOverzichtModus()">
+			<button ng-repeat-start="video in collectiefGeheugen.getVideos()" ng-click="collectiefGeheugen.startVideo(video)"
+				type="button" class="slimsteMensButton buttonLeft">Start {{video.naam}}</button>
+			<button ng-repeat-end ng-click="collectiefGeheugen.toonAntwoorden(video)"
+				type="button" class="slimsteMensButton buttonRight" >Naar antwoorden {{video.naam}}</button>
+		</div>
+		<div class="collectiefGeheugenAntwoorden" ng-show="collectiefGeheugen.isAntwoordModus()">
+			<button ng-repeat="antwoord in collectiefGeheugen.huidigeVideo.antwoorden" ng-click="collectiefGeheugen.toonAntwoord(antwoord)"
+				type="button" class="collectiefGeheugenAntwoord {{antwoord.gevonden? 'gevonden':'onleesbaar'}}">{{antwoord.omschrijving}}</button>
+			<button ng-click="collectiefGeheugen.terugNaarOverzicht()" type="button" class="collectiefGeheugenAntwoord">Terug naar overzicht</button>
+		</div>
 	</div>
 	<div id="deFinale" ng-show="huidigeRonde == deFinale">
 		<div id="finaleSpelersSelecteren" ng-show="deFinale.isSelecteerFinaleSpelersModus()">

@@ -28,6 +28,12 @@ var voorbeeldQuiz = {
 			{antwoord: 'Antwoord 3', hints: ['Hint 1 voor 3', 'Hint 2 voor 3', 'Hint 3 voor 3', 'Hint 4 voor 3']}
 		]}
 	],
+	collectiefGeheugen: {
+		videos: [
+			{urlVideo: 'videos/Lazy_dog.mp4', antwoorden: ['Frankrijk', 'Seine', 'Louvre', 'Sacré coeur', 'eenAntwoord'] },
+			{urlVideo: 'videos/Lazy_dog.mp4', antwoorden: ['blabla', 'boemboem', 'nana', 'sasa', 'gaga'] }
+		],
+	},
 	finale: [
 		{ vraag: 'Wat weet je over Parijs?',
 		  antwoorden: ['Frankrijk', 'Seine', 'Louvre', 'Sacré coeur', 'lichtstad'] },

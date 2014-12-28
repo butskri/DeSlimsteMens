@@ -302,11 +302,77 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
   $scope.collectiefGeheugen  = {
 	id: 'collectiefGeheugen',
 	title: 'Collectief Geheugen',
+	huidigeVideo: null,
+	startRonde: function() {
+		var videos = this.getVideos();
+		for (i=0;i < videos.length;i++) {
+			if (!videos[i].naam) {
+				videos[i].naam = 'Video ' + (i+1);
+			}
+		}
+		
+	},
 	vorigeRonde: function() {
 		return $scope.deGalerij;
 	},
 	volgendeRonde: function() {
 		return $scope.deFinale;
+	},
+	getVideos: function() {
+		if ($scope.deSlimsteData == null) {
+			return [];
+		}
+		return $scope.deSlimsteData.collectiefGeheugen.videos;
+	},
+	startVideo: function(video) {
+		window.open(video.urlVideo);
+	},
+	toonAntwoorden: function(video) {
+		this.huidigeVideo = {
+			antwoorden: $scope.toAntwoorden(video.antwoorden)
+		};
+	},
+	isOverzichtModus: function() {
+		return this.huidigeVideo == null;
+	},
+	isAntwoordModus: function() {
+		return this.huidigeVideo != null;
+	},
+	toonAntwoord: function(antwoord) {
+		antwoord.gevonden = !antwoord.gevonden;
+		var aantalPunten = this.bepaalPuntenVoorAntwoord(antwoord);
+		$scope.addSeconds(aantalPunten);
+		if (this.alleAntwoordenGevonden()) {
+			$scope.stopTimer();
+		}
+	},
+	bepaalPuntenVoorAntwoord: function(antwoord) {
+		var aantalJuisteAntwoorden = this.telAantalJuisteAntwoorden();
+		if (antwoord.gevonden) {
+			return aantalJuisteAntwoorden * 10;
+		} else {
+			return - (aantalJuisteAntwoorden + 1) * 10;
+		}
+	},
+	telAantalJuisteAntwoorden: function() {
+		var aantal = 0;
+		for (i=0;i < this.huidigeVideo.antwoorden.length;i++) {
+			if (this.huidigeVideo.antwoorden[i].gevonden) {
+				aantal++;
+			}
+		}
+		return aantal;
+	},
+	alleAntwoordenGevonden: function() {
+		for (i=0;i < this.huidigeVideo.antwoorden.length;i++) {
+			if (!this.huidigeVideo.antwoorden[i].gevonden) {
+				return false;
+			}
+		}
+		return true;
+	},
+	terugNaarOverzicht: function() {
+		this.huidigeVideo = null;
 	}
   }
   $scope.deFinale  = {
