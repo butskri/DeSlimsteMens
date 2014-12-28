@@ -495,11 +495,11 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 	}
   }
   $scope.countDown = function(){
-	if ($scope.spelers.isSpelerGeselecteerd()) {
+	if ($scope.spelers.istGebeurd() || !$scope.spelers.isSpelerGeselecteerd()) {
+		$scope.stopTimer();
+	} else {
       $scope.addSeconds(-1);
       geselecteerdeSpelerCountdown = $timeout($scope.countDown,1000);
-	} else {
-		$scope.stopTimer();
 	}
   }
   $scope.timerIsRunning = function(){
