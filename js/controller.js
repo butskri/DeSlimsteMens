@@ -354,11 +354,16 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 	spelersTonen: function() {
 		return !this.isSelecteerFinaleSpelersModus();
 	},
-	startFinale: function() {
+	teVeelSpelers: function() {
+		return $scope.players.length > 2;
+	},
+	verwijderGeselecteerdeSpeler: function() {
 		if (!$scope.selectedPlayer) {
 			return;
 		}
 		$scope.verwijderSpeler($scope.selectedPlayer);
+	},
+	startFinale: function() {
 		this.volgende();
 	},
 	getVragen: function() {
@@ -385,6 +390,9 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 		};
 	},
 	volgende: function() {
+		if (this.teVeelSpelers()) {
+			return;
+		}
 		this.indexHuidigeVraag++;
 		this.initHuidigeVraag();
 	},
@@ -395,10 +403,10 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 		}
 	},
 	isVragenModus: function() {
-		return this.indexHuidigeVraag > 0;
+		return !this.isSelecteerFinaleSpelersModus();
 	},
 	isSelecteerFinaleSpelersModus: function() {
-		return this.indexHuidigeVraag == 0;
+		return this.indexHuidigeVraag == 0 || this.teVeelSpelers();
 	},
 	toonAntwoord: function(antwoord) {
 		antwoord.gevonden = !antwoord.gevonden;
