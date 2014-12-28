@@ -399,6 +399,9 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 		return $scope.collectiefGeheugen;
 	},
 	volgendeRonde: function() {
+		if (!$scope.spelers.istGebeurd()) {
+			return $scope.deFinale;
+		}
 		return $scope.oorkonde;
 	},
 	initHuidigeVraag: function() {
