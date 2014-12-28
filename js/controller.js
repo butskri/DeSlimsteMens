@@ -558,8 +558,11 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
   }
   
   var geselecteerdeSpelerCountdown = null;
+  $scope.isStartTimerEnabled = function() {
+	return geselecteerdeSpelerCountdown == null && $scope.spelers.isSpelerGeselecteerd();
+  }
   $scope.startTimer = function() {
-	if (geselecteerdeSpelerCountdown) {
+	if (!$scope.isStartTimerEnabled()) {
 		return;
 	}
 	geselecteerdeSpelerCountdown = $timeout($scope.countDown,1000);
@@ -598,11 +601,16 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 	$scope.spelers.voegPuntenToeVoorGeselecteerdeSpeler(punten);
   }
   
+  $scope.spelerHeeftJuistGeantwoordIsEnabled = function() {
+	return $scope.spelers.isSpelerGeselecteerd() && $scope.huidigeRonde.aantalSecondenVoorJuisteVraag != null;
+  }
+  
   $scope.spelerHeeftJuistGeantwoord = function() {
-	if ($scope.huidigeRonde.aantalSecondenVoorJuisteVraag) {
-		$scope.addSeconds($scope.huidigeRonde.aantalSecondenVoorJuisteVraag);
-		$scope.huidigeRonde.volgende();
+    if (!$scope.spelerHeeftJuistGeantwoordIsEnabled()) {
+		return;
 	}
+	$scope.addSeconds($scope.huidigeRonde.aantalSecondenVoorJuisteVraag);
+	$scope.huidigeRonde.volgende();
   }
   
   $scope.toAntwoorden = function(antwoorden) {

@@ -205,12 +205,12 @@
 	<div class="menu" ng-hide="menuHidden">
 		<div>
 			<span class="fa fa-chevron-circle-left" ng-click="vorige()" ng-class="isVorigeEnabled()? 'menuitem':'menuitemdisabled'"></span>
-			<span class="fa fa-chevron-circle-right" ng-click="volgende()"  ng-class="isVolgendeEnabled()? 'menuitem':'menuitemdisabled'"></span>
+			<span class="fa fa-chevron-circle-right" ng-click="volgende()" ng-class="isVolgendeEnabled()? 'menuitem':'menuitemdisabled'"></span>
 		</div>
 		<div>
-			<span class="fa fa-play menuitem" ng-hide="timerIsRunning()" ng-click="startTimer()"></span>
+			<span class="fa fa-play" ng-hide="timerIsRunning()" ng-click="startTimer()" ng-class="isStartTimerEnabled()? 'menuitem':'menuitemdisabled'"></span>
 			<span class="fa fa-stop menuitem" ng-hide="!timerIsRunning()" ng-click="stopTimer()"></span>
-			<span class="fa fa-check menuitem" ng-click="spelerHeeftJuistGeantwoord()"></span>
+			<span class="fa fa-check" ng-click="spelerHeeftJuistGeantwoord()" ng-class="spelerHeeftJuistGeantwoordIsEnabled()? 'menuitem':'menuitemdisabled'"></span>
 		</div>
 		<div>
 			<span class="fa fa-plus-circle" ng-click="addSecond()" ng-class="isAddSecondEnabled()? 'menuitem':'menuitemdisabled'"></span>
