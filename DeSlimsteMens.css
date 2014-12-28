@@ -294,3 +294,21 @@ table.openDeur button {
 	display: block;
 	text-align: center;
 }
+
+.oorkonde {
+	margin-top: 10%;
+	margin: 0 auto;
+	font-size: 36px;
+	display: block;
+	width: 70%;
+}
+
+.deSlimsteMensTitel {
+	font-size: 50px;
+	text-align: center;
+}
+
+.naamWinnaar {
+	color: #ffff66;
+	font-weight: bold;
+}

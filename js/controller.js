@@ -399,7 +399,7 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 		return $scope.collectiefGeheugen;
 	},
 	volgendeRonde: function() {
-		return $scope.deFinale;
+		return $scope.oorkonde;
 	},
 	initHuidigeVraag: function() {
 		if (this.indexHuidigeVraag == 0) {
@@ -451,6 +451,30 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 		return true;
 	}
   }
+  $scope.oorkonde  = {
+	id: 'oorkonde',
+	title: 'Oorkonde',
+	naamWinnaar: 'Volledige naam winnaar',
+	oorkondeModus: false,
+	spelersTonen: function() {
+		return true;
+	},
+	vorigeRonde: function() {
+		return $scope.deFinale;
+	},
+	volgendeRonde: function() {
+		return $scope.oorkonde;
+	},
+	naarOorkonde: function() {
+		this.oorkondeModus = true;
+	},
+	isNaamModus: function() {
+		return !this.oorkondeModus;
+	},
+	isOorkondeModus: function() {
+		return this.oorkondeModus;
+	}
+  }
   
   $scope.startSpel = function() {
 	$scope.setHuidigeRonde($scope.deSlimsteMensBegin);
@@ -478,6 +502,7 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 		$scope.huidigeRonde.startRonde();
 	}
   }
+  
   $scope.startSpel();
   $scope.menuHidden = true;
   

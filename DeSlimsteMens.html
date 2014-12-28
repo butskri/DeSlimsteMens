@@ -171,6 +171,24 @@
 			<div class="finaleGebeurd">Tis<br> gebeurd!</div>
 		</div>
 	</div>
+	<div id="oorkonde" class="oorkonde" ng-show="huidigeRonde == oorkonde">
+		<div id="definitieveOorkonde" class="configuratieDeSlimsteMens" ng-show="oorkonde.isNaamModus()">
+			<input class="slimsteQuizConfiguratie" type="text" ng-model="oorkonde.naamWinnaar" />
+			<input class="slimsteQuizConfiguratie" type="button" value="Naar oorkonde" ng-click="oorkonde.naarOorkonde()" />
+		</div>
+		<div id="definitieveOorkonde" ng-show="oorkonde.isOorkondeModus()">
+			<p>
+				Op 31 december 2014 zijn wij een openbaar onderzoek begonnen onder leiding van de immer nieuwsgierige vorser, Kristof Buts. Een onderzoek naar de slimste mens ter wereld, onderbroken door hapjes, aangevuld met aangepaste wijnen.
+			</p>
+			<p>
+				Het resultaat is dat vanaf heden, 1 januari 2015, de genaamde <span class="naamWinnaar">{{oorkonde.naamWinnaar}}</span> niet langer als dusdanig hoeft aangesproken te worden. Juister en eerbiediger is om vanaf nu te zeggen:
+			</p>
+			<div class="deSlimsteMensTitel">{{deSlimsteData.titel}}</div>
+			<p>
+				Quod erat demonstrandum, met felicitaties van de jury.
+			</p>
+		</div>
+	</div>
 	<div class="spelers" ng-show="spelersTonen()">
 		<div class="{{speler.geselecteerd? 'geselecteerdeSpeler':'speler'}}" ng-repeat="speler in spelers.spelers" ng-click="spelers.selecteer(speler)">
 			<div class="name">{{speler.name}}</div>

@@ -1,4 +1,5 @@
 var voorbeeldQuiz = {
+	titel: 'De slimste ket ter wereld',
 	galerijen: [
 			{baseUrl:'images/pooh/',
 			 fotos: [{url: 'Winnie.jpg'}, {url: 'tijgetje.jpg'}, {url: 'ioor.jpg'} ]}
