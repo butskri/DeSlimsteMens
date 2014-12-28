@@ -169,7 +169,7 @@ button.slimsteMensButton {
 	border: 2px solid;
     border-radius: 25px;
 }
-.slimsteQuizConfiguratie,.puzzelAntwoord,.finaleAntwoord,.finaleButton,.collectiefGeheugenAntwoord{
+.slimsteQuizConfiguratie,.puzzelAntwoord,.finaleAntwoord,.finaleButton,.collectiefGeheugenAntwoord,.oorkondeButton{
 	margin: 0 auto;
 	color: white;
 	padding: 1%;
@@ -283,7 +283,7 @@ table.openDeur button {
 	opacity: 0.7;
 	font-size: 32px;
 }
-.finaleButton {
+.finaleButton,.oorkondeButton {
 	width: 40%;
 }
 
@@ -301,6 +301,16 @@ table.openDeur button {
 	font-size: 36px;
 	display: block;
 	width: 70%;
+}
+.uitlegOorkonde{
+	width: 70%;
+	margin: 0 auto;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	padding: 5% 5%;
+    background-color: #a80203;
+	opacity: 0.7;
+	font-size: 32px;
 }
 
 .deSlimsteMensTitel {

@@ -173,8 +173,11 @@
 	</div>
 	<div id="oorkonde" class="oorkonde" ng-show="huidigeRonde == oorkonde">
 		<div id="definitieveOorkonde" class="configuratieDeSlimsteMens" ng-show="oorkonde.isNaamModus()">
-			<input class="slimsteQuizConfiguratie" type="text" ng-model="oorkonde.naamWinnaar" />
-			<input class="slimsteQuizConfiguratie" type="button" value="Naar oorkonde" ng-click="oorkonde.naarOorkonde()" />
+			<div class="uitlegOorkonde">
+				Vul de volledige naam van de winnaar in en klik daarna op 'Naar oorkonde' om te beginnen aan het offici&euml;le gedeelte.
+			</div>
+			<input class="oorkondeButton" type="text" ng-model="oorkonde.naamWinnaar" />
+			<input class="oorkondeButton" type="button" value="Naar oorkonde" ng-click="oorkonde.naarOorkonde()" />
 		</div>
 		<div id="definitieveOorkonde" ng-show="oorkonde.isOorkondeModus()">
 			<p>
