@@ -30,7 +30,7 @@ h1 {
 	font-size: 60px;
 }
 
-.players {
+.spelers {
 	width: 100%;
 	position: absolute;
 	bottom: 30px;
@@ -38,11 +38,11 @@ h1 {
 #finaleSpelersSelecteren {
 	width: 100%;
 }
-#finaleSpelersSelecteren .player, #finaleSpelersSelecteren .selectedplayer {
+#finaleSpelersSelecteren .speler, #finaleSpelersSelecteren .geselecteerdeSpeler {
 	margin: 0 auto;
 	margin-top: 2%;
 }
-.player, .selectedPlayer {
+.speler, .geselecteerdeSpeler {
 	text-align: center;
 	font-size: 32px;
 	padding-top: 1%;
@@ -51,17 +51,17 @@ h1 {
     background-color: #a80203;
 	width: 28%;
 }
-.players .player, .players .selectedPlayer {
+.spelers .speler, .spelers .geselecteerdeSpeler {
 	float: left;
 	margin-left: 2.5%;
 	margin-right: 2.5%;
 }
 
-.player {
+.speler {
 	color: rgb(235, 221, 221);
 }
 
-.selectedPlayer , .selected{
+.geselecteerdeSpeler , .selected{
 	color: #ffff66;
 }
 

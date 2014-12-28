@@ -27,7 +27,7 @@
 			<select class="slimsteQuizConfiguratie" ng-model="geselecteerdeQuiz" ng-options="quiz.naam for quiz in mogelijkeQuizzen">
 				<option value="">--------------- Kies een quiz ---------------</option>
 			</select>
-			<div ng-repeat="speler in players.spelers">
+			<div ng-repeat="speler in spelers.spelers">
 				<input class="slimsteQuizConfiguratie" type="text" ng-model="speler.name" />
 			</div>
 			<input class="slimsteQuizConfiguratie" type="button" value="Start quiz!" ng-click="startQuiz()" />
@@ -139,11 +139,11 @@
 			<div class="uitlegFinale">
 				Verwijder de afvallende speler en klik daarna op 'Finale starten' om te beginnen aan de finale.
 			</div>
-			<div class="{{speler.geselecteerd? 'selectedPlayer':'player'}}" ng-repeat="speler in players.spelers" ng-click="players.selecteer(speler)">
+			<div class="{{speler.geselecteerd? 'geselecteerdeSpeler':'speler'}}" ng-repeat="speler in spelers.spelers" ng-click="spelers.selecteer(speler)">
 				<div class="name">{{speler.name}}</div>
 				<div class="score">{{speler.score}}</div>
 			</div>
-			<button ng-click="deFinale.verwijderGeselecteerdeSpeler()" type="button" class="finaleButton" ng-show="deFinale.teVeelSpelers()">Verwijder geselecteerde speler</button>
+			<button ng-click="spelers.verwijderGeselecteerdeSpeler()" type="button" class="finaleButton" ng-show="deFinale.teVeelSpelers()">Verwijder geselecteerde speler</button>
 			<button ng-click="deFinale.volgende()" type="button" class="finaleButton" ng-hide="deFinale.teVeelSpelers()">Finale starten</button>
 		</div>
 		<div id="finaleVragen" ng-show="deFinale.isVragenModus()">
@@ -157,8 +157,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="players" ng-show="spelersTonen()">
-		<div class="{{speler.geselecteerd? 'selectedPlayer':'player'}}" ng-repeat="speler in players.spelers" ng-click="players.selecteer(speler)">
+	<div class="spelers" ng-show="spelersTonen()">
+		<div class="{{speler.geselecteerd? 'geselecteerdeSpeler':'speler'}}" ng-repeat="speler in spelers.spelers" ng-click="spelers.selecteer(speler)">
 			<div class="name">{{speler.name}}</div>
 			<div class="score">{{speler.score}}</div>
 		</div>
