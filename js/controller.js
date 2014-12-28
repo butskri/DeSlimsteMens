@@ -16,19 +16,8 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
   ];
   $scope.geselecteerdeQuiz = null;
   $scope.deSlimsteData = null;
-  $scope.players = [
-	new Speler('Speler 1'),
-	new Speler('Speler 2'),
-	new Speler('Speler 3')
-  ];
-  $scope.selectedPlayer = null;
-  $scope.select = function (player) {
-	if ($scope.selectedPlayer === player) {
-		$scope.selectedPlayer = null;
-	} else {
-		$scope.selectedPlayer = player;
-	}
-  }
+  $scope.players;
+  
   $scope.spelersTonen = function() {
 	if ($scope.huidigeRonde.spelersTonen == null) {
 		return true;
@@ -36,10 +25,7 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 	return $scope.huidigeRonde.spelersTonen();
   }
   $scope.verwijderSpeler = function(speler) {
-	if ($scope.selectedPlayer == speler) {
-		$scope.selectedPlayer = null;
-	}
-	$scope.players.remove(speler);
+	$scope.players.verwijderSpeler(speler);
   }
   
   $scope.titelTonen = function() {
@@ -260,7 +246,7 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 		return $scope.deSlimsteData.galerijen;
 	},
 	startGalerij: function(galerij) {
-		if (!$scope.selectedPlayer) {
+		if (!$scope.players.isSpelerGeselecteerd()) {
 			return;
 		}
 		$scope.startTimer();
@@ -341,13 +327,10 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 		return !this.isSelecteerFinaleSpelersModus();
 	},
 	teVeelSpelers: function() {
-		return $scope.players.length > 2;
+		return $scope.players.aantalSpelers() > 2;
 	},
 	verwijderGeselecteerdeSpeler: function() {
-		if (!$scope.selectedPlayer) {
-			return;
-		}
-		$scope.verwijderSpeler($scope.selectedPlayer);
+		$scope.players.verwijderGeselecteerdeSpeler();
 	},
 	startFinale: function() {
 		this.volgende();
@@ -396,9 +379,9 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 	},
 	toonAntwoord: function(antwoord) {
 		antwoord.gevonden = !antwoord.gevonden;
-		var aantalSeconden = 20;
+		var aantalSeconden = -20;
 		if (!antwoord.gevonden) {
-			aantalSeconden = -20;
+			aantalSeconden = 20;
 		}
 		$scope.addSeconds(aantalSeconden);
 		if (this.alleAntwoordenGevonden()) {
@@ -417,6 +400,10 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
   
   $scope.startSpel = function() {
 	$scope.setHuidigeRonde($scope.deSlimsteMensBegin);
+	$scope.players = new Spelers()
+	$scope.players.add(new Speler('Speler 1'));
+	$scope.players.add(new Speler('Speler 2'));
+	$scope.players.add(new Speler('Speler 3'));
   }
   $scope.startQuiz = function() {
 	if ($scope.geselecteerdeQuiz == null) {
@@ -440,29 +427,29 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
   $scope.startSpel();
   $scope.menuHidden = true;
   
-  var selectedPlayerCountdown = null;
+  var geselecteerdeSpelerCountdown = null;
   $scope.startTimer = function() {
-	if (selectedPlayerCountdown) {
+	if (geselecteerdeSpelerCountdown) {
 		return;
 	}
-	selectedPlayerCountdown = $timeout($scope.countDown,1000);
+	geselecteerdeSpelerCountdown = $timeout($scope.countDown,1000);
   }
   $scope.stopTimer = function(){
-	if (selectedPlayerCountdown) {
-		$timeout.cancel(selectedPlayerCountdown);
-		selectedPlayerCountdown = null;
+	if (geselecteerdeSpelerCountdown) {
+		$timeout.cancel(geselecteerdeSpelerCountdown);
+		geselecteerdeSpelerCountdown = null;
 	}
   }
   $scope.countDown = function(){
-	if ($scope.selectedPlayer) {
-      $scope.selectedPlayer.addPunten(-1);
-      selectedPlayerCountdown = $timeout($scope.countDown,1000);
+	if ($scope.players.isSpelerGeselecteerd()) {
+      $scope.players.geselecteerdeSpeler.addPunten(-1);
+      geselecteerdeSpelerCountdown = $timeout($scope.countDown,1000);
 	} else {
 		$scope.stopTimer();
 	}
   }
   $scope.timerIsRunning = function(){
-	return selectedPlayerCountdown != null;
+	return geselecteerdeSpelerCountdown != null;
   }
   
   $scope.addSecond = function() {
@@ -472,8 +459,8 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 	$scope.addSeconds(-1);
   }
   $scope.addSeconds = function(seconds) {
-	if ($scope.selectedPlayer) {
-		$scope.selectedPlayer.addPunten(seconds);
+	if ($scope.players.isSpelerGeselecteerd()) {
+		$scope.players.geselecteerdeSpeler.addPunten(seconds);
 	}
   }
   
