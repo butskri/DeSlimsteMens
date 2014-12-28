@@ -95,11 +95,8 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 	},
 	toonAntwoord: function(antwoord) {
 		antwoord.gevonden = !antwoord.gevonden;
-		var aantalSeconden = 20;
-		if (!antwoord.gevonden) {
-			aantalSeconden = -20;
-		}
-		$scope.addSeconds(aantalSeconden);
+		var aantalPunten = $scope.bepaalPuntenVoor(antwoord, 20);
+		$scope.addSeconds(aantalPunten);
 		if (this.alleAntwoordenGevonden()) {
 			$scope.stopTimer();
 		}
@@ -179,11 +176,8 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 	},
 	toonAntwoord: function(antwoord) {
 		antwoord.gevonden = !antwoord.gevonden;
-		var aantalSeconden = 30;
-		if (!antwoord.gevonden) {
-			aantalSeconden = -30;
-		}
-		$scope.addSeconds(aantalSeconden);
+		var aantalPunten = $scope.bepaalPuntenVoor(antwoord, 30);
+		$scope.addSeconds(aantalPunten);
 		if (this.alleAntwoordenGevonden()) {
 			$scope.stopTimer();
 		}
@@ -373,11 +367,8 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 	},
 	toonAntwoord: function(antwoord) {
 		antwoord.gevonden = !antwoord.gevonden;
-		var aantalSeconden = -20;
-		if (!antwoord.gevonden) {
-			aantalSeconden = 20;
-		}
-		$scope.addSeconds(aantalSeconden);
+		var aantalPunten = $scope.bepaalPuntenVoor(antwoord, -20);
+		$scope.spelers.voegPuntenToeVoorNietGeselecteerdeSpelers(aantalPunten);
 		if (this.alleAntwoordenGevonden()) {
 			$scope.stopTimer();
 		}
@@ -436,7 +427,7 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
   }
   $scope.countDown = function(){
 	if ($scope.spelers.isSpelerGeselecteerd()) {
-      $scope.spelers.geselecteerdeSpeler.addPunten(-1);
+      $scope.addSeconds(-1);
       geselecteerdeSpelerCountdown = $timeout($scope.countDown,1000);
 	} else {
 		$scope.stopTimer();
@@ -452,10 +443,8 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
   $scope.minusSecond = function() {
 	$scope.addSeconds(-1);
   }
-  $scope.addSeconds = function(seconds) {
-	if ($scope.spelers.isSpelerGeselecteerd()) {
-		$scope.spelers.geselecteerdeSpeler.addPunten(seconds);
-	}
+  $scope.addSeconds = function(punten) {
+	$scope.spelers.voegPuntenToeVoorGeselecteerdeSpeler(punten);
   }
   
   $scope.spelerHeeftJuistGeantwoord = function() {
@@ -472,5 +461,12 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 		result.push(antwoord);
 	}
 	return result;
+  }
+  $scope.bepaalPuntenVoor = function(antwoord, aantalPuntenVoorGevondenAntwoord) {
+	if (antwoord.gevonden) {
+		return aantalPuntenVoorGevondenAntwoord;
+	} else {
+		return -aantalPuntenVoorGevondenAntwoord;
+	}
   }
 });

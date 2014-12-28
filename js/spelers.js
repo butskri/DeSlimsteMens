@@ -54,3 +54,20 @@ Spelers.prototype.verwijderSpeler = function(speler) {
 		this.spelers.remove(speler);
 	}
 };
+
+Spelers.prototype.voegPuntenToeVoorNietGeselecteerdeSpelers = function(aantalPunten) {
+	if (!this.isSpelerGeselecteerd()) {
+		return;
+	}
+	for (i=0;i < this.spelers.length;i++) {
+		if (!this.spelers[i].geselecteerd) {
+			this.spelers[i].addPunten(aantalPunten);
+		}
+	}
+};
+
+Spelers.prototype.voegPuntenToeVoorGeselecteerdeSpeler = function(aantalPunten) {
+	if (this.isSpelerGeselecteerd()) {
+		this.geselecteerdeSpeler.addPunten(aantalPunten);
+	}
+};
