@@ -8,7 +8,10 @@ var voorbeeldQuiz = {
 	},
 	galerijen: [
 			{baseUrl:'voorbeeldquiz/galerij/pooh/',
-			 fotos: [{url: 'Winnie.jpg'}, {url: 'tijgetje.jpg'}, {url: 'ioor.jpg'} ]}
+			 fotos: [{url: 'Winnie.jpg'}, {url: 'tijgetje.jpg'}, {url: 'ioor.jpg'},
+			 		 {url: 'Winnie.jpg'}, {url: 'tijgetje.jpg'}, {url: 'ioor.jpg'},
+			 		 {url: 'Winnie.jpg'}, {url: 'tijgetje.jpg'}, {url: 'ioor.jpg'},
+			 		 {url: 'Winnie.jpg'} ]}
 			],
 	opendeur: {
 		vragen: [

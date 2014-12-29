@@ -264,8 +264,10 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 	id: 'deGalerij',
 	title: 'De galerij',
 	indexHuidigeFoto: 0,
-	aantalSecondenVoorJuisteVraag: 15,
+	aantalSecondenVoorJuisteVraag: null,
 	huidigeGalerij: null,
+	overzichtAntwoordenScherm: false,
+	antwoorden: [],
 	startRonde: function() {
 		var galerijen = this.getGalerijen();
 		for (i=0;i < galerijen.length;i++) {
@@ -275,7 +277,7 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 		}
 	},
 	isStartTimerEnabled: function() {
-		return this.isGalerijModus();
+		return this.isGalerijModus() || (this.isOverzichtAntwoordenModus() && !this.alleAntwoordenGevonden());
 	},
 	vorigeRonde: function() {
 		return $scope.puzzelRonde;
@@ -295,46 +297,86 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 		}
 		this.huidigeGalerij = galerij;
 		this.indexHuidigeFoto = 1;
+		this.antwoorden = [];
+		this.aantalSecondenVoorJuisteVraag = 15;
+		for (i=0;i < galerij.fotos.length;i++) {
+			this.antwoorden[i] = {omschrijving: 'Foto ' + (i+1), gevonden: false};
+		}
 		$scope.startTimer();
+	},
+	toonAntwoord: function(antwoord) {
+		antwoord.gevonden = !antwoord.gevonden;
+		if (antwoord.gevonden) {
+			$scope.addSeconds(15);
+			if (this.alleAntwoordenGevonden()) {
+				$scope.stopTimer();
+			}
+		} else {
+			$scope.addSeconds(-15);
+		}
+	},
+	alleAntwoordenGevonden: function() {
+		for (i=0;i < this.antwoorden.length;i++) {
+			if (!this.antwoorden[i].gevonden) {
+				return false;
+			}
+		}
+		return true;
 	},
 	overloopGalerij: function(galerij) {
 		this.huidigeGalerij = galerij;
 		this.indexHuidigeFoto = 1;
 	},
 	isButtonModus: function() {
-		return !this.isGalerijModus();
+		return !this.isGalerijModus() && !this.isOverzichtAntwoordenModus();
 	},
 	isGalerijModus: function() {
-		return this.huidigeGalerij != null;
+		return this.huidigeGalerij != null && !this.isOverzichtAntwoordenModus();
+	},
+	isOverzichtAntwoordenModus: function() {
+		return this.overzichtAntwoordenScherm;
 	},
 	isVorigeEnabled: function() {
-		return this.isGalerijModus();
+		return this.isGalerijModus() || this.isOverzichtAntwoordenModus();
 	},
 	isVolgendeEnabled: function() {
-		return this.isGalerijModus();
+		return this.isGalerijModus() || this.isOverzichtAntwoordenModus();
+	},
+	juisteAntwoordGegeven: function() {
+		this.antwoorden[this.indexHuidigeFoto-1].gevonden = true;
 	},
 	volgende: function() {
-		if (this.indexHuidigeFoto == this.huidigeGalerij.fotos.length) {
+		if (this.isOverzichtAntwoordenModus()) {
 			this.stopHuidigeGalerij();
+		} else if (this.indexHuidigeFoto == this.huidigeGalerij.fotos.length) {
+			this.naarOverzichtAntwoorden();
 		} else {
 			this.indexHuidigeFoto++;
 		}
 	},
 	vorige: function() {
-		if (this.indexHuidigeFoto == 1) {
+		if (this.isOverzichtAntwoordenModus()) {
+			this.overzichtAntwoordenScherm = false;
+		} else if (this.indexHuidigeFoto == 1) {
 			this.stopHuidigeGalerij();
 		} else {
 			this.indexHuidigeFoto--;
 		}
 	},
+	naarOverzichtAntwoorden: function() {
+		$scope.stopTimer();
+		this.overzichtAntwoordenScherm = true;
+	},
 	stopHuidigeGalerij: function() {
 		$scope.stopTimer();
 		this.huidigeGalerij = null;
+		this.aantalSecondenVoorJuisteVraag = null;
+		this.overzichtAntwoordenScherm = false;
 		this.indexHuidigeFoto = 0;
 	},
 	urlHuidigeFoto: function() {
 		if (!this.huidigeGalerij) {
-			return 'geenHuidigeFoto.jpg';
+			return '#';
 		}
 		var baseUrl = this.huidigeGalerij.baseUrl;
 		return baseUrl + this.huidigeFoto().url;
@@ -684,6 +726,9 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 		return;
 	}
 	$scope.addSeconds($scope.huidigeRonde.aantalSecondenVoorJuisteVraag);
+	if ($scope.huidigeRonde.juisteAntwoordGegeven) {
+		$scope.huidigeRonde.juisteAntwoordGegeven();
+	}
 	$scope.huidigeRonde.volgende();
   }
   

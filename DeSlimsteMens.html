@@ -129,6 +129,10 @@
 		<div id="galerijFotos" ng-show="deGalerij.isGalerijModus()">
 			<img ng-class="deGalerij.styleClassHuidigeFoto()" ng-src="{{deGalerij.urlHuidigeFoto()}}"/>
 		</div>
+		<div id="overzichtGalerij" ng-show="deGalerij.isOverzichtAntwoordenModus()">
+			<button ng-repeat="antwoord in deGalerij.antwoorden" ng-click="deGalerij.toonAntwoord(antwoord)"
+				type="button" class="galerijAntwoord  {{$even? 'galerijAntwoordLinks': 'galerijAntwoordRechts'}} {{antwoord.gevonden? 'gevonden':'onleesbaar'}}">{{antwoord.omschrijving}}</button>
+		</div>
 	</div>
 	<div id="collectiefGeheugen" ng-show="huidigeRonde == collectiefGeheugen">
 		<div id="collectiefGeheugenButtons" ng-show="collectiefGeheugen.isOverzichtModus()">
