@@ -102,8 +102,12 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 		return $scope.puzzelRonde;
 	},
 	toonAntwoorden: function(vraag) {
+		if (!$scope.spelers.isSpelerGeselecteerd()) {
+			return;
+		}
 		this.huidigeVraag = vraag;
 		this.antwoorden = $scope.toAntwoorden(vraag.antwoorden);
+		$scope.startTimer();
 	},
 	toonAntwoord: function(antwoord) {
 		antwoord.gevonden = !antwoord.gevonden;
@@ -164,6 +168,9 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 		this.huidigePuzzel = null;
 	},
 	startPuzzel: function(puzzel) {
+		if (!$scope.spelers.isSpelerGeselecteerd()) {
+			return;
+		}
 		var alleHints = [];
 		var result = [];
 		for (i=0;i < puzzel.antwoorden.length;i++) {
@@ -188,6 +195,7 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 			antwoorden: result,
 			alleHints: this.shuffle(this.shuffle(alleHints))
 		};
+		$scope.startTimer();
 	},
 	toonAntwoord: function(antwoord) {
 		antwoord.gevonden = !antwoord.gevonden;
@@ -258,9 +266,9 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 		if (!$scope.spelers.isSpelerGeselecteerd()) {
 			return;
 		}
-		$scope.startTimer();
 		this.huidigeGalerij = galerij;
 		this.indexHuidigeFoto = 1;
+		$scope.startTimer();
 	},
 	overloopGalerij: function(galerij) {
 		this.huidigeGalerij = galerij;
@@ -355,9 +363,13 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 		window.open(video.urlVideo);
 	},
 	toonAntwoorden: function(video) {
+		if (!$scope.spelers.isSpelerGeselecteerd()) {
+			return;
+		}
 		this.huidigeVideo = {
 			antwoorden: $scope.toAntwoorden(video.antwoorden)
 		};
+		$scope.startTimer();
 	},
 	isOverzichtModus: function() {
 		return this.huidigeVideo == null;
