@@ -1,7 +1,7 @@
 var voorbeeldQuiz = {
 	titel: 'De slimste ket ter wereld',
 	drieZesNegen: {
-		urls: {
+		links: {
 			vraag2: 'voorbeeldquiz/driezesnegen/Winnie.jpg',
 			vraag4: 'voorbeeldquiz/driezesnegen/tijgetje.jpg'
 		}

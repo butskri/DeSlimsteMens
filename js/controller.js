@@ -102,10 +102,10 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 		if ($scope.deSlimsteData.drieZesNegen == null) {
 			return null;
 		}
-		if ($scope.deSlimsteData.drieZesNegen.urls == null) {
+		if ($scope.deSlimsteData.drieZesNegen.links == null) {
 			return null;
 		}
-		return $scope.deSlimsteData.drieZesNegen.urls['vraag' + this.huidigeVraag];
+		return $scope.deSlimsteData.drieZesNegen.links['vraag' + this.huidigeVraag];
 	}
   }
   $scope.openDeurRonde = {
