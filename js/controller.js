@@ -48,7 +48,7 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
   $scope.drieZesNegenRonde = {
 	id: 'drieZesNegen',
 	title: '3 - 6 - 9',
-	aantalSecondenVoorJuisteVraag: 10,
+	aantalSecondenVoorJuisteVraag: 0,
 	huidigeVraag: 1,
 	isStartTimerEnabled: function() {
 		return false;
@@ -66,13 +66,22 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 		return this.huidigeVraag < 15;
 	},
 	vorige: function() {
-		if (this.huidigeVraag != 1) {
+		if (this.isVorigeEnabled()) {
 			this.huidigeVraag--;
 		}
+		this.recalculateAantalSecondenVoorVraag();
 	},
 	volgende: function() {
-		if (this.huidigeVraag != 15) {
+		if (this.isVolgendeEnabled()) {
 			this.huidigeVraag++;
+		}
+		this.recalculateAantalSecondenVoorVraag();
+	},
+	recalculateAantalSecondenVoorVraag: function() {
+		if (this.huidigeVraag%3 == 0) {
+			this.aantalSecondenVoorJuisteVraag = 10;
+		} else {
+			this.aantalSecondenVoorJuisteVraag = 0;
 		}
 	},
 	styleClassVoorVraag: function(vraagNr) {
