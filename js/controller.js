@@ -155,6 +155,12 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 			}
 		}
 		return true;
+	},
+	getLink: function() {
+		if (this.huidigeVraag == null) {
+			return null;
+		}
+		return this.huidigeVraag.link;
 	}
   }
   $scope.puzzelRonde = {

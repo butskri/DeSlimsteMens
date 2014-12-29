@@ -10,14 +10,17 @@ var voorbeeldQuiz = {
 			{baseUrl:'voorbeeldquiz/galerij/pooh/',
 			 fotos: [{url: 'Winnie.jpg'}, {url: 'tijgetje.jpg'}, {url: 'ioor.jpg'} ]}
 			],
-	vragenOpenDeurRonde: [
+	opendeur: {
+		vragen: [
 		{naam: 'Omschrijving 1', urlFoto:'voorbeeldquiz/opendeur/something.jpg', urlFilm: 'voorbeeldquiz/opendeur/Lazy_dog.mp4', 
-		 antwoorden: ['Antwoord 1', 'Antwoord 2', 'Antwoord 3', 'Antwoord 4']},
+		 antwoorden: ['Antwoord 1', 'Antwoord 2', 'Antwoord 3', 'Antwoord 4'],
+		 link: 'voorbeeldquiz/opendeur/something.jpg'},
 		{naam: 'Omschrijving 2', urlFoto:'voorbeeldquiz/opendeur/something2.jpg', urlFilm: 'voorbeeldquiz/opendeur/Lazy_dog.mp4', 
 		 antwoorden: ['Antwoord 1', 'Antwoord 2', 'Antwoord 3', 'Antwoord 4']},
 		{naam: 'Omschrijving 3', urlFoto:'voorbeeldquiz/opendeur/something3.jpg', urlFilm: 'voorbeeldquiz/opendeur/Lazy_dog.mp4', 
 		 antwoorden: ['Antwoord 1', 'Antwoord 2', 'Antwoord 3', 'Antwoord 4']}
-		 ],
+		 ]
+	},
 	puzzels: [
 		{ antwoorden: [
 			{antwoord: 'Antwoord 1', hints: ['Hint 1 voor 1', 'Hint 2 voor 1', 'Hint 3 voor 1', 'Hint 4 voor 1']},
