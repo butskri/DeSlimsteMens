@@ -1,5 +1,11 @@
 var voorbeeldQuiz = {
 	titel: 'De slimste ket ter wereld',
+	drieZesNegen: {
+		urls: {
+			vraag2: 'images/pooh/Winnie.jpg',
+			vraag4: 'images/pooh/tijgetje.jpg'
+		}
+	},
 	galerijen: [
 			{baseUrl:'images/pooh/',
 			 fotos: [{url: 'Winnie.jpg'}, {url: 'tijgetje.jpg'}, {url: 'ioor.jpg'} ]}

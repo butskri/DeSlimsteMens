@@ -81,3 +81,20 @@ Spelers.prototype.istGebeurd = function() {
 	}
 	return aantalSpelersMetMeerDan0Punten < 2;
 };
+
+Spelers.prototype.switchSpeler = function() {
+	var indexTeSelecterenSpeler = this.bepaalIndexGeselecteerdeSpeler() + 1;
+	if (indexTeSelecterenSpeler == this.spelers.length) {
+		indexTeSelecterenSpeler--;
+	}
+	this.selecteer(this.spelers[indexTeSelecterenSpeler]);
+};
+
+Spelers.prototype.bepaalIndexGeselecteerdeSpeler = function() {
+	for (i=0;i < this.spelers.length;i++) {
+		if (this.spelers[i].geselecteerd) {
+			return i;
+		}
+	}
+	return -1;
+}

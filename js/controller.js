@@ -94,6 +94,18 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 			result += " selected";
 		}
 		return  result;
+	},
+	getLink: function() {
+		if ($scope.deSlimsteData == null) {
+			return null;
+		}
+		if ($scope.deSlimsteData.drieZesNegen == null) {
+			return null;
+		}
+		if ($scope.deSlimsteData.drieZesNegen.urls == null) {
+			return null;
+		}
+		return $scope.deSlimsteData.drieZesNegen.urls['vraag' + this.huidigeVraag];
 	}
   }
   $scope.openDeurRonde = {
@@ -684,4 +696,27 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 		return -aantalPuntenVoorGevondenAntwoord;
 	}
   }
+  
+  $scope.isSwitchSpelerEnabled = function() {
+	return $scope.huidigeRonde != $scope.deSlimsteMensBegin;
+  }
+  $scope.switchSpeler = function() {
+	if (!$scope.isSwitchSpelerEnabled()) {
+		return;
+	}
+	$scope.spelers.switchSpeler();
+  }
+  $scope.isLinkEnabled = function() {
+	if ($scope.huidigeRonde.getLink == null) {
+		return false;
+	}
+	return $scope.huidigeRonde.getLink() != null;
+  }
+  $scope.openLink = function() {
+    if (!$scope.isLinkEnabled()) {
+		return;
+	}
+	window.open($scope.huidigeRonde.getLink());
+  }
+
 });
