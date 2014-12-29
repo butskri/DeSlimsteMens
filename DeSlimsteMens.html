@@ -160,7 +160,7 @@
 		<div id="finaleVragen" ng-show="deFinale.isVragenModus()">
 			<div class="finaleVraag">
 				<span id="finaleVraagNr">Vraag {{deFinale.huidigeVraag.nummer}}:</span>
-				<span id="finaleVraag">{{deFinale.huidigeVraag.vraag}}</span>
+				<span id="finaleVraag" ng-class="deFinale.huidigeVraag.vraagTonen? '': 'onleesbaar'" ng-click="deFinale.toonHuidigeVraag()">{{deFinale.huidigeVraag.vraag}}</span>
 			</div>
 			<div class="finaleAntwoorden">
 				<button ng-repeat="antwoord in deFinale.huidigeVraag.antwoorden" ng-click="deFinale.toonAntwoord(antwoord)"

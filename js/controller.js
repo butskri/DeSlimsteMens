@@ -434,6 +434,9 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 		}
 		return $scope.deSlimsteData.finale;
 	},
+	isStartTimerEnabled: function() {
+		return this.huidigeVraag != null && this.huidigeVraag.vraagTonen;
+	},
 	vorigeRonde: function() {
 		return $scope.collectiefGeheugen;
 	},
@@ -452,8 +455,16 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 		this.huidigeVraag = {
 			nummer: this.indexHuidigeVraag,
 			vraag: vraag.vraag,
-			antwoorden: $scope.toAntwoorden(vraag.antwoorden)
+			antwoorden: $scope.toAntwoorden(vraag.antwoorden),
+			vraagTonen: false
 		};
+	},
+	toonHuidigeVraag: function() {
+		if (!$scope.spelers.isSpelerGeselecteerd()) {
+			return;
+		}
+		this.huidigeVraag.vraagTonen = true;
+		$scope.startTimer();
 	},
 	isVorigeEnabled: function() {
 		return this.isVragenModus() && this.indexHuidigeVraag != 0;
