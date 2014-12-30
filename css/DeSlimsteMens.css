@@ -147,8 +147,8 @@ h1 {
 
 img.galerijFoto {
 	display: block;
-	max-width: 70%;
-	max-height: 90%;
+	max-width: 1400px;
+	max-height: 875px;
  	margin:0 auto;
 }
 img.verticaleFoto {
