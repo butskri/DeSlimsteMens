@@ -272,13 +272,16 @@ table.openDeur button {
 	height: 50%;
 }
 .puzzelAntwoord1 {
-	color: rgba(253,151,200,30);
+	color: rgb(42, 142, 242);
+	opacity: 1;
 }
 .puzzelAntwoord2 {
-	color: lime;
+	color: rgb(250,20,138);
+	opacity: 1;
 }
 .puzzelAntwoord3 {
 	color: yellow;
+	opacity: 1;
 }
 .puzzelAntwoord {
 	width: 80%;
