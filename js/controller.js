@@ -398,6 +398,12 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 	},
 	titelTonen: function() {
 		return !this.isGalerijModus();
+	},
+	getLink: function() {
+		if (!this.isOverzichtAntwoordenModus()) {
+			return null;
+		}
+		return this.huidigeGalerij.link;
 	}
   }
   $scope.collectiefGeheugen  = {

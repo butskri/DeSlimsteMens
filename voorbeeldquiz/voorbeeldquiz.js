@@ -11,7 +11,8 @@ var voorbeeldQuiz = {
 			 fotos: [{url: 'Winnie.jpg'}, {url: 'tijgetje.jpg'}, {url: 'ioor.jpg'},
 			 		 {url: 'Winnie.jpg'}, {url: 'tijgetje.jpg'}, {url: 'ioor.jpg'},
 			 		 {url: 'Winnie.jpg'}, {url: 'tijgetje.jpg'}, {url: 'ioor.jpg'},
-			 		 {url: 'Winnie.jpg'} ]}
+			 		 {url: 'Winnie.jpg'} ],
+			 link: 'voorbeeldquiz/galerij/pooh/Winnie.jpg' }
 			],
 	opendeur: {
 		vragen: [
