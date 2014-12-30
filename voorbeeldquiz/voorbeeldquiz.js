@@ -53,5 +53,4 @@ var voorbeeldQuiz = {
 		{ vraag: 'Wat weet je over Blablabla?',
 		  antwoorden: ['Niks', 'Minder', 'Nog minder', 'Helemaal niks', 'Boem boem'] }
 	]
-
 };
