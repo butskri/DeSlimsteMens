@@ -121,7 +121,7 @@
 	</div>
 	<div id="deGalerij" ng-show="huidigeRonde == deGalerij">
 		<div id="galerijButtons" ng-show="deGalerij.isButtonModus()">
-			<button ng-repeat-start="galerij in deGalerij.getGalerijen()" ng-click="deGalerij.startGalerij(galerij)"
+			<button ng-repeat-start="galerij in deGalerij.getHuidigeGalerijen()" ng-click="deGalerij.startGalerij(galerij)"
 				type="button" class="slimsteMensButton buttonLeft">Start {{galerij.naam}}</button>
 			<button ng-repeat-end ng-click="deGalerij.overloopGalerij(galerij)"
 				type="button" class="slimsteMensButton buttonRight" >Overloop {{galerij.naam}}</button>

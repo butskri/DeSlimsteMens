@@ -12,7 +12,21 @@ var voorbeeldQuiz = {
 			 		 {url: 'Winnie.jpg'}, {url: 'tijgetje.jpg'}, {url: 'ioor.jpg'},
 			 		 {url: 'Winnie.jpg'}, {url: 'tijgetje.jpg'}, {url: 'ioor.jpg'},
 			 		 {url: 'Winnie.jpg'} ],
-			 link: 'voorbeeldquiz/galerij/pooh/Winnie.jpg' }
+			 link: 'voorbeeldquiz/galerij/pooh/Winnie.jpg' },
+			{baseUrl:'voorbeeldquiz/galerij/pooh/',
+			 fotos: [{url: 'Winnie.jpg'} ] },
+			{baseUrl:'voorbeeldquiz/galerij/pooh/',
+			 fotos: [{url: 'Winnie.jpg'} ] },
+			{baseUrl:'voorbeeldquiz/galerij/pooh/',
+			 fotos: [{url: 'Winnie.jpg'} ] },
+			{baseUrl:'voorbeeldquiz/galerij/pooh/',
+			 fotos: [{url: 'Winnie.jpg'} ] },
+			{baseUrl:'voorbeeldquiz/galerij/pooh/',
+			 fotos: [{url: 'Winnie.jpg'} ] },
+			{baseUrl:'voorbeeldquiz/galerij/pooh/',
+			 fotos: [{url: 'Winnie.jpg'} ] },
+			{baseUrl:'voorbeeldquiz/galerij/pooh/',
+			 fotos: [{url: 'Winnie.jpg'} ] }
 			],
 	opendeur: {
 		vragen: [

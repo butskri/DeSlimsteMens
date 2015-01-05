@@ -264,6 +264,7 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 	id: 'deGalerij',
 	title: 'De galerij',
 	indexHuidigeFoto: 0,
+	galerijenIndex: 0,
 	aantalSecondenVoorJuisteVraag: null,
 	huidigeGalerij: null,
 	overzichtAntwoordenScherm: false,
@@ -290,6 +291,22 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 			return [];
 		}
 		return $scope.deSlimsteData.galerijen;
+	},
+	maxGalerijenIndex: function() {
+		return Math.floor(this.getGalerijen().length / 3);
+	},
+	getHuidigeGalerijen: function() {
+		var galerijen = this.getGalerijen();
+		var result = [];
+		var indexFrom = this.galerijenIndex * 3;
+		var indexTo = indexFrom + 2;
+		if (indexTo >= galerijen.length -1) {
+			indexTo = galerijen.length -1;
+		}
+		for (i=indexFrom;i <= indexTo;i++) {
+			result.push(galerijen[i]);
+		}
+		return result;
 	},
 	startGalerij: function(galerij) {
 		if (!$scope.spelers.isSpelerGeselecteerd()) {
@@ -337,16 +354,18 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 		return this.overzichtAntwoordenScherm;
 	},
 	isVorigeEnabled: function() {
-		return this.isGalerijModus() || this.isOverzichtAntwoordenModus();
+		return this.isGalerijModus() || this.isOverzichtAntwoordenModus() || (this.isButtonModus() && this.galerijenIndex > 0);
 	},
 	isVolgendeEnabled: function() {
-		return this.isGalerijModus() || this.isOverzichtAntwoordenModus();
+		return this.isGalerijModus() || this.isOverzichtAntwoordenModus() || (this.isButtonModus() && this.galerijenIndex < this.maxGalerijenIndex());
 	},
 	juisteAntwoordGegeven: function() {
 		this.antwoorden[this.indexHuidigeFoto-1].gevonden = true;
 	},
 	volgende: function() {
-		if (this.isOverzichtAntwoordenModus()) {
+		if (this.isButtonModus()) {
+			this.galerijenIndex++;
+		} else if (this.isOverzichtAntwoordenModus()) {
 			this.stopHuidigeGalerij();
 		} else if (this.indexHuidigeFoto == this.huidigeGalerij.fotos.length) {
 			this.naarOverzichtAntwoorden();
@@ -355,7 +374,9 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
 		}
 	},
 	vorige: function() {
-		if (this.isOverzichtAntwoordenModus()) {
+		if (this.isButtonModus()) {
+			this.galerijenIndex--;
+		} else if (this.isOverzichtAntwoordenModus()) {
 			this.overzichtAntwoordenScherm = false;
 		} else if (this.indexHuidigeFoto == 1) {
 			this.stopHuidigeGalerij();
