@@ -1,8 +1,12 @@
 <html ng-app="deSlimsteMensApp">
 <head>
 	<link rel="stylesheet" type="text/css" href="css/DeSlimsteMens.css">
+	<link rel="stylesheet" type="text/css" href="css/francoisOne.css" />
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<!--
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Pacifico|Francois+One|Lato:300" />
 	<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	-->
 	
 	<script src="js/angular.min.js"></script>
 	<script src="js/arrays.js"></script>
@@ -20,7 +24,7 @@
 		<span id="volgendeRonde" class="fa fa-caret-right" ng-click="volgendeRonde()"></span>
 		</h1>
 	</div>
-	<div id="deSlimsteMensBegin" ng-show="huidigeRonde == deSlimsteMensBegin">
+	<div id="deSlimsteMensBegin" ng-show="huidigeRonde.id == 'begin'">
 		<div class="configuratieDeSlimsteMens">
 			<select class="slimsteQuizConfiguratie" ng-model="geselecteerdeQuiz" ng-options="quiz.naam for quiz in mogelijkeQuizzen">
 				<option value="">--------------- Kies een quiz ---------------</option>
@@ -31,7 +35,7 @@
 			<input class="slimsteQuizConfiguratie" type="button" value="Start quiz!" ng-click="startQuiz()" />
 		</div>
 	</div>
-	<div id="drieZesNegenRonde" ng-show="huidigeRonde == drieZesNegenRonde">
+	<div id="drieZesNegenRonde" ng-show="huidigeRonde.id == 'drieZesNegen'">
 		<div class="drieZesNegenLijn1">
 			<div id="vraag1" ng-class="drieZesNegenRonde.styleClassVoorVraag(1)">1</div>
 			<div id="vraag2" ng-class="drieZesNegenRonde.styleClassVoorVraag(2)">2</div>
@@ -54,7 +58,7 @@
 			<div id="vraag15" ng-class="drieZesNegenRonde.styleClassVoorVraag(15)">15</div>
 		</div>
 	</div>
-	<div id="openDeurRonde" ng-show="huidigeRonde == openDeurRonde">
+	<div id="openDeurRonde" ng-show="huidigeRonde.id == 'openDeur'">
 		<table class="openDeur" ng-show="openDeurRonde.isInModusOverzicht()">
 			<tr>
 				<td>
@@ -85,7 +89,7 @@
 			<button ng-click="openDeurRonde.terugNaarOverzicht()" type="button" class="slimsteQuizConfiguratie">Terug naar overzicht</button>
 		</div>
 	</div>
-	<div id="puzzelRonde" ng-show="huidigeRonde == puzzelRonde">
+	<div id="puzzelRonde" ng-show="huidigeRonde.id == 'puzzel'">
 		<div ng-show="puzzelRonde.isInModusOverzicht()">
 			<button ng-repeat="puzzel in puzzelRonde.puzzels" ng-click="puzzelRonde.startPuzzel(puzzel)"
 				type="button" class="slimsteQuizConfiguratie">{{puzzel.naam}}</button>
@@ -119,7 +123,7 @@
 			</div>
 		</div>
 	</div>
-	<div id="deGalerij" ng-show="huidigeRonde == deGalerij">
+	<div id="deGalerij" ng-show="huidigeRonde.id == 'deGalerij'">
 		<div id="galerijButtons" ng-show="deGalerij.isButtonModus()">
 			<button ng-repeat-start="galerij in deGalerij.getHuidigeGalerijen()" ng-click="deGalerij.startGalerij(galerij)"
 				type="button" class="slimsteMensButton buttonLeft">Start {{galerij.naam}}</button>
@@ -134,7 +138,7 @@
 				type="button" class="galerijAntwoord  {{$even? 'galerijAntwoordLinks': 'galerijAntwoordRechts'}} {{antwoord.gevonden? 'gevonden':'onleesbaar'}}">{{antwoord.omschrijving}}</button>
 		</div>
 	</div>
-	<div id="collectiefGeheugen" ng-show="huidigeRonde == collectiefGeheugen">
+	<div id="collectiefGeheugen" ng-show="huidigeRonde.id == 'collectiefGeheugen'">
 		<div id="collectiefGeheugenButtons" ng-show="collectiefGeheugen.isOverzichtModus()">
 			<button ng-repeat-start="video in collectiefGeheugen.getVideos()" ng-click="collectiefGeheugen.startVideo(video)"
 				type="button" class="slimsteMensButton buttonLeft">Start {{video.naam}}</button>
@@ -147,7 +151,7 @@
 			<button ng-click="collectiefGeheugen.terugNaarOverzicht()" type="button" class="collectiefGeheugenAntwoord">Terug naar overzicht</button>
 		</div>
 	</div>
-	<div id="deFinale" ng-show="huidigeRonde == deFinale">
+	<div id="deFinale" ng-show="huidigeRonde.id == 'deFinale'">
 		<div id="finaleSpelersSelecteren" ng-show="deFinale.isSelecteerFinaleSpelersModus()">
 			<div class="uitlegFinale">
 				Verwijder de afvallende speler en klik daarna op 'Finale starten' om te beginnen aan de finale.
@@ -173,7 +177,7 @@
 			<div class="finaleGebeurd">Tis<br> gebeurd!</div>
 		</div>
 	</div>
-	<div id="oorkonde" class="oorkonde" ng-show="huidigeRonde == oorkonde">
+	<div id="oorkonde" class="oorkonde" ng-show="huidigeRonde.id == 'oorkonde'">
 		<div id="definitieveOorkonde" class="configuratieDeSlimsteMens" ng-show="oorkonde.isNaamModus()">
 			<div class="uitlegOorkonde">
 				Vul de volledige naam van de winnaar in en klik daarna op 'Naar oorkonde' om te beginnen aan het offici&euml;le gedeelte.
