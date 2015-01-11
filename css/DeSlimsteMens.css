@@ -152,10 +152,10 @@ img.galerijFoto {
  	margin:0 auto;
 }
 img.verticaleFoto {
-//	height: 90%;
+	height: 85%;
 }
 img.horizontaleFoto {
-//	width: 70%;
+	width: 85%;
 }
 .galerijButtons {
 	display: block;
