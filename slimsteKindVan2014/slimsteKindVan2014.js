@@ -179,9 +179,9 @@ var dataHetSlimsteKindVan2014 = {
 	],
 	collectiefGeheugen: {
 		videos: [
-			{urlVideo: 'slimsteKindVan2014/collectiefgeheugen/Collectief_Geheugen_1.mp4', antwoorden: ['TODO', 'TODO', 'TODO', 'TODO', 'TODO'] },
-			{urlVideo: 'slimsteKindVan2014/collectiefgeheugen/Collectief_Geheugen_2.mp4', antwoorden: ['TODO', 'TODO', 'TODO', 'TODO', 'TODO'] },
-			{urlVideo: 'slimsteKindVan2014/collectiefgeheugen/Collectief_Geheugen_3.mp4', antwoorden: ['TODO', 'TODO', 'TODO', 'TODO', 'TODO'] }
+			{urlVideo: 'slimsteKindVan2014/collectiefgeheugen/Collectief_Geheugen_1.mp4', antwoorden: ['Dobus', 'Mina', 'Sollie', 'Directeur', 'Circus'] },
+			{urlVideo: 'slimsteKindVan2014/collectiefgeheugen/Collectief_Geheugen_2.mp4', antwoorden: ['Maya', 'Willy', 'Ben', 'Bij', 'Fles'] },
+			{urlVideo: 'slimsteKindVan2014/collectiefgeheugen/Collectief_Geheugen_3.mp4', antwoorden: ['Paw Patrol', 'Ryder', 'Chase', 'Marshall', 'Sky'] }
 		],
 	},
 	finale: [
