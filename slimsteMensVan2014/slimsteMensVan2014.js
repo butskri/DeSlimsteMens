@@ -93,7 +93,7 @@ var dataDeSlimsteMensVan2014Data = {
 		{ vraag: 'Wat weet je over Malala Yousafzai?',
 		  antwoorden: ['Nobelprijs Vrede', 'Kogel in het hoofd','Pakistan','Groot-Brittanië','Jongste winnaar ooit (17 jaar)',] },
 		{ vraag: 'Wat zijn de 5 grootste tijdverspillers op kantoor?',
-		  antwoorden: ['Perfectionisme','Rework (fouten herstellen)','Collegaâ€™s en onverwachte bezoekers','Noodgevallen / paniek!','E-mails'] },
+		  antwoorden: ['Perfectionisme','Rework (fouten herstellen)','Collega\'s en onverwachte bezoekers','Noodgevallen / paniek!','E-mails'] },
 		{ vraag: 'Wat waren de juiste antwoorden op de eerste 5 vragen van deze quiz?',
 		  antwoorden: ['2014','Stedelijk Museum voor Actuele Kunst','24','Gangnam Style','1 - 7'] },
 		{ vraag: 'Wat weet je over James Foley?',
