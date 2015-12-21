@@ -1,4 +1,7 @@
 .project
+.classpath
+.settings
+target
 web/todo/images
 web/todo/videos
 web/slimsteKindVan2014/collectiefgeheugen
