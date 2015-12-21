@@ -1,7 +1,50 @@
 TODO:
 -bij collectief geheugen: 
   -tonen van behaalde punten voor antwoorden
-
+-Slimste mens 4 kids:
+  -Sprookjescamping galerij:
+	-Droesem
+	-Hannah
+	-Tati
+	-Botterbaas
+	-Maartje mensbloem
+	-Kabor
+	-Wanda de waterfee
+	-Buddy
+	-Bumpie
+	-Lodewijk
+  -Sommen
+  -Sport
+	-badminton
+	-basketbal
+	-korfbal
+	-lopen
+	-turnen
+    -wielrennen
+	-volleybal
+	-zwemmen
+	-boksen
+	-hoogspringen (?)
+	-pingpong (?)
+	-snelwandelen (?)
+  -fruit:
+	-ananas
+	-appel
+    -banaan
+	-druiven
+	-kiwi
+	-kokosnoot
+	-mango
+	-nectarine
+	-passievrucht
+	-peer
+	-pruim (?)
+  -reptielen
+    -+
+    -kameleon
+	-schildpad
+	-slang
+	-
   1920 x 1080 -> 16 / 9
    960 x 540
    
