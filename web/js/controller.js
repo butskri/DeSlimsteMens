@@ -6,9 +6,6 @@ slimsteQuizen['deSlimsteMensVan2014.txt'] = dataDeSlimsteMensVan2014Data;
 slimsteQuizen['hetSlimsteKindVan2014.txt'] = dataHetSlimsteKindVan2014;
 
 deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http) {
-  $scope.openWindowCommandFor = function(url) {
-	return 'window.open(\'' + url +'\')';
-  }
   $scope.mogelijkeQuizzen = [
 	{naam: 'Voorbeeld quiz' , url:'voorbeeldQuiz.txt'},
 	{naam: 'De slimste mens van 2014' , url:'deSlimsteMensVan2014.txt'},
@@ -17,152 +14,21 @@ deSlimsteMensApp.controller('DeSlimsteMensCtrl', function ($scope,$timeout,$http
   $scope.geselecteerdeQuiz = null;
   $scope.deSlimsteData = null;
   $scope.spelers;
-  
   $scope.spelersTonen = function() {
 	if ($scope.huidigeRonde.spelersTonen == null) {
 		return true;
 	}
 	return $scope.huidigeRonde.spelersTonen();
-  }
-  
+  };
   $scope.titelTonen = function() {
 	if (!$scope.huidigeRonde.titelTonen) {
 		return true;
 	}
 	return $scope.huidigeRonde.titelTonen();
-  }
-  
-  $scope.deSlimsteMensBegin = {
-	id: 'begin',
-	'title': 'De SLIMSTE MENS ter wereld',
-	vorigeRonde: function() {
-		return $scope.deSlimsteMensBegin;
-	},
-	volgendeRonde: function() {
-		return $scope.drieZesNegenRonde;
-	},
-	spelersTonen: function() {
-		return false;
-	}
-  }
-  $scope.drieZesNegenRonde = {
-	id: 'drieZesNegen',
-	title: '3 - 6 - 9',
-	aantalSecondenVoorJuisteVraag: 0,
-	huidigeVraag: 1,
-	isStartTimerEnabled: function() {
-		return false;
-	},
-	vorigeRonde: function() {
-		return $scope.deSlimsteMensBegin;
-	},
-	volgendeRonde: function() {
-		return $scope.openDeurRonde;
-	},
-	isVorigeEnabled: function() {
-		return this.huidigeVraag > 1;
-	},
-	isVolgendeEnabled: function() {
-		return this.huidigeVraag < 15;
-	},
-	vorige: function() {
-		if (this.isVorigeEnabled()) {
-			this.huidigeVraag--;
-		}
-		this.recalculateAantalSecondenVoorVraag();
-	},
-	volgende: function() {
-		if (this.isVolgendeEnabled()) {
-			this.huidigeVraag++;
-		}
-		this.recalculateAantalSecondenVoorVraag();
-	},
-	recalculateAantalSecondenVoorVraag: function() {
-		if (this.huidigeVraag%3 == 0) {
-			this.aantalSecondenVoorJuisteVraag = 10;
-		} else {
-			this.aantalSecondenVoorJuisteVraag = 0;
-		}
-	},
-	styleClassVoorVraag: function(vraagNr) {
-		var nr = vraagNr % 3;
-		if (nr == 0) {
-			nr = 3;
-		}
-		var result = 'drieZesNegen' + nr;
-		if (vraagNr == this.huidigeVraag) {
-			result += " selected";
-		}
-		return  result;
-	},
-	getLink: function() {
-		if ($scope.deSlimsteData == null) {
-			return null;
-		}
-		if ($scope.deSlimsteData.drieZesNegen == null) {
-			return null;
-		}
-		if ($scope.deSlimsteData.drieZesNegen.links == null) {
-			return null;
-		}
-		return $scope.deSlimsteData.drieZesNegen.links['vraag' + this.huidigeVraag];
-	}
-  }
-  $scope.openDeurRonde = {
-	id: 'openDeur',
-	title: 'Open deur',
-	huidigeVraag: null,
-	antwoorden: null,
-	isStartTimerEnabled: function() {
-		return this.isInModusAntwoord();
-	},
-	vorigeRonde: function() {
-		return $scope.drieZesNegenRonde;
-	},
-	volgendeRonde: function() {
-		return $scope.puzzelRonde;
-	},
-	toonAntwoorden: function(vraag) {
-		if (!$scope.spelers.isSpelerGeselecteerd()) {
-			return;
-		}
-		this.huidigeVraag = vraag;
-		this.antwoorden = $scope.toAntwoorden(vraag.antwoorden);
-		$scope.startTimer();
-	},
-	toonAntwoord: function(antwoord) {
-		antwoord.gevonden = !antwoord.gevonden;
-		var aantalPunten = $scope.bepaalPuntenVoor(antwoord, 20);
-		$scope.addSeconds(aantalPunten);
-		if (this.alleAntwoordenGevonden()) {
-			$scope.stopTimer();
-		}
-	},
-	isInModusOverzicht: function() {
-		return this.huidigeVraag == null;
-	},
-	isInModusAntwoord: function() {
-		return this.huidigeVraag != null;
-	},
-	terugNaarOverzicht: function() {
-		this.huidigeVraag = null;
-		this.antwoorden = null;
-	},
-	alleAntwoordenGevonden: function() {
-		for (i=0;i < this.antwoorden.length;i++) {
-			if (!this.antwoorden[i].gevonden) {
-				return false;
-			}
-		}
-		return true;
-	},
-	getLink: function() {
-		if (this.huidigeVraag == null) {
-			return null;
-		}
-		return this.huidigeVraag.link;
-	}
-  }
+  };
+  $scope.deSlimsteMensBegin = new DeSlimsteMensBegin($scope);
+  $scope.drieZesNegenRonde = new DrieZesNegenRonde($scope);
+  $scope.openDeurRonde = new OpenDeurRonde($scope);
   $scope.puzzelRonde = {
 	id: 'puzzel',
 	title: 'Puzzelronde',
