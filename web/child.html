@@ -1,0 +1,26 @@
+<html ng-app="childApp">
+<head>
+	<link rel="stylesheet" type="text/css" href="css/DeSlimsteMens.css">
+	<link rel="stylesheet" type="text/css" href="css/francoisOne.css" />
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<!--
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Pacifico|Francois+One|Lato:300" />
+	-->
+	<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	
+	<script src="js/angular.min.js"></script>
+	<script src="js/spelers.js"></script>
+	<script src="js/child.js"></script>
+</head>
+<body id="childBody" ng-controller="ChildCtrl">
+	<div class="title">
+		<h1>De slimste Child</h1>
+	</div>
+	<div class="spelers aantalSpelers{{spelers.spelers.length}}">
+		<div class="{{speler.geselecteerd? 'geselecteerdeSpeler':'speler'}}" ng-repeat="speler in spelers.spelers">
+			<div class="name">{{speler.name}}</div>
+			<div class="score">{{speler.score}}</div>
+		</div>
+	</div>
+</body>
+</html>
