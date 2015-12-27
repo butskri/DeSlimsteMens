@@ -14,3 +14,5 @@ web/slimsteMensVan2014/opendeur
 web/voorbeeldquiz/galerij/achtergronden
 web/voorbeeldquiz/galerij/dieren
 web/voorbeeldquiz/galerij/gebouwen
+.idea
+*.iml
