@@ -14,7 +14,7 @@
 </head>
 <body id="childBody" ng-controller="ChildCtrl">
 	<div class="title">
-		<h1>De slimste Child</h1>
+		<h1>{{titel}}</h1>
 	</div>
 	<div class="spelers aantalSpelers{{spelers.spelers.length}}">
 		<div class="{{speler.geselecteerd? 'geselecteerdeSpeler':'speler'}}" ng-repeat="speler in spelers.spelers">

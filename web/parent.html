@@ -7,36 +7,62 @@
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Pacifico|Francois+One|Lato:300" />
 	-->
 	<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-	
+
 	<script src="js/angular.min.js"></script>
 	<script src="js/spelers.js"></script>
+
+	<script src="slimsteKindVan2014/slimsteKindVan2014.js"></script>
+	<script src="slimsteMensVan2014/slimsteMensVan2014.js"></script>
+	<script src="voorbeeldquiz/voorbeeldquiz.js"></script>
+
+	<script src="js/deslimstemensbegin.js"></script>
+	<script src="js/driezesnegen.js"></script>
+
 	<script src="js/parent.js"></script>
 </head>
 <body id="parentBody" ng-controller="ParentCtrl">
 	<div class="title">
-		<h1>De slimste Parent</h1>
+		<h1>
+			<span id="vorigeRonde" class="fa fa-caret-left" ng-click="vorigeRonde()"></span>
+			&nbsp;&nbsp;&nbsp;{{huidigeRonde.title}}&nbsp;&nbsp;&nbsp;
+			<span id="volgendeRonde" class="fa fa-caret-right" ng-click="volgendeRonde()"></span>
+		</h1>
 	</div>
-	<div id="deSlimsteMensBegin">
+	<div id="deSlimsteMensBegin" ng-show="huidigeRonde.id == 'begin'">
 		<div class="configuratieDeSlimsteMens">
+			<select class="slimsteQuizConfiguratie" ng-model="geselecteerdeQuiz" ng-options="quiz.naam for quiz in mogelijkeQuizzen">
+				<option value="">--------------- Kies een quiz ---------------</option>
+			</select>
 			<div ng-repeat="speler in spelers.spelers">
 				<input class="slimsteQuizConfiguratie" type="text" ng-model="speler.name" />
 			</div>
 			<input class="slimsteQuizConfiguratie" type="button" value="Start quiz!" ng-click="startQuiz()" />
 		</div>
 	</div>
+
 	<div class="spelers aantalSpelers{{spelers.aantalSpelers()}}">
 		<div class="{{speler.geselecteerd? 'geselecteerdeSpeler':'speler'}}" ng-repeat="speler in spelers.spelers" ng-click="spelers.selecteer(speler)">
 			<div class="name">{{speler.name}}</div>
 			<div class="score">{{speler.score}}</div>
 		</div>
 	</div>
-	<div class="menu">
+	<div class="menu" ng-hide="menuHidden">
 		<div>
-			<span class="fa fa-plus-circle" ng-click="addSecond()" class="menuitem"></span>
-			<span class="fa fa-minus-circle" ng-click="minusSecond()" class="menuitem"></span>
+			<span class="fa fa-chevron-circle-left" ng-click="vorige()" ng-class="isVorigeEnabled()? 'menuitem':'menuitemdisabled'"></span>
+			<span class="fa fa-chevron-circle-right" ng-click="volgende()" ng-class="isVolgendeEnabled()? 'menuitem':'menuitemdisabled'"></span>
 		</div>
 		<div>
-			<span class="fa fa-user" ng-click="switchSpeler()" class="menuitem"></span>
+			<span class="fa fa-play" ng-hide="timerIsRunning()" ng-click="startTimer()" ng-class="isStartTimerEnabled()? 'menuitem':'menuitemdisabled'"></span>
+			<span class="fa fa-stop menuitem" ng-hide="!timerIsRunning()" ng-click="stopTimer()"></span>
+			<span class="fa fa-check" ng-click="spelerHeeftJuistGeantwoord()" ng-class="spelerHeeftJuistGeantwoordIsEnabled()? 'menuitem':'menuitemdisabled'"></span>
+		</div>
+		<div>
+			<span class="fa fa-plus-circle" ng-click="addSecond()" ng-class="isAddSecondEnabled()? 'menuitem':'menuitemdisabled'"></span>
+			<span class="fa fa-minus-circle" ng-click="minusSecond()" ng-class="isMinusSecondEnabled()? 'menuitem':'menuitemdisabled'"></span>
+		</div>
+		<div>
+			<span class="fa fa-user" ng-click="switchSpeler()" ng-class="isSwitchSpelerEnabled()? 'menuitem':'menuitemdisabled'"></span>
+			<span class="fa fa-link" ng-click="openLink()" ng-class="isLinkEnabled()? 'menuitem':'menuitemdisabled'"></span>
 		</div>
 	</div>
 </body>

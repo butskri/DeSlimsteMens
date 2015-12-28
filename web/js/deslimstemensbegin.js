@@ -1,3 +1,5 @@
+'use strict';
+
 function DeSlimsteMensBegin($scope) {
     this.id = 'begin';
     this.title = 'De SLIMSTE MENS ter wereld';

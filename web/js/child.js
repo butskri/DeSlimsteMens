@@ -1,12 +1,16 @@
+'use strict';
+
 window.addEventListener('message', function(event)  {
-	eventHappened(event.data.eventType, event.data.data);
+	executeCommand(event.data.command, event.data.data);
 });
 
-function eventHappened(eventType, data) {
+function executeCommand(command, data) {
 	var scope = childScope();
 	scope.$apply(function() {
-		if (eventType == 'spelersUpdated') {
-			scope.spelersUpdated(data);
+		if (command == 'updateSpelers') {
+			scope.spelers = data;
+		} else if (command == 'updateTitel') {
+			scope.titel = data;
 		}
 	});
 }
@@ -21,9 +25,7 @@ var childApp = angular.module('childApp', []);
 
 childApp.controller('ChildCtrl', function ($scope,$timeout,$http) {
 
-	$scope.spelersUpdated = function(spelers) {
-		$scope.spelers = spelers;
-	};
+	$scope.titel = 'De slimste quizzer';
 
 	function initSpelers() {
 		$scope.spelers = new Spelers();
