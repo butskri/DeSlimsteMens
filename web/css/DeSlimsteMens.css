@@ -333,7 +333,7 @@ table.openDeur button {
 	text-align: center;
 }
 
-.oorkonde {
+.oorkonde, .drieZesNegenParent {
 	margin-top: 10%;
 	margin: 0 auto;
 	font-size: 36px;

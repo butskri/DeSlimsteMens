@@ -39,6 +39,12 @@
 			<input class="slimsteQuizConfiguratie" type="button" value="Start quiz!" ng-click="startQuiz()" />
 		</div>
 	</div>
+	<div id="drieZesNegenRonde" class="drieZesNegenParent" ng-show="huidigeRonde.id == 'drieZesNegen'">
+		<h2>Huidige vraag: {{drieZesNegenRonde.huidigeVraag}}</h2>
+		<p>Wat als blablabla?</p>
+		<h2>Antwoord:</h2>
+		<p>blieblabloe</p>
+	</div>
 
 	<div class="spelers aantalSpelers{{spelers.aantalSpelers()}}">
 		<div class="{{speler.geselecteerd? 'geselecteerdeSpeler':'speler'}}" ng-repeat="speler in spelers.spelers" ng-click="spelers.selecteer(speler)">

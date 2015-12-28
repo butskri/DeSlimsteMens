@@ -10,11 +10,37 @@
 	
 	<script src="js/angular.min.js"></script>
 	<script src="js/spelers.js"></script>
+
+	<script src="js/driezesnegen.js"></script>
+
 	<script src="js/child.js"></script>
 </head>
 <body id="childBody" ng-controller="ChildCtrl">
 	<div class="title">
 		<h1>{{huidigeRonde.title}}</h1>
+	</div>
+	<div id="drieZesNegenRonde" ng-show="huidigeRonde.id == 'drieZesNegen'">
+		<div class="drieZesNegenLijn1">
+			<div id="vraag1" ng-class="drieZesNegenRonde.styleClassVoorVraag(1)">1</div>
+			<div id="vraag2" ng-class="drieZesNegenRonde.styleClassVoorVraag(2)">2</div>
+			<div id="vraag3" ng-class="drieZesNegenRonde.styleClassVoorVraag(3)">3</div>
+			<div id="vraag4" ng-class="drieZesNegenRonde.styleClassVoorVraag(4)">4</div>
+			<div id="vraag5" ng-class="drieZesNegenRonde.styleClassVoorVraag(5)">5</div>
+			<div id="vraag6" ng-class="drieZesNegenRonde.styleClassVoorVraag(6)">6</div>
+		</div>
+		<div class="drieZesNegenLijn2">
+			<div id="vraag7" ng-class="drieZesNegenRonde.styleClassVoorVraag(7)">7</div>
+			<div id="vraag8" ng-class="drieZesNegenRonde.styleClassVoorVraag(8)">8</div>
+			<div id="vraag9" ng-class="drieZesNegenRonde.styleClassVoorVraag(9)">9</div>
+			<div id="vraag10" ng-class="drieZesNegenRonde.styleClassVoorVraag(10)">10</div>
+			<div id="vraag11" ng-class="drieZesNegenRonde.styleClassVoorVraag(11)">11</div>
+			<div id="vraag12" ng-class="drieZesNegenRonde.styleClassVoorVraag(12)">12</div>
+		</div>
+		<div class="drieZesNegenLijn3">
+			<div id="vraag13" ng-class="drieZesNegenRonde.styleClassVoorVraag(13)">13</div>
+			<div id="vraag14" ng-class="drieZesNegenRonde.styleClassVoorVraag(14)">14</div>
+			<div id="vraag15" ng-class="drieZesNegenRonde.styleClassVoorVraag(15)">15</div>
+		</div>
 	</div>
 	<div class="spelers aantalSpelers{{spelers.spelers.length}}" ng-show="spelersTonen()">
 		<div class="{{speler.geselecteerd? 'geselecteerdeSpeler':'speler'}}" ng-repeat="speler in spelers.spelers">
