@@ -14,9 +14,9 @@
 </head>
 <body id="childBody" ng-controller="ChildCtrl">
 	<div class="title">
-		<h1>{{titel}}</h1>
+		<h1>{{huidigeRonde.title}}</h1>
 	</div>
-	<div class="spelers aantalSpelers{{spelers.spelers.length}}">
+	<div class="spelers aantalSpelers{{spelers.spelers.length}}" ng-show="spelersTonen()">
 		<div class="{{speler.geselecteerd? 'geselecteerdeSpeler':'speler'}}" ng-repeat="speler in spelers.spelers">
 			<div class="name">{{speler.name}}</div>
 			<div class="score">{{speler.score}}</div>

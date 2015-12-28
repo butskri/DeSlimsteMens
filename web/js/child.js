@@ -9,8 +9,8 @@ function executeCommand(command, data) {
 	scope.$apply(function() {
 		if (command == 'updateSpelers') {
 			scope.spelers = data;
-		} else if (command == 'updateTitel') {
-			scope.titel = data;
+		} else if (command == 'updateRonde') {
+			scope.setHuidigeRonde(data);
 		}
 	});
 }
@@ -25,13 +25,21 @@ var childApp = angular.module('childApp', []);
 
 childApp.controller('ChildCtrl', function ($scope,$timeout,$http) {
 
-	$scope.titel = 'De slimste quizzer';
+	$scope.huidigeRonde = {
+		id: 'begin',
+		title: 'De slimste quizzer'
+	};
+
+	$scope.setHuidigeRonde = function(nieuweRonde) {
+		$scope.huidigeRonde = nieuweRonde;
+	}
+
+	$scope.spelersTonen = function() {
+		return $scope.huidigeRonde.id != 'begin';
+	}
 
 	function initSpelers() {
 		$scope.spelers = new Spelers();
-		$scope.spelers.add(new Speler('Speler A'));
-		$scope.spelers.add(new Speler('Speler B'));
-		$scope.spelers.add(new Speler('Speler C'));
 	}
 	initSpelers();
 });

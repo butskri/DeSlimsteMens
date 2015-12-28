@@ -68,7 +68,7 @@ parentApp.controller('ParentCtrl', function ($scope,$timeout,$http) {
 
   function setHuidigeRonde(nieuweRonde) {
     $scope.huidigeRonde = nieuweRonde;
-    executeCommandInChildWindow('updateTitel', $scope.huidigeRonde.title);
+    executeCommandInChildWindow('updateRonde', { id: $scope.huidigeRonde.id, title: $scope.huidigeRonde.title } );
     if ($scope.huidigeRonde.startRonde) {
       $scope.huidigeRonde.startRonde();
     }
