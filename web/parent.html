@@ -17,6 +17,7 @@
 
 	<script src="js/deslimstemensbegin.js"></script>
 	<script src="js/driezesnegen.js"></script>
+	<script src="js/opendeurronde.js"></script>
 
 	<script src="js/parent.js"></script>
 </head>
@@ -44,6 +45,31 @@
 		<p>Wat als blablabla?</p>
 		<h2>Antwoord:</h2>
 		<p>blieblabloe</p>
+	</div>
+	<div id="openDeurRonde" ng-show="huidigeRonde.id == 'openDeur'">
+		<table class="openDeur" ng-show="openDeurRonde.isInModusOverzicht()">
+			<tr>
+				<td>
+					<a ng-href="{{deSlimsteData.opendeur.vragen[0].urlFilm}}" target="videoWindow"><img ng-src="{{deSlimsteData.opendeur.vragen[0].urlFoto}}" /></a>
+					<button ng-click="openDeurRonde.toonAntwoorden(deSlimsteData.opendeur.vragen[0])" type="button">Naar antwoorden</button>
+				</td>
+				<td>
+					<a ng-href="{{deSlimsteData.opendeur.vragen[1].urlFilm}}" target="videoWindow"><img ng-src="{{deSlimsteData.opendeur.vragen[1].urlFoto}}" /></a>
+					<button ng-click="openDeurRonde.toonAntwoorden(deSlimsteData.opendeur.vragen[1])" type="button">Naar antwoorden</button>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<a ng-href="{{deSlimsteData.opendeur.vragen[2].urlFilm}}" target="videoWindow"><img ng-src="{{deSlimsteData.opendeur.vragen[2].urlFoto}}" /></a>
+					<button ng-click="openDeurRonde.toonAntwoorden(deSlimsteData.opendeur.vragen[2])" type="button">Naar antwoorden</button>
+				</td>
+			</tr>
+		</table>
+		<div ng-show="openDeurRonde.isInModusAntwoord()">
+			<button ng-repeat="antwoord in openDeurRonde.antwoorden" ng-click="openDeurRonde.toonAntwoord(antwoord)"
+					type="button" class="slimsteQuizConfiguratie {{antwoord.gevonden? 'gevonden':'onleesbaar'}}">{{antwoord.omschrijving}}</button>
+			<button ng-click="openDeurRonde.terugNaarOverzicht()" type="button" class="slimsteQuizConfiguratie">Terug naar overzicht</button>
+		</div>
 	</div>
 
 	<div class="spelers aantalSpelers{{spelers.aantalSpelers()}}">

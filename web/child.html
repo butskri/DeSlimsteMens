@@ -42,6 +42,26 @@
 			<div id="vraag15" ng-class="drieZesNegenRonde.styleClassVoorVraag(15)">15</div>
 		</div>
 	</div>
+	<div id="openDeurRonde" ng-show="huidigeRonde.id == 'openDeur'">
+		<table class="openDeur" ng-show="opendeur.vragen">
+			<tr>
+				<td>
+					<img ng-src="{{opendeur.vragen[0].urlFoto}}" />
+				</td>
+				<td>
+					<img ng-src="{{opendeur.vragen[1].urlFoto}}" />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<img ng-src="{{opendeur.vragen[2].urlFoto}}" />
+				</td>
+			</tr>
+		</table>
+		<div ng-show="opendeur.antwoorden">
+			<button ng-repeat="antwoord in opendeur.antwoorden" type="button" class="slimsteQuizConfiguratie {{antwoord.gevonden? 'gevonden':'onleesbaar'}}">{{antwoord.omschrijving}}</button>
+		</div>
+	</div>
 	<div class="spelers aantalSpelers{{spelers.spelers.length}}" ng-show="spelersTonen()">
 		<div class="{{speler.geselecteerd? 'geselecteerdeSpeler':'speler'}}" ng-repeat="speler in spelers.spelers">
 			<div class="name">{{speler.name}}</div>

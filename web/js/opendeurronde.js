@@ -6,6 +6,9 @@ function OpenDeurRonde($scope) {
     this.isStartTimerEnabled = function() {
         return this.isInModusAntwoord();
     };
+    this.startRonde = function() {
+        this.terugNaarOverzicht();
+    };
     this.vorigeRonde = function() {
         return $scope.drieZesNegenRonde;
     };
@@ -18,6 +21,7 @@ function OpenDeurRonde($scope) {
         }
         this.huidigeVraag = vraag;
         this.antwoorden = $scope.toAntwoorden(vraag.antwoorden);
+        executeCommandInChildWindow('updateOpendeur', { antwoorden: this.antwoorden});
         $scope.startTimer();
     };
     this.toonAntwoord = function(antwoord) {
@@ -27,6 +31,7 @@ function OpenDeurRonde($scope) {
         if (this.alleAntwoordenGevonden()) {
             $scope.stopTimer();
         }
+        executeCommandInChildWindow('updateOpendeur', { antwoorden: this.antwoorden});
     };
     this.isInModusOverzicht = function() {
         return this.huidigeVraag == null;
@@ -37,6 +42,7 @@ function OpenDeurRonde($scope) {
     this.terugNaarOverzicht = function() {
         this.huidigeVraag = null;
         this.antwoorden = null;
+        executeCommandInChildWindow('updateOpendeur', { vragen: $scope.deSlimsteData.opendeur.vragen });
     };
     this.alleAntwoordenGevonden = function() {
         for (i=0;i < this.antwoorden.length;i++) {

@@ -13,6 +13,8 @@ function executeCommand(command, data) {
 			scope.setHuidigeRonde(data);
 		} else if (command == 'updateDrieZesNegenVraag') {
 			scope.drieZesNegenRonde.huidigeVraag = data;
+		} else if (command == 'updateOpendeur') {
+			scope.opendeur = data;
 		}
 	});
 }
@@ -32,6 +34,7 @@ childApp.controller('ChildCtrl', function ($scope,$timeout,$http) {
 		title: 'De slimste quizzer'
 	};
 	$scope.drieZesNegenRonde = new DrieZesNegenRonde($scope);
+	$scope.opendeur = {};
 
 	$scope.setHuidigeRonde = function(nieuweRonde) {
 		$scope.huidigeRonde = nieuweRonde;

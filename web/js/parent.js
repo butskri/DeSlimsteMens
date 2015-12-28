@@ -25,6 +25,7 @@ parentApp.controller('ParentCtrl', function ($scope,$timeout,$http) {
   // rondes
   $scope.deSlimsteMensBegin = new DeSlimsteMensBegin($scope);
   $scope.drieZesNegenRonde = new DrieZesNegenRonde($scope);
+  $scope.openDeurRonde = new OpenDeurRonde($scope);
 
   $scope.startQuiz = function() {
     if ($scope.geselecteerdeQuiz == null) {
@@ -40,6 +41,22 @@ parentApp.controller('ParentCtrl', function ($scope,$timeout,$http) {
   }
   $scope.vorigeRonde = function() {
     setHuidigeRonde($scope.huidigeRonde.vorigeRonde());
+  }
+
+  $scope.toAntwoorden = function(antwoorden) {
+    var result = [];
+    for (var i =0;i < antwoorden.length;i++) {
+      var antwoord = {omschrijving: antwoorden[i], gevonden: false};
+      result.push(antwoord);
+    }
+    return result;
+  }
+  $scope.bepaalPuntenVoor = function(antwoord, aantalPuntenVoorGevondenAntwoord) {
+    if (antwoord.gevonden) {
+      return aantalPuntenVoorGevondenAntwoord;
+    } else {
+      return -aantalPuntenVoorGevondenAntwoord;
+    }
   }
 
   // menu items

@@ -1,5 +1,8 @@
 'use strict';
 
+function executeCommandInChildWindow(command, data) {
+}
+
 var deSlimsteMensApp = angular.module('deSlimsteMensApp', []);
 
 var slimsteQuizen = {};
