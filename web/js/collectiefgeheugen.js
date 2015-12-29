@@ -11,6 +11,7 @@ function CollectiefGeheugen($scope) {
                 videos[i].naam = 'Video ' + (i+1);
             }
         }
+        this.terugNaarOverzicht();
     };
     this.isStartTimerEnabled = function() {
         return this.isAntwoordModus();
@@ -38,6 +39,7 @@ function CollectiefGeheugen($scope) {
             antwoorden: $scope.toAntwoorden(video.antwoorden)
         };
         $scope.startTimer();
+        executeCommandInChildWindow('updateCollectiefGeheugen', this.huidigeVideo );
     };
     this.isOverzichtModus = function() {
         return this.huidigeVideo == null;
@@ -52,6 +54,7 @@ function CollectiefGeheugen($scope) {
         if (this.alleAntwoordenGevonden()) {
             $scope.stopTimer();
         }
+        executeCommandInChildWindow('updateCollectiefGeheugen', this.huidigeVideo );
     };
     this.bepaalPuntenVoorAntwoord = function(antwoord) {
         var aantalJuisteAntwoorden = this.telAantalJuisteAntwoorden();
@@ -80,5 +83,6 @@ function CollectiefGeheugen($scope) {
     };
     this.terugNaarOverzicht = function() {
         this.huidigeVideo = null;
+        executeCommandInChildWindow('updateCollectiefGeheugen', {} );
     };
 }

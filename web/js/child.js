@@ -19,6 +19,8 @@ function executeCommand(command, data) {
 			scope.huidigePuzzel = data;
 		} else if (command == 'updateGalerij') {
 			scope.huidigeGalerijFoto = data;
+		} else if (command == 'updateCollectiefGeheugen') {
+			scope.huidigeCollectiefGeheugenVideo = data;
 		}
 	});
 }
@@ -41,6 +43,7 @@ childApp.controller('ChildCtrl', function ($scope,$timeout,$http) {
 	$scope.opendeur = {};
 	$scope.huidigePuzzel = {};
 	$scope.huidigeGalerijFoto = {};
+	$scope.huidigeCollectiefGeheugenVideo = {};
 
 	$scope.setHuidigeRonde = function(nieuweRonde) {
 		$scope.huidigeRonde = nieuweRonde;

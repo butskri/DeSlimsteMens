@@ -95,6 +95,12 @@
 			<img ng-class="huidigeGalerijFoto.styleClass()" ng-src="{{huidigeGalerijFoto.url}}"/>
 		</div>
 	</div>
+	<div id="collectiefGeheugen" ng-show="huidigeRonde.id == 'collectiefGeheugen'">
+		<div class="collectiefGeheugenAntwoorden" ng-show="huidigeCollectiefGeheugenVideo.antwoorden">
+			<button ng-repeat="antwoord in huidigeCollectiefGeheugenVideo.antwoorden"
+					type="button" class="collectiefGeheugenAntwoord {{antwoord.gevonden? 'gevonden':'onleesbaar'}}">{{antwoord.omschrijving}}</button>
+		</div>
+	</div>
 
 	<div class="spelers aantalSpelers{{spelers.spelers.length}}" ng-show="spelersTonen()">
 		<div class="{{speler.geselecteerd? 'geselecteerdeSpeler':'speler'}}" ng-repeat="speler in spelers.spelers">
