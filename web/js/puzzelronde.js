@@ -1,3 +1,5 @@
+'use strict';
+
 function PuzzelRonde($scope) {
     this.id ='puzzel';
     this.title = 'Puzzelronde';
@@ -5,11 +7,12 @@ function PuzzelRonde($scope) {
     this.huidigePuzzel = null;
     this.startRonde = function() {
         this.puzzels = $scope.deSlimsteData.puzzels;
-        for (i=0;i < this.puzzels.length;i++) {
+        for (var i=0;i < this.puzzels.length;i++) {
             if (this.puzzels[i].naam == null) {
                 this.puzzels[i].naam = 'Puzzel ' + (i+1);
             }
         }
+        this.terugNaarOverzicht();
     };
     this.isStartTimerEnabled = function() {
         return this.isInModusPuzzel();
@@ -28,6 +31,7 @@ function PuzzelRonde($scope) {
     };
     this.terugNaarOverzicht = function() {
         this.huidigePuzzel = null;
+        executeCommandInChildWindow('updatePuzzel', {});
     };
     this.startPuzzel = function(puzzel) {
         if (!$scope.spelers.isSpelerGeselecteerd()) {
@@ -35,18 +39,13 @@ function PuzzelRonde($scope) {
         }
         var alleHints = [];
         var result = [];
-        for (i=0;i < puzzel.antwoorden.length;i++) {
-            antwoord = {omschrijving: puzzel.antwoorden[i].antwoord, gevonden: false, index: i+1, styleClass: 'puzzelAntwoord' + (i+1)};
-            for (j=0;j < puzzel.antwoorden[i].hints.length;j++) {
-                hint = {
+        for (var i=0;i < puzzel.antwoorden.length;i++) {
+            var antwoord = {omschrijving: puzzel.antwoorden[i].antwoord, gevonden: false, index: i+1, styleClass: 'puzzelAntwoord' + (i+1)};
+            for (var j=0;j < puzzel.antwoorden[i].hints.length;j++) {
+                var hint = {
                     omschrijving: puzzel.antwoorden[i].hints[j],
                     antwoord: antwoord,
-                    styleClass: function() {
-                        if (!this.antwoord.gevonden) {
-                            return '';
-                        }
-                        return this.antwoord.styleClass;
-                    }
+                    styleClass: ''
                 };
                 alleHints.push(hint);
             }
@@ -58,6 +57,7 @@ function PuzzelRonde($scope) {
             alleHints: this.shuffle(this.shuffle(alleHints))
         };
         $scope.startTimer();
+        executeCommandInChildWindow('updatePuzzel', this.huidigePuzzel);
     };
     this.toonAntwoord = function(antwoord) {
         antwoord.gevonden = !antwoord.gevonden;
@@ -66,9 +66,31 @@ function PuzzelRonde($scope) {
         if (this.alleAntwoordenGevonden()) {
             $scope.stopTimer();
         }
+        this.updateHintsVoor(antwoord);
+        executeCommandInChildWindow('updatePuzzel', this.huidigePuzzel);
+    };
+    this.toonAlleAntwoorden = function(antwoord) {
+        for (var i=0;i < this.huidigePuzzel.antwoorden.length;i++) {
+            var antwoord = this.huidigePuzzel.antwoorden[i];
+            antwoord.gevonden = true;
+            this.updateHintsVoor(antwoord);
+        }
+        executeCommandInChildWindow('updatePuzzel', this.huidigePuzzel);
+    };
+    this.updateHintsVoor = function(antwoord) {
+        var hints = this.huidigePuzzel.alleHints;
+        for (var i=0;i < hints.length;i++) {
+            if (hints[i].antwoord == antwoord) {
+                if (antwoord.gevonden) {
+                    hints[i].styleClass=antwoord.styleClass;
+                } else {
+                    hints[i].styleClass='';
+                }
+            }
+        }
     };
     this.alleAntwoordenGevonden = function() {
-        for (i=0;i < this.huidigePuzzel.antwoorden.length;i++) {
+        for (var i=0;i < this.huidigePuzzel.antwoorden.length;i++) {
             if (!this.huidigePuzzel.antwoorden[i].gevonden) {
                 return false;
             }

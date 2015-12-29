@@ -26,6 +26,7 @@ parentApp.controller('ParentCtrl', function ($scope,$timeout,$http) {
   $scope.deSlimsteMensBegin = new DeSlimsteMensBegin($scope);
   $scope.drieZesNegenRonde = new DrieZesNegenRonde($scope);
   $scope.openDeurRonde = new OpenDeurRonde($scope);
+  $scope.puzzelRonde = new PuzzelRonde($scope);
 
   $scope.startQuiz = function() {
     if ($scope.geselecteerdeQuiz == null) {

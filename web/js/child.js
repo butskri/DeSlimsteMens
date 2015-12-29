@@ -15,6 +15,8 @@ function executeCommand(command, data) {
 			scope.drieZesNegenRonde.huidigeVraag = data;
 		} else if (command == 'updateOpendeur') {
 			scope.opendeur = data;
+		} else if (command == 'updatePuzzel') {
+			scope.huidigePuzzel = data;
 		}
 	});
 }
@@ -35,6 +37,7 @@ childApp.controller('ChildCtrl', function ($scope,$timeout,$http) {
 	};
 	$scope.drieZesNegenRonde = new DrieZesNegenRonde($scope);
 	$scope.opendeur = {};
+	$scope.huidigePuzzel = {};
 
 	$scope.setHuidigeRonde = function(nieuweRonde) {
 		$scope.huidigeRonde = nieuweRonde;

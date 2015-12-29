@@ -18,6 +18,7 @@
 	<script src="js/deslimstemensbegin.js"></script>
 	<script src="js/driezesnegen.js"></script>
 	<script src="js/opendeurronde.js"></script>
+	<script src="js/puzzelronde.js"></script>
 
 	<script src="js/parent.js"></script>
 </head>
@@ -69,6 +70,42 @@
 			<button ng-repeat="antwoord in openDeurRonde.antwoorden" ng-click="openDeurRonde.toonAntwoord(antwoord)"
 					type="button" class="slimsteQuizConfiguratie {{antwoord.gevonden? 'gevonden':'onleesbaar'}}">{{antwoord.omschrijving}}</button>
 			<button ng-click="openDeurRonde.terugNaarOverzicht()" type="button" class="slimsteQuizConfiguratie">Terug naar overzicht</button>
+		</div>
+	</div>
+	<div id="puzzelRonde" ng-show="huidigeRonde.id == 'puzzel'">
+		<div ng-show="puzzelRonde.isInModusOverzicht()">
+			<button ng-repeat="puzzel in puzzelRonde.puzzels" ng-click="puzzelRonde.startPuzzel(puzzel)"
+					type="button" class="slimsteQuizConfiguratie">{{puzzel.naam}}</button>
+		</div>
+		<div ng-show="puzzelRonde.isInModusPuzzel()">
+			<table class="puzzelTabel" cellspacing="20px;">
+				<tr>
+					<td class="puzzelCel {{puzzelRonde.huidigePuzzel.alleHints[0].styleClass}}">{{puzzelRonde.huidigePuzzel.alleHints[0].omschrijving}}</td>
+					<td class="puzzelCel {{puzzelRonde.huidigePuzzel.alleHints[1].styleClass}}">{{puzzelRonde.huidigePuzzel.alleHints[1].omschrijving}}</td>
+					<td class="puzzelCel {{puzzelRonde.huidigePuzzel.alleHints[2].styleClass}}">{{puzzelRonde.huidigePuzzel.alleHints[2].omschrijving}}</td>
+					<td class="puzzelCel {{puzzelRonde.huidigePuzzel.alleHints[3].styleClass}}">{{puzzelRonde.huidigePuzzel.alleHints[3].omschrijving}}</td>
+				</tr>
+				<tr>
+					<td class="puzzelCel {{puzzelRonde.huidigePuzzel.alleHints[4].styleClass}}">{{puzzelRonde.huidigePuzzel.alleHints[4].omschrijving}}</td>
+					<td class="puzzelCel {{puzzelRonde.huidigePuzzel.alleHints[5].styleClass}}">{{puzzelRonde.huidigePuzzel.alleHints[5].omschrijving}}</td>
+					<td class="puzzelCel {{puzzelRonde.huidigePuzzel.alleHints[6].styleClass}}">{{puzzelRonde.huidigePuzzel.alleHints[6].omschrijving}}</td>
+					<td class="puzzelCel {{puzzelRonde.huidigePuzzel.alleHints[7].styleClass}}">{{puzzelRonde.huidigePuzzel.alleHints[7].omschrijving}}</td>
+				</tr>
+				<tr>
+					<td class="puzzelCel {{puzzelRonde.huidigePuzzel.alleHints[8].styleClass}}">{{puzzelRonde.huidigePuzzel.alleHints[8].omschrijving}}</td>
+					<td class="puzzelCel {{puzzelRonde.huidigePuzzel.alleHints[9].styleClass}}">{{puzzelRonde.huidigePuzzel.alleHints[9].omschrijving}}</td>
+					<td class="puzzelCel {{puzzelRonde.huidigePuzzel.alleHints[10].styleClass}}">{{puzzelRonde.huidigePuzzel.alleHints[10].omschrijving}}</td>
+					<td class="puzzelCel {{puzzelRonde.huidigePuzzel.alleHints[11].styleClass}}">{{puzzelRonde.huidigePuzzel.alleHints[11].omschrijving}}</td>
+				</tr>
+			</table>
+			<div class="puzzelAntwoorden">
+				<button ng-repeat="antwoord in puzzelRonde.huidigePuzzel.antwoorden" ng-click="puzzelRonde.toonAntwoord(antwoord)"
+						type="button" class="puzzelAntwoord {{antwoord.gevonden? antwoord.styleClass:'onleesbaar'}}">{{antwoord.omschrijving}}</button>
+				<button ng-click="puzzelRonde.toonAlleAntwoorden()"
+						type="button" class="puzzelAntwoord">Toon alle antwoorden</button>
+				<button ng-click="puzzelRonde.terugNaarOverzicht()"
+						type="button" class="puzzelAntwoord">Terug naar overzicht</button>
+			</div>
 		</div>
 	</div>
 

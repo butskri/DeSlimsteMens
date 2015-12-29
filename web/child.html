@@ -62,6 +62,34 @@
 			<button ng-repeat="antwoord in opendeur.antwoorden" type="button" class="slimsteQuizConfiguratie {{antwoord.gevonden? 'gevonden':'onleesbaar'}}">{{antwoord.omschrijving}}</button>
 		</div>
 	</div>
+	<div id="puzzelRonde" ng-show="huidigeRonde.id == 'puzzel'">
+		<div ng-show="huidigePuzzel.alleHints">
+			<table class="puzzelTabel" cellspacing="20px;">
+				<tr>
+					<td class="puzzelCel {{huidigePuzzel.alleHints[0].styleClass}}">{{huidigePuzzel.alleHints[0].omschrijving}}</td>
+					<td class="puzzelCel {{huidigePuzzel.alleHints[1].styleClass}}">{{huidigePuzzel.alleHints[1].omschrijving}}</td>
+					<td class="puzzelCel {{huidigePuzzel.alleHints[2].styleClass}}">{{huidigePuzzel.alleHints[2].omschrijving}}</td>
+					<td class="puzzelCel {{huidigePuzzel.alleHints[3].styleClass}}">{{huidigePuzzel.alleHints[3].omschrijving}}</td>
+				</tr>
+				<tr>
+					<td class="puzzelCel {{huidigePuzzel.alleHints[4].styleClass}}">{{huidigePuzzel.alleHints[4].omschrijving}}</td>
+					<td class="puzzelCel {{huidigePuzzel.alleHints[5].styleClass}}">{{huidigePuzzel.alleHints[5].omschrijving}}</td>
+					<td class="puzzelCel {{huidigePuzzel.alleHints[6].styleClass}}">{{huidigePuzzel.alleHints[6].omschrijving}}</td>
+					<td class="puzzelCel {{huidigePuzzel.alleHints[7].styleClass}}">{{huidigePuzzel.alleHints[7].omschrijving}}</td>
+				</tr>
+				<tr>
+					<td class="puzzelCel {{huidigePuzzel.alleHints[8].styleClass}}">{{huidigePuzzel.alleHints[8].omschrijving}}</td>
+					<td class="puzzelCel {{huidigePuzzel.alleHints[9].styleClass}}">{{huidigePuzzel.alleHints[9].omschrijving}}</td>
+					<td class="puzzelCel {{huidigePuzzel.alleHints[10].styleClass}}">{{huidigePuzzel.alleHints[10].omschrijving}}</td>
+					<td class="puzzelCel {{huidigePuzzel.alleHints[11].styleClass}}">{{huidigePuzzel.alleHints[11].omschrijving}}</td>
+				</tr>
+			</table>
+			<div class="puzzelAntwoorden">
+				<button ng-repeat="antwoord in huidigePuzzel.antwoorden"
+						type="button" class="puzzelAntwoord {{antwoord.gevonden? antwoord.styleClass:'onleesbaar'}}">{{antwoord.omschrijving}}</button>
+			</div>
+		</div>
+	</div>
 	<div class="spelers aantalSpelers{{spelers.spelers.length}}" ng-show="spelersTonen()">
 		<div class="{{speler.geselecteerd? 'geselecteerdeSpeler':'speler'}}" ng-repeat="speler in spelers.spelers">
 			<div class="name">{{speler.name}}</div>
