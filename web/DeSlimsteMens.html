@@ -11,6 +11,12 @@
 	<script src="js/angular.min.js"></script>
 	<script src="js/arrays.js"></script>
 	<script src="js/spelers.js"></script>
+
+	<script src="slimsteKindVan2014/slimsteKindVan2014.js"></script>
+	<script src="slimsteMensVan2014/slimsteMensVan2014.js"></script>
+	<script src="voorbeeldquiz/voorbeeldquiz.js"></script>
+	<script src="js/slimstequizzen.js"></script>
+
 	<script src="js/deslimstemensbegin.js"></script>
 	<script src="js/driezesnegen.js"></script>
 	<script src="js/opendeurronde.js"></script>
@@ -19,9 +25,7 @@
 	<script src="js/collectiefgeheugen.js"></script>
 	<script src="js/definale.js"></script>
 	<script src="js/oorkonde.js"></script>
-	<script src="slimsteKindVan2014/slimsteKindVan2014.js"></script>
-	<script src="slimsteMensVan2014/slimsteMensVan2014.js"></script>
-	<script src="voorbeeldquiz/voorbeeldquiz.js"></script>
+
 	<script src="js/controller.js"></script>
 </head>
 <body ng-controller="DeSlimsteMensCtrl">
@@ -34,7 +38,7 @@
 	</div>
 	<div id="deSlimsteMensBegin" ng-show="huidigeRonde.id == 'begin'">
 		<div class="configuratieDeSlimsteMens">
-			<select class="slimsteQuizConfiguratie" ng-model="geselecteerdeQuiz" ng-options="quiz.naam for quiz in mogelijkeQuizzen">
+			<select class="slimsteQuizConfiguratie" ng-model="geselecteerdeQuiz" ng-options="quiz for quiz in mogelijkeQuizzen">
 				<option value="">--------------- Kies een quiz ---------------</option>
 			</select>
 			<div ng-repeat="speler in spelers.spelers">

@@ -1,10 +1,5 @@
 'use strict';
 
-var slimsteQuizen = {};
-slimsteQuizen['voorbeeldQuiz.txt'] = voorbeeldQuiz;
-slimsteQuizen['deSlimsteMensVan2014.txt'] = dataDeSlimsteMensVan2014Data;
-slimsteQuizen['hetSlimsteKindVan2014.txt'] = dataHetSlimsteKindVan2014;
-
 var parentApp = angular.module('parentApp', []);
 var childWindow = window.open("child.html", 'slimste_child');
 
@@ -14,11 +9,7 @@ function executeCommandInChildWindow(command, data) {
 
 parentApp.controller('ParentCtrl', function ($scope,$timeout,$http) {
 
-  $scope.mogelijkeQuizzen = [
-    {naam: 'Voorbeeld quiz' , url:'voorbeeldQuiz.txt'},
-    {naam: 'De slimste mens van 2014' , url:'deSlimsteMensVan2014.txt'},
-    {naam: 'Het slimste kind van 2014', url:'hetSlimsteKindVan2014.txt'}
-  ];
+  $scope.mogelijkeQuizzen = slimsteQuizzen.mogelijkeQuizzen;
   $scope.geselecteerdeQuiz = null;
   $scope.menuHidden = true;
   $scope.spelers;
@@ -43,7 +34,7 @@ parentApp.controller('ParentCtrl', function ($scope,$timeout,$http) {
     if ($scope.geselecteerdeQuiz == null) {
       return ;
     }
-    $scope.deSlimsteData = slimsteQuizen[$scope.geselecteerdeQuiz.url];
+    $scope.deSlimsteData = slimsteQuizzen[$scope.geselecteerdeQuiz];
     $scope.volgendeRonde();
     updateSpelersInChildWindow();
     $scope.menuHidden = false;
