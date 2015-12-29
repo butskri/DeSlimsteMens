@@ -1,10 +1,20 @@
 var dataHetSlimsteKindVan2014 = {
 	titel: 'Het slimste kind van 2014',
 	drieZesNegen: {
-		links: {
-			vraag3:  'slimsteKindVan2014/driezesnegen/dobus_vraag.mp3',
-			vraag6:  'slimsteKindVan2014/driezesnegen/spin.html',
-			vraag15:  'slimsteKindVan2014/driezesnegen/kip-konijn.html'
+		vraag3: {
+			vraag: 'Dit is een vraag ...',
+			antwoord: 'Dit is een antwoord ...',
+			link: 'slimsteKindVan2014/driezesnegen/dobus_vraag.mp3'
+		},
+		vraag6: {
+			vraag: 'Dit is een vraag ...',
+			antwoord: 'Dit is een antwoord ...',
+			link: 'slimsteKindVan2014/driezesnegen/spin.html'
+		},
+		vraag15: {
+			vraag: 'Dit is een vraag ...',
+			antwoord: 'Dit is een antwoord ...',
+			link: 'slimsteKindVan2014/driezesnegen/kip-konijn.html'
 		}
 	},
 	galerijen:[

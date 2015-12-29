@@ -1,9 +1,15 @@
 var voorbeeldQuiz = {
 	titel: 'De slimste ket ter wereld',
 	drieZesNegen: {
-		links: {
-			vraag2: 'voorbeeldquiz/driezesnegen/Winnie.jpg',
-			vraag4: 'voorbeeldquiz/driezesnegen/tijgetje.jpg'
+		vraag2: {
+			vraag: 'Dit is een vraag ...',
+			antwoord: 'Dit is een antwoord ...',
+			link: 'images/pooh/Winnie.jpg'
+		},
+		vraag4: {
+			vraag: 'Dit is een vraag ...',
+			antwoord: 'Dit is een antwoord ...',
+			link: 'images/pooh/tijgetje.jpg'
 		}
 	},
 	galerijen: [

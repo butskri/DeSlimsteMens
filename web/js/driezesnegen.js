@@ -51,15 +51,23 @@ function DrieZesNegenRonde($scope){
         return  result;
     };
     this.getLink = function() {
-        if ($scope.deSlimsteData == null) {
-            return null;
+        return this.getHuidigeVraag().link;
+    };
+
+    this.getHuidigeVraag = function() {
+        if (!$scope.deSlimsteData) {
+            return {};
         }
-        if ($scope.deSlimsteData.drieZesNegen == null) {
-            return null;
+        if (!$scope.deSlimsteData.drieZesNegen) {
+            return {};
         }
-        if ($scope.deSlimsteData.drieZesNegen.links == null) {
-            return null;
+        var result = $scope.deSlimsteData.drieZesNegen['vraag' + this.huidigeVraag];
+        if (!result) {
+            return {
+                vraag: 'Geen vraag gekend voor ' + this.huidigeVraag,
+                antwoord: 'Geen antwoord gekend voor ' + this.huidigeVraag
+            };
         }
-        return $scope.deSlimsteData.drieZesNegen.links['vraag' + this.huidigeVraag];
+        return result;
     };
 }

@@ -49,9 +49,9 @@
 	</div>
 	<div id="drieZesNegenRonde" class="drieZesNegenParent" ng-show="huidigeRonde.id == 'drieZesNegen'">
 		<h2>Huidige vraag: {{drieZesNegenRonde.huidigeVraag}}</h2>
-		<p>Wat als blablabla?</p>
+		<p>{{drieZesNegenRonde.getHuidigeVraag().vraag}}</p>
 		<h2>Antwoord:</h2>
-		<p>blieblabloe</p>
+		<p>{{drieZesNegenRonde.getHuidigeVraag().antwoord}}</p>
 	</div>
 	<div id="openDeurRonde" ng-show="huidigeRonde.id == 'openDeur'">
 		<table class="openDeur" ng-show="openDeurRonde.isInModusOverzicht()">

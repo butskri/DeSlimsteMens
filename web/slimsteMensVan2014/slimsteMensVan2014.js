@@ -1,12 +1,30 @@
 var dataDeSlimsteMensVan2014Data = {
 	titel: 'De slimste mens van 2014',
 	drieZesNegen: {
-		links: {
-			vraag1:  'slimsteMensVan2014/driezesnegen/opgave_1.html',
-			vraag6:  'slimsteMensVan2014/driezesnegen/filmpje_3-6-9.mp4',
-			vraag8:  'slimsteMensVan2014/driezesnegen/Kerstboom.png',
-			vraag11:  'slimsteMensVan2014/driezesnegen/Song_3-6-9.mp3',
-			vraag15: 'slimsteMensVan2014/driezesnegen/opgave_15.html'
+		vraag1: {
+			vraag: 'Dit is een vraag ...',
+			antwoord: 'Dit is een antwoord ...',
+			link: 'slimsteMensVan2014/driezesnegen/opgave_1.html'
+		},
+		vraag6: {
+			vraag: 'Dit is een vraag ...',
+			antwoord: 'Dit is een antwoord ...',
+			link:  'slimsteMensVan2014/driezesnegen/filmpje_3-6-9.mp4'
+		},
+		vraag8: {
+			vraag: 'Dit is een vraag ...',
+			antwoord: 'Dit is een antwoord ...',
+			link:  'slimsteMensVan2014/driezesnegen/Kerstboom.png'
+		},
+		vraag11: {
+			vraag: 'Dit is een vraag ...',
+			antwoord: 'Dit is een antwoord ...',
+			link:  'slimsteMensVan2014/driezesnegen/Song_3-6-9.mp3'
+		},
+		vraag15: {
+			vraag: 'Dit is een vraag ...',
+			antwoord: 'Dit is een antwoord ...',
+			link: 'slimsteMensVan2014/driezesnegen/opgave_15.html'
 		}
 	},
 	opendeur: {
