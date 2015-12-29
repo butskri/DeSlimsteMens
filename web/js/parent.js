@@ -29,6 +29,14 @@ parentApp.controller('ParentCtrl', function ($scope,$timeout,$http) {
   $scope.puzzelRonde = new PuzzelRonde($scope);
   $scope.deGalerij  = new DeGalerij($scope);
   $scope.collectiefGeheugen  = new CollectiefGeheugen($scope);
+  $scope.deFinale  = new DeFinale($scope);
+
+  $scope.spelersTonen = function() {
+    if ($scope.huidigeRonde.spelersTonen == null) {
+      return true;
+    }
+    return $scope.huidigeRonde.spelersTonen();
+  };
 
   $scope.startQuiz = function() {
     if ($scope.geselecteerdeQuiz == null) {

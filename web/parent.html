@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
 	<script src="js/angular.min.js"></script>
+	<script src="js/arrays.js"></script>
 	<script src="js/spelers.js"></script>
 
 	<script src="slimsteKindVan2014/slimsteKindVan2014.js"></script>
@@ -138,8 +139,34 @@
 			<button ng-click="collectiefGeheugen.terugNaarOverzicht()" type="button" class="collectiefGeheugenAntwoord">Terug naar overzicht</button>
 		</div>
 	</div>
+	<div id="deFinale" ng-show="huidigeRonde.id == 'deFinale'">
+		<div id="finaleSpelersSelecteren" ng-show="deFinale.isSelecteerFinaleSpelersModus()">
+			<div class="uitlegFinale">
+				Verwijder de afvallende speler en klik daarna op 'Finale starten' om te beginnen aan de finale.
+			</div>
+			<div class="{{speler.geselecteerd? 'geselecteerdeSpeler':'speler'}}" ng-repeat="speler in spelers.spelers" ng-click="spelers.selecteer(speler)">
+				<div class="name">{{speler.name}}</div>
+				<div class="score">{{speler.score}}</div>
+			</div>
+			<button ng-click="spelers.verwijderGeselecteerdeSpeler()" type="button" class="finaleButton" ng-show="deFinale.teVeelSpelers()">Verwijder geselecteerde speler</button>
+			<button ng-click="deFinale.volgende()" type="button" class="finaleButton" ng-hide="deFinale.teVeelSpelers()">Finale starten</button>
+		</div>
+		<div id="finaleVragen" ng-show="deFinale.isVragenModus()">
+			<div class="finaleVraag">
+				<span id="finaleVraagNr">Vraag {{deFinale.huidigeVraag.nummer}}:</span>
+				<span id="finaleVraag" ng-class="deFinale.huidigeVraag.vraagTonen? '': 'onleesbaar'" ng-click="deFinale.toonHuidigeVraag()">{{deFinale.huidigeVraag.vraag}}</span>
+			</div>
+			<div class="finaleAntwoorden">
+				<button ng-repeat="antwoord in deFinale.huidigeVraag.antwoorden" ng-click="deFinale.toonAntwoord(antwoord)"
+						type="button" class="finaleAntwoord {{antwoord.gevonden? 'gevonden':'onleesbaar'}}">{{antwoord.omschrijving}}</button>
+			</div>
+		</div>
+		<div id="finaleTisGebeurd" ng-show="deFinale.istGebeurd()">
+			<div class="finaleGebeurd">Tis<br> gebeurd!</div>
+		</div>
+	</div>
 
-	<div class="spelers aantalSpelers{{spelers.aantalSpelers()}}">
+	<div class="spelers aantalSpelers{{spelers.aantalSpelers()}}" ng-show="spelersTonen()">
 		<div class="{{speler.geselecteerd? 'geselecteerdeSpeler':'speler'}}" ng-repeat="speler in spelers.spelers" ng-click="spelers.selecteer(speler)">
 			<div class="name">{{speler.name}}</div>
 			<div class="score">{{speler.score}}</div>

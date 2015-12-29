@@ -21,6 +21,8 @@ function executeCommand(command, data) {
 			scope.huidigeGalerijFoto = data;
 		} else if (command == 'updateCollectiefGeheugen') {
 			scope.huidigeCollectiefGeheugenVideo = data;
+		} else if (command == 'updateFinale') {
+			scope.deFinale = data;
 		}
 	});
 }
@@ -44,6 +46,7 @@ childApp.controller('ChildCtrl', function ($scope,$timeout,$http) {
 	$scope.huidigePuzzel = {};
 	$scope.huidigeGalerijFoto = {};
 	$scope.huidigeCollectiefGeheugenVideo = {};
+	$scope.deFinale = { tisGebeurd: false };
 
 	$scope.setHuidigeRonde = function(nieuweRonde) {
 		$scope.huidigeRonde = nieuweRonde;

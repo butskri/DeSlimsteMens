@@ -44,6 +44,7 @@ function DeFinale($scope) {
             antwoorden: $scope.toAntwoorden(vraag.antwoorden),
             vraagTonen: false
         };
+        this.updateFinaleInChildWindow();
     };
     this.toonHuidigeVraag = function() {
         if (!$scope.spelers.isSpelerGeselecteerd()) {
@@ -51,6 +52,7 @@ function DeFinale($scope) {
         }
         this.huidigeVraag.vraagTonen = true;
         $scope.startTimer();
+        this.updateFinaleInChildWindow();
     };
     this.isVorigeEnabled = function() {
         return this.isVragenModus() && this.indexHuidigeVraag != 0;
@@ -87,6 +89,7 @@ function DeFinale($scope) {
         if (this.alleAntwoordenGevonden()) {
             $scope.stopTimer();
         }
+        this.updateFinaleInChildWindow();
     };
     this.alleAntwoordenGevonden = function() {
         for (var i=0;i < this.huidigeVraag.antwoorden.length;i++) {
@@ -95,5 +98,14 @@ function DeFinale($scope) {
             }
         }
         return true;
+    };
+    this.updateFinaleInChildWindow = function() {
+        if (this.istGebeurd()) {
+            executeCommandInChildWindow('updateFinale', { tisGebeurd: true } );
+        } else if (this.isVragenModus()) {
+            executeCommandInChildWindow('updateFinale', { tisGebeurd: false, huidigeVraag: this.huidigeVraag } );
+        } else {
+            executeCommandInChildWindow('updateFinale', { tisGebeurd: false } );
+        }
     };
 }

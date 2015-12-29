@@ -43,6 +43,7 @@ Spelers.prototype.add = function(speler) {
 Spelers.prototype.verwijderGeselecteerdeSpeler = function() {
 	if (this.geselecteerdeSpeler != null) {
 		this.verwijderSpeler(this.geselecteerdeSpeler);
+		executeCommandInChildWindow('updateSpelers', this);
 	}
 };
 

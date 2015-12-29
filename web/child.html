@@ -101,6 +101,21 @@
 					type="button" class="collectiefGeheugenAntwoord {{antwoord.gevonden? 'gevonden':'onleesbaar'}}">{{antwoord.omschrijving}}</button>
 		</div>
 	</div>
+	<div id="deFinale" ng-show="huidigeRonde.id == 'deFinale'">
+		<div id="finaleVragen" ng-show="deFinale.huidigeVraag">
+			<div class="finaleVraag">
+				<span id="finaleVraagNr">Vraag {{deFinale.huidigeVraag.nummer}}:</span>
+				<span id="finaleVraag" ng-class="deFinale.huidigeVraag.vraagTonen? '': 'onleesbaar'">{{deFinale.huidigeVraag.vraag}}</span>
+			</div>
+			<div class="finaleAntwoorden">
+				<button ng-repeat="antwoord in deFinale.huidigeVraag.antwoorden"
+						type="button" class="finaleAntwoord {{antwoord.gevonden? 'gevonden':'onleesbaar'}}">{{antwoord.omschrijving}}</button>
+			</div>
+		</div>
+		<div id="finaleTisGebeurd" ng-show="deFinale.tisGebeurd">
+			<div class="finaleGebeurd">Tis<br> gebeurd!</div>
+		</div>
+	</div>
 
 	<div class="spelers aantalSpelers{{spelers.spelers.length}}" ng-show="spelersTonen()">
 		<div class="{{speler.geselecteerd? 'geselecteerdeSpeler':'speler'}}" ng-repeat="speler in spelers.spelers">
