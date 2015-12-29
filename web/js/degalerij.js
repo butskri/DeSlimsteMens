@@ -58,7 +58,13 @@ function DeGalerij($scope) {
         this.antwoorden = [];
         this.aantalSecondenVoorJuisteVraag = 15;
         for (var i=0;i < galerij.fotos.length;i++) {
-            this.antwoorden[i] = {omschrijving: 'Foto ' + (i+1), gevonden: false};
+            var omschrijving;
+            if (galerij.fotos[i].omschrijving) {
+                omschrijving = galerij.fotos[i].omschrijving;
+            } else {
+                omschrijving = galerij.fotos[i].url;
+            }
+            this.antwoorden[i] = {omschrijving: omschrijving, gevonden: false};
         }
         $scope.startTimer();
     };
