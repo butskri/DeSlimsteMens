@@ -54,6 +54,7 @@ function DeGalerij($scope) {
         }
         this.huidigeGalerij = galerij;
         this.indexHuidigeFoto = 1;
+        this.huidigeFotoUpdated();
         this.antwoorden = [];
         this.aantalSecondenVoorJuisteVraag = 15;
         for (var i=0;i < galerij.fotos.length;i++) {
@@ -83,6 +84,7 @@ function DeGalerij($scope) {
     this.overloopGalerij = function(galerij) {
         this.huidigeGalerij = galerij;
         this.indexHuidigeFoto = 1;
+        this.huidigeFotoUpdated();
     };
     this.isButtonModus = function() {
         return !this.isGalerijModus() && !this.isOverzichtAntwoordenModus();
@@ -97,7 +99,7 @@ function DeGalerij($scope) {
         return this.isGalerijModus() || this.isOverzichtAntwoordenModus() || (this.isButtonModus() && this.galerijenIndex > 0);
     };
     this.isVolgendeEnabled = function() {
-        return this.isGalerijModus() || this.isOverzichtAntwoordenModus() || (this.isButtonModus() && this.galerijenIndex < this.maxGalerijenIndex());
+        return this.isGalerijModus() || (this.isButtonModus() && this.galerijenIndex < this.maxGalerijenIndex());
     };
     this.juisteAntwoordGegeven = function() {
         this.antwoorden[this.indexHuidigeFoto-1].gevonden = true;
@@ -106,12 +108,12 @@ function DeGalerij($scope) {
         if (this.isButtonModus()) {
             this.galerijenIndex++;
         } else if (this.isOverzichtAntwoordenModus()) {
-            this.stopHuidigeGalerij();
         } else if (this.indexHuidigeFoto == this.huidigeGalerij.fotos.length) {
             this.naarOverzichtAntwoorden();
         } else {
             this.indexHuidigeFoto++;
         }
+        this.huidigeFotoUpdated();
     };
     this.vorige = function() {
         if (this.isButtonModus()) {
@@ -123,6 +125,7 @@ function DeGalerij($scope) {
         } else {
             this.indexHuidigeFoto--;
         }
+        this.huidigeFotoUpdated();
     };
     this.naarOverzichtAntwoorden = function() {
         $scope.stopTimer();
@@ -134,6 +137,7 @@ function DeGalerij($scope) {
         this.aantalSecondenVoorJuisteVraag = null;
         this.overzichtAntwoordenScherm = false;
         this.indexHuidigeFoto = 0;
+        this.huidigeFotoUpdated();
     };
     this.urlHuidigeFoto = function() {
         if (!this.huidigeGalerij) {
@@ -166,4 +170,18 @@ function DeGalerij($scope) {
         }
         return this.huidigeGalerij.link;
     };
+    this.huidigeFotoUpdated = function() {
+        if (this.isGalerijModus()) {
+            executeCommandInChildWindow('updateGalerij', {url: this.urlHuidigeFoto(), styleClass: this.styleClassHuidigeFoto()});
+        } else {
+            executeCommandInChildWindow('updateGalerij', {});
+        }
+    };
+    this.isHuidigeFoto = function(antwoord) {
+        if (!this.isGalerijModus()) {
+            return false;
+        }
+        return this.antwoorden[this.indexHuidigeFoto - 1] == antwoord;
+    };
+
 }

@@ -90,6 +90,12 @@
 			</div>
 		</div>
 	</div>
+	<div id="deGalerij" ng-show="huidigeRonde.id == 'deGalerij'">
+		<div id="galerijFotos" ng-show="huidigeGalerijFoto.url">
+			<img ng-class="huidigeGalerijFoto.styleClass()" ng-src="{{huidigeGalerijFoto.url}}"/>
+		</div>
+	</div>
+
 	<div class="spelers aantalSpelers{{spelers.spelers.length}}" ng-show="spelersTonen()">
 		<div class="{{speler.geselecteerd? 'geselecteerdeSpeler':'speler'}}" ng-repeat="speler in spelers.spelers">
 			<div class="name">{{speler.name}}</div>

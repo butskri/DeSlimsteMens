@@ -144,6 +144,7 @@
 		<div id="overzichtGalerij" ng-show="deGalerij.isOverzichtAntwoordenModus()">
 			<button ng-repeat="antwoord in deGalerij.antwoorden" ng-click="deGalerij.toonAntwoord(antwoord)"
 				type="button" class="galerijAntwoord  {{$even? 'galerijAntwoordLinks': 'galerijAntwoordRechts'}} {{antwoord.gevonden? 'gevonden':'onleesbaar'}}">{{antwoord.omschrijving}}</button>
+			<button type="button" class="galerijAntwoord" ng-click="deGalerij.stopHuidigeGalerij()">Terug naar overzicht</button>
 		</div>
 	</div>
 	<div id="collectiefGeheugen" ng-show="huidigeRonde.id == 'collectiefGeheugen'">

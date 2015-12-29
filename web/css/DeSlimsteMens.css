@@ -200,6 +200,15 @@ button.slimsteMensButton {
 	border: 2px solid;
     border-radius: 25px;
 }
+
+.galerijAntwoord.gevonden {
+	background-color: green;
+}
+
+.galerijAntwoord.huidige {
+	color: yellow;
+}
+
 .slimsteQuizConfiguratie,.puzzelAntwoord,.finaleAntwoord,.finaleButton,
 .collectiefGeheugenAntwoord,.oorkondeButton{
 	margin-top: 2%;

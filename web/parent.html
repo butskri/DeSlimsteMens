@@ -19,6 +19,7 @@
 	<script src="js/driezesnegen.js"></script>
 	<script src="js/opendeurronde.js"></script>
 	<script src="js/puzzelronde.js"></script>
+	<script src="js/degalerij.js"></script>
 
 	<script src="js/parent.js"></script>
 </head>
@@ -106,6 +107,19 @@
 				<button ng-click="puzzelRonde.terugNaarOverzicht()"
 						type="button" class="puzzelAntwoord">Terug naar overzicht</button>
 			</div>
+		</div>
+	</div>
+	<div id="deGalerij" ng-show="huidigeRonde.id == 'deGalerij'">
+		<div id="galerijButtons" ng-show="deGalerij.isButtonModus()">
+			<button ng-repeat-start="galerij in deGalerij.getHuidigeGalerijen()" ng-click="deGalerij.startGalerij(galerij)"
+					type="button" class="slimsteMensButton buttonLeft">Start {{galerij.naam}}</button>
+			<button ng-repeat-end ng-click="deGalerij.overloopGalerij(galerij)"
+					type="button" class="slimsteMensButton buttonRight" >Overloop {{galerij.naam}}</button>
+		</div>
+		<div id="galerijFotos" ng-show="deGalerij.isGalerijModus() || deGalerij.isOverzichtAntwoordenModus()">
+			<button ng-repeat="antwoord in deGalerij.antwoorden" ng-click="deGalerij.toonAntwoord(antwoord)"
+					type="button" class="galerijAntwoord  {{$even? 'galerijAntwoordLinks': 'galerijAntwoordRechts'}} {{antwoord.gevonden? 'gevonden':'onleesbaar'}} {{(deGalerij.isHuidigeFoto(antwoord))? 'huidige': ''}}">{{antwoord.omschrijving}}</button>
+			<button type="button" class="galerijAntwoord" ng-click="deGalerij.stopHuidigeGalerij()">Terug naar overzicht</button>
 		</div>
 	</div>
 
