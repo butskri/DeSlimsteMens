@@ -3,6 +3,7 @@ function Oorkonde($scope) {
     this.title = 'Oorkonde';
     this.naamWinnaar = 'Volledige naam winnaar';
     this.oorkondeModus =  false;
+    this.slimsteTitel;
     this.spelersTonen = function() {
         return true;
     };
@@ -13,12 +14,21 @@ function Oorkonde($scope) {
         return $scope.oorkonde;
     };
     this.naarOorkonde = function() {
+        this.slimsteTitel = $scope.deSlimsteData.titel;
         this.oorkondeModus = true;
+        this.updateOorkondeInChildWindow();
     };
     this.isNaamModus = function() {
         return !this.oorkondeModus;
     };
     this.isOorkondeModus = function() {
         return this.oorkondeModus;
+    };
+    this.updateOorkondeInChildWindow = function() {
+        executeCommandInChildWindow('updateOorkonde', {
+            oorkondeModus: this.oorkondeModus,
+            naamWinnaar: this.naamWinnaar,
+            slimsteTitel: this.slimsteTitel
+        } );
     };
 }

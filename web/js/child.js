@@ -23,6 +23,8 @@ function executeCommand(command, data) {
 			scope.huidigeCollectiefGeheugenVideo = data;
 		} else if (command == 'updateFinale') {
 			scope.deFinale = data;
+		} else if (command == 'updateOorkonde') {
+			scope.oorkonde = data;
 		}
 	});
 }
@@ -47,6 +49,7 @@ childApp.controller('ChildCtrl', function ($scope,$timeout,$http) {
 	$scope.huidigeGalerijFoto = {};
 	$scope.huidigeCollectiefGeheugenVideo = {};
 	$scope.deFinale = { tisGebeurd: false };
+	$scope.oorkonde = { };
 
 	$scope.setHuidigeRonde = function(nieuweRonde) {
 		$scope.huidigeRonde = nieuweRonde;

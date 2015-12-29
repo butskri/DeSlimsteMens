@@ -30,6 +30,7 @@ parentApp.controller('ParentCtrl', function ($scope,$timeout,$http) {
   $scope.deGalerij  = new DeGalerij($scope);
   $scope.collectiefGeheugen  = new CollectiefGeheugen($scope);
   $scope.deFinale  = new DeFinale($scope);
+  $scope.oorkonde  = new Oorkonde($scope);
 
   $scope.spelersTonen = function() {
     if ($scope.huidigeRonde.spelersTonen == null) {
