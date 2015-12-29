@@ -1,14 +1,9 @@
 package be.butskri.slimste.domain;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-
 import org.apache.commons.lang.StringUtils;
+
+import java.io.File;
+import java.util.*;
 
 public class PropertiesToDeSlimsteMensDataMapper {
 	
@@ -25,7 +20,7 @@ public class PropertiesToDeSlimsteMensDataMapper {
 	
 	public DeSlimsteMensData map(Properties properties) {
 		String titel = titel(properties);
-		DrieZesNegen drieZesNegen = drieZesNegen(properties);
+		Map<String, DrieZesNegenVraag> drieZesNegen = drieZesNegen(properties);
 		Opendeur opendeur = opendeur(properties);
 		List<Puzzel> puzzels = puzzels(properties);
 		List<Galerij> galerijen = galerijen(properties);
@@ -38,15 +33,21 @@ public class PropertiesToDeSlimsteMensDataMapper {
 		return properties.getProperty("titel");
 	}
 	
-	private DrieZesNegen drieZesNegen(Properties properties) {
-		Map<String, String> links = new HashMap<String, String>();
+	private Map<String, DrieZesNegenVraag> drieZesNegen(Properties properties) {
+		HashMap<String, DrieZesNegenVraag> result = new HashMap<String, DrieZesNegenVraag>();
 		for (int i=1;i < 16; i++) {
-			String value = properties.getProperty(String.format("driezesnegen.vraag%s.link", i));
-			if (!StringUtils.isEmpty(value)) {
-				links.put(String.format("vraag%s", i), value);
-			}
+			DrieZesNegenVraag drieZesNegenVraag = drieZesNegenVraag(properties, i);
+			result.put(String.format("vraag%s", i), drieZesNegenVraag);
 		}
-		return new DrieZesNegen(links);
+		return result;
+	}
+
+	private DrieZesNegenVraag drieZesNegenVraag(Properties properties, int i) {
+		String vraag = properties.getProperty(String.format("driezesnegen.vraag%s", i));
+		String antwoord = properties.getProperty(String.format("driezesnegen.vraag%s.antwoord", i));
+		String link = properties.getProperty(String.format("driezesnegen.vraag%s.link", i));
+		DrieZesNegenVraag drieZesNegenVraag = new DrieZesNegenVraag(vraag, antwoord, link);
+		return drieZesNegenVraag;
 	}
 
 	private Opendeur opendeur(Properties properties) {

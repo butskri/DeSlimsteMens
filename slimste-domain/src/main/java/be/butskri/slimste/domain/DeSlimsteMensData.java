@@ -2,18 +2,19 @@ package be.butskri.slimste.domain;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 public class DeSlimsteMensData implements Serializable {
 
 	private String titel;
-	private DrieZesNegen drieZesNegen;
+	private Map<String, DrieZesNegenVraag> drieZesNegen;
 	private Opendeur opendeur;
 	private List<Puzzel> puzzels;
 	private List<Galerij> galerijen;
 	private CollectiefGeheugen collectiefGeheugen;
 	private List<FinaleVraag> finale;
 	
-	public DeSlimsteMensData(String titel, DrieZesNegen drieZesNegen, Opendeur opendeur, List<Puzzel> puzzels, 
+	public DeSlimsteMensData(String titel, Map<String, DrieZesNegenVraag> drieZesNegen, Opendeur opendeur, List<Puzzel> puzzels, 
 			List<Galerij> galerijen, CollectiefGeheugen collectiefGeheugen, List<FinaleVraag> finale) {
 		this.titel = titel;
 		this.drieZesNegen = drieZesNegen;
@@ -28,7 +29,7 @@ public class DeSlimsteMensData implements Serializable {
 		return titel;
 	}
 
-	public DrieZesNegen getDrieZesNegen() {
+	public Map<String, DrieZesNegenVraag> getDrieZesNegen() {
 		return drieZesNegen;
 	}
 

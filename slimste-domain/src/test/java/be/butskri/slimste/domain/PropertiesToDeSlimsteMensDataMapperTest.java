@@ -1,6 +1,7 @@
 package be.butskri.slimste.domain;
 
-import static org.fest.assertions.Assertions.assertThat;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -8,8 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.fest.assertions.Assertions.assertThat;
 
 public class PropertiesToDeSlimsteMensDataMapperTest {
 
@@ -32,13 +32,15 @@ public class PropertiesToDeSlimsteMensDataMapperTest {
 	public void drieZesNegenWordtCorrectGemapt() {
 		DeSlimsteMensData data = mapper.map(properties());
 
-		Map<String, String> links = data.getDrieZesNegen().getLinks();
-		assertThat(links).hasSize(5);
-		assertThat(links.get("vraag1")).isEqualTo("slimsteMensVan2014/driezesnegen/opgave_1.html");
-		assertThat(links.get("vraag6")).isEqualTo("slimsteMensVan2014/driezesnegen/filmpje_3-6-9.mp4");
-		assertThat(links.get("vraag8")).isEqualTo("slimsteMensVan2014/driezesnegen/Kerstboom.png");
-		assertThat(links.get("vraag11")).isEqualTo("slimsteMensVan2014/driezesnegen/Song_3-6-9.mp3");
-		assertThat(links.get("vraag15")).isEqualTo("slimsteMensVan2014/driezesnegen/opgave_15.html");
+		Map<String, DrieZesNegenVraag> vragen = data.getDrieZesNegen();
+		assertThat(vragen).hasSize(15);
+		assertThat(vragen.get("vraag1").getLink()).isEqualTo("slimsteMensVan2014/driezesnegen/opgave_1.html");
+		assertThat(vragen.get("vraag1").getVraag()).isEqualTo("Wie is de slimste mens ter wereld?");
+		assertThat(vragen.get("vraag1").getAntwoord()).isEqualTo("Dat weet niemand");
+		assertThat(vragen.get("vraag6").getLink()).isEqualTo("slimsteMensVan2014/driezesnegen/filmpje_3-6-9.mp4");
+		assertThat(vragen.get("vraag8").getLink()).isEqualTo("slimsteMensVan2014/driezesnegen/Kerstboom.png");
+		assertThat(vragen.get("vraag11").getLink()).isEqualTo("slimsteMensVan2014/driezesnegen/Song_3-6-9.mp3");
+		assertThat(vragen.get("vraag15").getLink()).isEqualTo("slimsteMensVan2014/driezesnegen/opgave_15.html");
 	}
 
 	@Test
