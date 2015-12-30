@@ -13,7 +13,7 @@
                 <include>css/*</include>
                 <include>images/*</include>
                 <include>js/*</include>
-                <include>voorbeeldquiz/**/*</include>
+                <include>quizzen/**/*</include>
             </includes>
         </fileSet>
     </fileSets>

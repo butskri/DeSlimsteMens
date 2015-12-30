@@ -4,44 +4,44 @@ var voorbeeldQuiz = {
 		vraag2: {
 			vraag: 'Dit is een vraag ...',
 			antwoord: 'Dit is een antwoord ...',
-			link: 'images/pooh/Winnie.jpg'
+			link: 'quizzen/voorbeeldquiz/driezesnegen/Winnie.jpg'
 		},
 		vraag4: {
 			vraag: 'Dit is een vraag ...',
 			antwoord: 'Dit is een antwoord ...',
-			link: 'images/pooh/tijgetje.jpg'
+			link: 'quizzen/voorbeeldquiz/driezesnegen/tijgetje.jpg'
 		}
 	},
 	galerijen: [
-			{baseUrl:'voorbeeldquiz/galerij/pooh/',
+			{baseUrl:'quizzen/voorbeeldquiz/galerij/pooh/',
 			 fotos: [{url: 'Winnie.jpg', verticaleFoto: true}, {url: 'tijgetje.jpg'}, {url: 'ioor.jpg'},
 			 		 {url: 'Winnie.jpg', verticaleFoto: true}, {url: 'tijgetje.jpg'}, {url: 'ioor.jpg'},
 			 		 {url: 'Winnie.jpg', verticaleFoto: true}, {url: 'tijgetje.jpg'}, {url: 'ioor.jpg'},
 			 		 {url: 'Winnie.jpg', verticaleFoto: true} ],
-			 link: 'voorbeeldquiz/galerij/pooh/Winnie.jpg' },
-			{baseUrl:'voorbeeldquiz/galerij/pooh/',
+			 link: 'quizzen/voorbeeldquiz/galerij/pooh/Winnie.jpg' },
+			{baseUrl:'quizzen/voorbeeldquiz/galerij/pooh/',
 			 fotos: [{url: 'Winnie.jpg'} ] },
-			{baseUrl:'voorbeeldquiz/galerij/pooh/',
+			{baseUrl:'quizzen/voorbeeldquiz/galerij/pooh/',
 			 fotos: [{url: 'Winnie.jpg'} ] },
-			{baseUrl:'voorbeeldquiz/galerij/pooh/',
+			{baseUrl:'quizzen/voorbeeldquiz/galerij/pooh/',
 			 fotos: [{url: 'Winnie.jpg'} ] },
-			{baseUrl:'voorbeeldquiz/galerij/pooh/',
+			{baseUrl:'quizzen/voorbeeldquiz/galerij/pooh/',
 			 fotos: [{url: 'Winnie.jpg'} ] },
-			{baseUrl:'voorbeeldquiz/galerij/pooh/',
+			{baseUrl:'quizzen/voorbeeldquiz/galerij/pooh/',
 			 fotos: [{url: 'Winnie.jpg'} ] },
-			{baseUrl:'voorbeeldquiz/galerij/pooh/',
+			{baseUrl:'quizzen/voorbeeldquiz/galerij/pooh/',
 			 fotos: [{url: 'Winnie.jpg'} ] },
-			{baseUrl:'voorbeeldquiz/galerij/pooh/',
+			{baseUrl:'quizzen/voorbeeldquiz/galerij/pooh/',
 			 fotos: [{url: 'Winnie.jpg'} ] }
 			],
 	opendeur: {
 		vragen: [
-		{naam: 'Omschrijving 1', urlFoto:'voorbeeldquiz/opendeur/something.jpg', urlFilm: 'voorbeeldquiz/opendeur/Lazy_dog.mp4', 
+		{naam: 'Omschrijving 1', urlFoto:'quizzen/voorbeeldquiz/opendeur/something.jpg', urlFilm: 'quizzen/voorbeeldquiz/opendeur/Lazy_dog.mp4', 
 		 antwoorden: ['Antwoord 1', 'Antwoord 2', 'Antwoord 3', 'Antwoord 4'],
-		 link: 'voorbeeldquiz/opendeur/something.jpg'},
-		{naam: 'Omschrijving 2', urlFoto:'voorbeeldquiz/opendeur/something2.jpg', urlFilm: 'voorbeeldquiz/opendeur/Lazy_dog.mp4', 
+		 link: 'quizzen/voorbeeldquiz/opendeur/something.jpg'},
+		{naam: 'Omschrijving 2', urlFoto:'quizzen/voorbeeldquiz/opendeur/something2.jpg', urlFilm: 'quizzen/voorbeeldquiz/opendeur/Lazy_dog.mp4', 
 		 antwoorden: ['Antwoord 1', 'Antwoord 2', 'Antwoord 3', 'Antwoord 4']},
-		{naam: 'Omschrijving 3', urlFoto:'voorbeeldquiz/opendeur/something3.jpg', urlFilm: 'voorbeeldquiz/opendeur/Lazy_dog.mp4', 
+		{naam: 'Omschrijving 3', urlFoto:'quizzen/voorbeeldquiz/opendeur/something3.jpg', urlFilm: 'quizzen/voorbeeldquiz/opendeur/Lazy_dog.mp4', 
 		 antwoorden: ['Antwoord 1', 'Antwoord 2', 'Antwoord 3', 'Antwoord 4']}
 		 ]
 	},
@@ -64,8 +64,8 @@ var voorbeeldQuiz = {
 	],
 	collectiefGeheugen: {
 		videos: [
-			{urlVideo: 'voorbeeldquiz/collectiefgeheugen/Lazy_dog.mp4', antwoorden: ['Frankrijk', 'Seine', 'Louvre', 'Sacré coeur', 'eenAntwoord'] },
-			{urlVideo: 'voorbeeldquiz/collectiefgeheugen/Lazy_dog.mp4', antwoorden: ['blabla', 'boemboem', 'nana', 'sasa', 'gaga'] }
+			{urlVideo: 'quizzen/voorbeeldquiz/collectiefgeheugen/Lazy_dog.mp4', antwoorden: ['Frankrijk', 'Seine', 'Louvre', 'Sacré coeur', 'eenAntwoord'] },
+			{urlVideo: 'quizzen/voorbeeldquiz/collectiefgeheugen/Lazy_dog.mp4', antwoorden: ['blabla', 'boemboem', 'nana', 'sasa', 'gaga'] }
 		],
 	},
 	finale: [
