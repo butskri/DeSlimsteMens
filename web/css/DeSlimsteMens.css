@@ -201,7 +201,7 @@ button.slimsteMensButton {
     border-radius: 25px;
 }
 
-.galerijAntwoord.gevonden {
+.galerijAntwoord.gevonden, .slimsteQuizConfiguratie.gevonden, .collectiefGeheugenAntwoord.gevonden, .finaleAntwoord.gevonden {
 	background-color: green;
 }
 

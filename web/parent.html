@@ -74,7 +74,7 @@
 		</table>
 		<div ng-show="openDeurRonde.isInModusAntwoord()">
 			<button ng-repeat="antwoord in openDeurRonde.antwoorden" ng-click="openDeurRonde.toonAntwoord(antwoord)"
-					type="button" class="slimsteQuizConfiguratie {{antwoord.gevonden? 'gevonden':'onleesbaar'}}">{{antwoord.omschrijving}}</button>
+					type="button" class="slimsteQuizConfiguratie {{antwoord.gevonden? 'gevonden':''}}">{{antwoord.omschrijving}}</button>
 			<button ng-click="openDeurRonde.terugNaarOverzicht()" type="button" class="slimsteQuizConfiguratie">Terug naar overzicht</button>
 		</div>
 	</div>
@@ -106,7 +106,7 @@
 			</table>
 			<div class="puzzelAntwoorden">
 				<button ng-repeat="antwoord in puzzelRonde.huidigePuzzel.antwoorden" ng-click="puzzelRonde.toonAntwoord(antwoord)"
-						type="button" class="puzzelAntwoord {{antwoord.gevonden? antwoord.styleClass:'onleesbaar'}}">{{antwoord.omschrijving}}</button>
+						type="button" class="puzzelAntwoord {{antwoord.gevonden? antwoord.styleClass:'leesbaar'}}">{{antwoord.omschrijving}}</button>
 				<button ng-click="puzzelRonde.toonAlleAntwoorden()"
 						type="button" class="puzzelAntwoord">Toon alle antwoorden</button>
 				<button ng-click="puzzelRonde.terugNaarOverzicht()"
@@ -123,7 +123,7 @@
 		</div>
 		<div id="galerijFotos" ng-show="deGalerij.isGalerijModus() || deGalerij.isOverzichtAntwoordenModus()">
 			<button ng-repeat="antwoord in deGalerij.antwoorden" ng-click="deGalerij.toonAntwoord(antwoord)"
-					type="button" class="galerijAntwoord  {{$even? 'galerijAntwoordLinks': 'galerijAntwoordRechts'}} {{antwoord.gevonden? 'gevonden':'onleesbaar'}} {{(deGalerij.isHuidigeFoto(antwoord))? 'huidige': ''}}">{{antwoord.omschrijving}}</button>
+					type="button" class="galerijAntwoord  {{$even? 'galerijAntwoordLinks': 'galerijAntwoordRechts'}} {{antwoord.gevonden? 'gevonden':''}} {{(deGalerij.isHuidigeFoto(antwoord))? 'huidige': ''}}">{{antwoord.omschrijving}}</button>
 			<button type="button" class="galerijAntwoord" ng-click="deGalerij.stopHuidigeGalerij()">Terug naar overzicht</button>
 		</div>
 	</div>
@@ -136,7 +136,7 @@
 		</div>
 		<div class="collectiefGeheugenAntwoorden" ng-show="collectiefGeheugen.isAntwoordModus()">
 			<button ng-repeat="antwoord in collectiefGeheugen.huidigeVideo.antwoorden" ng-click="collectiefGeheugen.toonAntwoord(antwoord)"
-					type="button" class="collectiefGeheugenAntwoord {{antwoord.gevonden? 'gevonden':'onleesbaar'}}">{{antwoord.omschrijving}}</button>
+					type="button" class="collectiefGeheugenAntwoord {{antwoord.gevonden? 'gevonden':''}}">{{antwoord.omschrijving}}</button>
 			<button ng-click="collectiefGeheugen.terugNaarOverzicht()" type="button" class="collectiefGeheugenAntwoord">Terug naar overzicht</button>
 		</div>
 	</div>
@@ -159,7 +159,7 @@
 			</div>
 			<div class="finaleAntwoorden">
 				<button ng-repeat="antwoord in deFinale.huidigeVraag.antwoorden" ng-click="deFinale.toonAntwoord(antwoord)"
-						type="button" class="finaleAntwoord {{antwoord.gevonden? 'gevonden':'onleesbaar'}}">{{antwoord.omschrijving}}</button>
+						type="button" class="finaleAntwoord {{deFinale.huidigeVraag.vraagTonen? '': 'onleesbaar'}} {{antwoord.gevonden? 'gevonden':''}}">{{antwoord.omschrijving}}</button>
 			</div>
 		</div>
 		<div id="finaleTisGebeurd" ng-show="deFinale.istGebeurd()">
