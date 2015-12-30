@@ -1,0 +1,11 @@
+todo:
+-main programma schrijven om op basis van properties file js file aan te maken + gebruiken vanuit applicatie
+-tis gebeurd probleem (als t gebeurd is, maar je wilt het toch nog terugdraaien) - minor issue
+
+-oorkonde implementare: done
+-opkuis manier van map aanmaken met quizen: done
+-Galerij: tonen van antwoorden in parent: done
+-3-6-9 ronde: voorzien van vragen en antwoorden: done
+-aanpassen aanmaken js file op basis van properties voor 3-6-9 ronde: done
+-pom file maken die alles bij elkaar kwakt: done
+-zichtbaar tonen van waarden in parent(in verschillende rondes oa): done
