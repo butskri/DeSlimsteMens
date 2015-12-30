@@ -1,9 +1,13 @@
 package be.butskri.slimste.domain;
 
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
 import org.junit.Before;
 import org.junit.Test;
+import org.skyscreamer.jsonassert.JSONAssert;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -20,10 +24,20 @@ public class PropertiesToDeSlimsteMensDataMapperTest {
 		mapper.setReferentieWidth(20);
 		mapper.setReferentieHeight(20);
 	}
-	
+
+	@Test
+	public void toJsonWerkt() throws Exception {
+		DeSlimsteMensData data = mapper.map(properties());
+		String json = mapper.toJson(data);
+		String expectedJson = readResource("slimste.json");
+
+		JSONAssert.assertEquals(expectedJson, json, false);
+	}
+
 	@Test
 	public void titelWordtCorrectGemapt() {
 		DeSlimsteMensData data = mapper.map(properties());
+
 
 		assertThat(data.getTitel()).isEqualTo("De slimste mens van 2014");
 	}
@@ -135,7 +149,7 @@ public class PropertiesToDeSlimsteMensDataMapperTest {
 		assertFinaleVraag(finaleVragen.get(0), "Wie zijn de laatste 5 winnaars van de quiz 'De slimste mens ter wereld'?",
 				"Freek Braeckman", "Linda De Win", "Tomas Van Den Spiegel", "Gilles De Coster", "Adil El Arbi");
 		assertFinaleVraag(finaleVragen.get(1), "Wat zijn de 5 belangrijkste goede voornemens?", "Afvallen", "Minder druk maken",
-				"Meer sporten /meer bewegen", "Zuiniger met geld omgaan", "Beter voor mezelf opkomen / vaker nee zeggen");
+				"Meer sporten / meer bewegen", "Zuiniger met geld omgaan", "Beter voor mezelf opkomen / vaker nee zeggen");
 		assertFinaleVraag(finaleVragen.get(2), "Wat weet je over Nafi(ssatou) Thiam?", //
 				"Sportvrouw van het jaar", "7-kamp (hepthatlon)", "Hoogspringen", "Belgische recordhoudster", "Senegalese roots");
 		assertFinaleVraag(finaleVragen.get(3), "Welke waren volgens Febiac de 5 best verkochte automerken in België?", //
@@ -167,6 +181,12 @@ public class PropertiesToDeSlimsteMensDataMapperTest {
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	private String readResource(String resourceName) throws IOException {
+		InputStream inputStream = getClass().getResourceAsStream(resourceName);
+		List<String> lines = IOUtils.readLines(inputStream);
+		return StringUtils.join(lines, "\n");
 	}
 
 }

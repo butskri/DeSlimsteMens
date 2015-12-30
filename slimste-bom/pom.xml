@@ -21,7 +21,12 @@
 				<artifactId>commons-lang</artifactId>
 				<version>2.6</version>
 			</dependency>
-		
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>2.4</version>
+			</dependency>
+
 			<!-- TEST -->
 			<dependency>
 				<groupId>junit</groupId>
@@ -38,7 +43,19 @@
 				<artifactId>fest-assert</artifactId>
 				<version>1.4</version>
 			</dependency>
-			
+			<dependency>
+				<groupId>org.skyscreamer</groupId>
+				<artifactId>jsonassert</artifactId>
+				<version>1.2.3</version>
+			</dependency>
+
+			<!-- JSON -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>2.6.1</version>
+			</dependency>
+
 			<!-- SPRING DEPENDENCIES -->
 			<dependency>
 				<groupId>org.springframework</groupId>

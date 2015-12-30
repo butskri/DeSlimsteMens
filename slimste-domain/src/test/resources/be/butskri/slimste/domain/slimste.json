@@ -1,0 +1,374 @@
+{
+  "titel": 'De slimste mens van 2014',
+  "drieZesNegen": {
+    "vraag1": {
+      "vraag": 'Wie is de slimste mens ter wereld?',
+      "antwoord": 'Dat weet niemand',
+      "link": 'slimsteMensVan2014/driezesnegen/opgave_1.html'
+    },
+    "vraag2": {
+      "vraag": '',
+      "antwoord": '',
+      "link": ''
+    },
+    "vraag3": {
+      "vraag": '',
+      "antwoord": '',
+      "link": ''
+    },
+    "vraag4": {
+      "vraag": '',
+      "antwoord": '',
+      "link": ''
+    },
+    "vraag5": {
+      "vraag": '',
+      "antwoord": '',
+      "link": ''
+    },
+    "vraag6": {
+      "vraag": '',
+      "antwoord": '',
+      "link": 'slimsteMensVan2014/driezesnegen/filmpje_3-6-9.mp4'
+    },
+    "vraag7": {
+      "vraag": '',
+      "antwoord": '',
+      "link": ''
+    },
+    "vraag8": {
+      "vraag": '',
+      "antwoord": '',
+      "link": 'slimsteMensVan2014/driezesnegen/Kerstboom.png'
+    },
+    "vraag9": {
+      "vraag": '',
+      "antwoord": '',
+      "link": ''
+    },
+    "vraag10": {
+      "vraag": '',
+      "antwoord": '',
+      "link": ''
+    },
+    "vraag11": {
+      "vraag": '',
+      "antwoord": '',
+      "link": 'slimsteMensVan2014/driezesnegen/Song_3-6-9.mp3'
+    },
+    "vraag12": {
+      "vraag": '',
+      "antwoord": '',
+      "link": ''
+    },
+    "vraag13": {
+      "vraag": '',
+      "antwoord": '',
+      "link": ''
+    },
+    "vraag14": {
+      "vraag": '',
+      "antwoord": '',
+      "link": ''
+    },
+    "vraag15": {
+      "vraag": '',
+      "antwoord": '',
+      "link": 'slimsteMensVan2014/driezesnegen/opgave_15.html'
+    }
+  },
+  "opendeur": {
+    "vragen": [
+      {
+        "urlFoto": 'slimsteMensVan2014/opendeur/stefan.jpg',
+        "urlFilm": 'slimsteMensVan2014/opendeur/stefan.mp4',
+        "antwoorden": [
+          'Remake',
+          'Erik Van Looy',
+          'Bart de Pauw',
+          'Matthias Schoenaerts'
+        ]
+      },
+      {
+        "urlFoto": 'slimsteMensVan2014/opendeur/Hanne_en_Yara.jpg',
+        "urlFilm": 'slimsteMensVan2014/opendeur/Hanne_en_Yara.avi',
+        "antwoorden": [
+          'Judoka',
+          'Comeback',
+          'Cocaïne',
+          'Geschorst'
+        ]
+      },
+      {
+        "urlFoto": 'slimsteMensVan2014/opendeur/tim.jpg',
+        "urlFilm": 'slimsteMensVan2014/opendeur/tim.mp4',
+        "antwoorden": [
+          'Zanger',
+          'Gorki',
+          'Mia',
+          'Schrijver'
+        ]
+      }
+    ]
+  },
+  "puzzels": [
+    {
+      "antwoorden": [
+        {
+          "antwoord": 'Jack Bauer',
+          "hints": [
+            '24 uren',
+            'Geen broer van Bob',
+            'CTU',
+            'De wereld redden'
+          ]
+        },
+        {
+          "antwoord": 'Philippe Geubels',
+          "hints": [
+            'Colruyt',
+            'Geen broer van Joseph',
+            'Komiek',
+            'Kaal'
+          ]
+        },
+        {
+          "antwoord": 'Pharrell Williams',
+          "hints": [
+            'Geen broer van Venus',
+            'Geen broer van Serena',
+            'Geen broer van Robbie',
+            'Happy'
+          ]
+        }
+      ]
+    },
+    {
+      "antwoorden": [
+        {
+          "antwoord": 'Electrabel',
+          "hints": [
+            'het',
+            'is',
+            'jouw',
+            'energie'
+          ]
+        },
+        {
+          "antwoord": 'Jetair',
+          "hints": [
+            'de mooiste',
+            'tijd',
+            'van',
+            'het jaar'
+          ]
+        },
+        {
+          "antwoord": 'Mediamarkt',
+          "hints": [
+            'ik',
+            'ben',
+            'toch',
+            'niet gek'
+          ]
+        }
+      ]
+    },
+    {
+      "antwoorden": [
+        {
+          "antwoord": 'Take me to church',
+          "hints": [
+            'I was born sick',
+            'But I love it',
+            'Command me to be well',
+            'Amen (4x) ...'
+          ]
+        },
+        {
+          "antwoord": 'Sexy als ik dans',
+          "hints": [
+            'Ze zegt:',
+            'weet je wat het is',
+            'baby',
+            'Ik voel me ...'
+          ]
+        },
+        {
+          "antwoord": 'Home',
+          "hints": [
+            'Through the warmth,',
+            'through the cold,',
+            'keep running till we\'re there.',
+            'We\'re coming ... now'
+          ]
+        }
+      ]
+    }
+  ],
+  "galerijen": [
+    {
+      "baseUrl": "galerijen/galerij1",
+      "fotos": [
+        {
+          "url": "picture01.png",
+          "verticaleFoto": false
+        },
+        {
+          "url": "picture02.jpg",
+          "verticaleFoto": false
+        },
+        {
+          "url": "picture03.jpg",
+          "verticaleFoto": true
+        },
+        {
+          "url": "picture04.jpg",
+          "verticaleFoto": false
+        },
+        {
+          "url": "picture05.png",
+          "verticaleFoto": true
+        },
+        {
+          "url": "picture06.bmp",
+          "verticaleFoto": false
+        }
+      ]
+    },
+    {
+      "baseUrl": "galerijen/andereGalerij",
+      "fotos": [
+        {
+          "url": "a.png",
+          "verticaleFoto": false
+        },
+        {
+          "url": "b.jpg",
+          "verticaleFoto": false
+        },
+        {
+          "url": "c.jpg",
+          "verticaleFoto": true
+        },
+        {
+          "url": "d.jpg",
+          "verticaleFoto": false
+        },
+        {
+          "url": "e.png",
+          "verticaleFoto": true
+        },
+        {
+          "url": "f.bmp",
+          "verticaleFoto": false
+        }
+      ]
+    },
+    {
+      "baseUrl": "galerijen/nogEenAndereGalerij",
+      "fotos": [
+        {
+          "url": "picture01.png",
+          "verticaleFoto": false
+        },
+        {
+          "url": "picture02.jpg",
+          "verticaleFoto": false
+        },
+        {
+          "url": "picture03.jpg",
+          "verticaleFoto": true
+        },
+        {
+          "url": "picture04.jpg",
+          "verticaleFoto": false
+        },
+        {
+          "url": "picture05.png",
+          "verticaleFoto": true
+        },
+        {
+          "url": "picture06.bmp",
+          "verticaleFoto": false
+        }
+      ]
+    }
+  ],
+  "collectiefGeheugen": {
+    "videos": [
+      {
+        "urlVideo": 'slimsteMensVan2014/collectiefgeheugen/Collectief_Geheugen_1.mp4',
+        "antwoorden": [
+          'Belgian Bullets',
+          'Elfje Willemsen',
+          'Hanna Mariën',
+          '6de plaats',
+          'Sotsji'
+        ]
+      },
+      {
+        "urlVideo": 'slimsteMensVan2014/collectiefgeheugen/Collectief_Geheugen_2.mp4',
+        "antwoorden": [
+          'Oscar-uitreiking',
+          'Ellen De Generes',
+          'Group-selfie',
+          'Twitter-record',
+          'Meryl Streep'
+        ]
+      },
+      {
+        "urlVideo": 'slimsteMensVan2014/collectiefgeheugen/Collectief_Geheugen_3.mp4',
+        "antwoorden": [
+          'Cordon',
+          'Antwerpen',
+          'Dodelijk virus',
+          'Tom Dewispelaere',
+          'Sven De Ridder'
+        ]
+      }
+    ],
+  },
+  "finale": [
+    {
+      "vraag": "Wie zijn de laatste 5 winnaars van de quiz 'De slimste mens ter wereld'?",
+      "antwoorden": [
+        'Freek Braeckman',
+        'Linda De Win',
+        'Tomas Van Den Spiegel',
+        'Gilles De Coster',
+        'Adil El Arbi'
+      ]
+    },
+    {
+      "vraag": 'Wat zijn de 5 belangrijkste goede voornemens?',
+      "antwoorden": [
+        'Afvallen',
+        'Minder druk maken',
+        'Meer sporten / meer bewegen',
+        'Zuiniger met geld omgaan',
+        'Beter voor mezelf opkomen / vaker nee zeggen'
+      ]
+    },
+    {
+      "vraag": 'Wat weet je over Nafi(ssatou) Thiam?',
+      "antwoorden": [
+        'Sportvrouw van het jaar',
+        '7-kamp (hepthatlon)',
+        'Hoogspringen',
+        'Belgische recordhoudster',
+        'Senegalese roots'
+      ]
+    },
+    {
+      "vraag": 'Welke waren volgens Febiac de 5 best verkochte automerken in België?',
+      "antwoorden": [
+        'Volkswagen',
+        'Renault',
+        'Peugeot',
+        'Citroën',
+        'Opel'
+      ]
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 package be.butskri.slimste.domain;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
@@ -9,6 +11,7 @@ public class PropertiesToDeSlimsteMensDataMapper {
 	
 	private int referentieWidth;
 	private int referentieHeight;
+	private ObjectMapper objectMapper = new ObjectMapper();
 
 	public void setReferentieWidth(int referentieWidth) {
 		this.referentieWidth = referentieWidth;
@@ -16,6 +19,14 @@ public class PropertiesToDeSlimsteMensDataMapper {
 	
 	public void setReferentieHeight(int referentieHeight) {
 		this.referentieHeight = referentieHeight;
+	}
+
+	public String toJson(DeSlimsteMensData deSlimsteMensData) {
+		try {
+			return objectMapper.writeValueAsString(deSlimsteMensData);
+		} catch (JsonProcessingException e) {
+			throw new RuntimeException(e);
+		}
 	}
 	
 	public DeSlimsteMensData map(Properties properties) {
