@@ -11,5 +11,6 @@
 		<module>../slimste-bom</module>
 		<module>../slimste-domain</module>
 		<module>../slimste-webapp</module>
+		<module>../web</module>
 	</modules>
 </project>

@@ -1,9 +1,15 @@
 'use strict';
 
-var parentApp = angular.module('parentApp', []);
 var childWindow = window.open("child.html", 'slimste_child');
+var parentApp = angular.module('parentApp', []);
 
 function executeCommandInChildWindow(command, data) {
+  if (!childWindow) {
+    if (console) {
+      console.log("cannot send command " + command + " with data " + data + " to child window");
+    }
+    return;
+  }
   childWindow.postMessage( { command: command, data: data }, '*');
 }
 
