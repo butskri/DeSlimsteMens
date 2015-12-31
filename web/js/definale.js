@@ -107,5 +107,6 @@ function DeFinale($scope) {
         } else {
             executeCommandInChildWindow('updateFinale', { tisGebeurd: false } );
         }
+        executeCommandInChildWindow('updateSpelers', $scope.spelers);
     };
 }
