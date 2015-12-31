@@ -8,23 +8,19 @@
     },
     "vraag2": {
       "vraag": '',
-      "antwoord": '',
-      "link": ''
+      "antwoord": ''
     },
     "vraag3": {
       "vraag": '',
-      "antwoord": '',
-      "link": ''
+      "antwoord": ''
     },
     "vraag4": {
       "vraag": '',
-      "antwoord": '',
-      "link": ''
+      "antwoord": ''
     },
     "vraag5": {
       "vraag": '',
-      "antwoord": '',
-      "link": ''
+      "antwoord": ''
     },
     "vraag6": {
       "vraag": '',
@@ -33,8 +29,7 @@
     },
     "vraag7": {
       "vraag": '',
-      "antwoord": '',
-      "link": ''
+      "antwoord": ''
     },
     "vraag8": {
       "vraag": '',
@@ -43,13 +38,11 @@
     },
     "vraag9": {
       "vraag": '',
-      "antwoord": '',
-      "link": ''
+      "antwoord": ''
     },
     "vraag10": {
       "vraag": '',
-      "antwoord": '',
-      "link": ''
+      "antwoord": ''
     },
     "vraag11": {
       "vraag": '',
@@ -58,18 +51,15 @@
     },
     "vraag12": {
       "vraag": '',
-      "antwoord": '',
-      "link": ''
+      "antwoord": ''
     },
     "vraag13": {
       "vraag": '',
-      "antwoord": '',
-      "link": ''
+      "antwoord": ''
     },
     "vraag14": {
       "vraag": '',
-      "antwoord": '',
-      "link": ''
+      "antwoord": ''
     },
     "vraag15": {
       "vraag": '',
@@ -95,7 +85,7 @@
         "antwoorden": [
           'Judoka',
           'Comeback',
-          'Cocaïne',
+          'CocaÃ¯ne',
           'Geschorst'
         ]
       },
@@ -208,7 +198,7 @@
   ],
   "galerijen": [
     {
-      "baseUrl": "galerijen/galerij1",
+      "baseUrl": "galerijen/galerij1/",
       "fotos": [
         {
           "url": "picture01.png",
@@ -237,7 +227,7 @@
       ]
     },
     {
-      "baseUrl": "galerijen/andereGalerij",
+      "baseUrl": "galerijen/andereGalerij/",
       "fotos": [
         {
           "url": "a.png",
@@ -266,7 +256,7 @@
       ]
     },
     {
-      "baseUrl": "galerijen/nogEenAndereGalerij",
+      "baseUrl": "galerijen/nogEenAndereGalerij/",
       "fotos": [
         {
           "url": "picture01.png",
@@ -302,7 +292,7 @@
         "antwoorden": [
           'Belgian Bullets',
           'Elfje Willemsen',
-          'Hanna Mariën',
+          'Hanna MariÃ«n',
           '6de plaats',
           'Sotsji'
         ]
@@ -361,12 +351,12 @@
       ]
     },
     {
-      "vraag": 'Welke waren volgens Febiac de 5 best verkochte automerken in België?',
+      "vraag": 'Welke waren volgens Febiac de 5 best verkochte automerken in BelgiÃ«?',
       "antwoorden": [
         'Volkswagen',
         'Renault',
         'Peugeot',
-        'Citroën',
+        'CitroÃ«n',
         'Opel'
       ]
     }

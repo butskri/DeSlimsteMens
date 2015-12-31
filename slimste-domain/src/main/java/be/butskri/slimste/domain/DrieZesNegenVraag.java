@@ -1,9 +1,12 @@
 package be.butskri.slimste.domain;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 public class DrieZesNegenVraag {
 	
 	private String vraag;
 	private String antwoord;
+	@JsonInclude(JsonInclude.Include.NON_EMPTY)
 	private String link;
 	
 	public DrieZesNegenVraag(String vraag, String antwoord, String link) {

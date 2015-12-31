@@ -166,3 +166,5 @@ var dataDeSlimsteMensVan2014Data = {
 		  antwoorden: ['voetballer','KV Mechelen','kanker','Zweed','Nationale ploeg'] }
 	]
 };
+
+slimsteQuizzen.registerQuiz(dataDeSlimsteMensVan2014Data);

@@ -75,3 +75,5 @@ var voorbeeldQuiz = {
 		  antwoorden: ['Niks', 'Minder', 'Nog minder', 'Helemaal niks', 'Boem boem'] }
 	]
 };
+
+slimsteQuizzen.registerQuiz(voorbeeldQuiz);

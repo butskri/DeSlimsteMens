@@ -105,13 +105,13 @@ public class PropertiesToDeSlimsteMensDataMapperTest {
 
 		List<Galerij> galerijen = data.getGalerijen();
 		assertThat(galerijen).hasSize(3);
-		assertGalerij(galerijen.get(0), "galerijen/galerij1",
+		assertGalerij(galerijen.get(0), "galerijen/galerij1/",
 				Arrays.asList("picture01.png", "picture02.jpg", "picture03.jpg", "picture04.jpg", "picture05.png", "picture06.bmp"),
 				Arrays.asList(false, false, true, false, true, false));
-		assertGalerij(galerijen.get(1), "galerijen/andereGalerij",
+		assertGalerij(galerijen.get(1), "galerijen/andereGalerij/",
 				Arrays.asList("a.png", "b.jpg", "c.jpg", "d.jpg", "e.png", "f.bmp"),
 				Arrays.asList(false, false, true, false, true, false));
-		assertGalerij(galerijen.get(2), "galerijen/nogEenAndereGalerij",
+		assertGalerij(galerijen.get(2), "galerijen/nogEenAndereGalerij/",
 				Arrays.asList("picture01.png", "picture02.jpg", "picture03.jpg", "picture04.jpg", "picture05.png", "picture06.bmp"),
 				Arrays.asList(false, false, true, false, true, false));
 	}
@@ -185,7 +185,7 @@ public class PropertiesToDeSlimsteMensDataMapperTest {
 
 	private String readResource(String resourceName) throws IOException {
 		InputStream inputStream = getClass().getResourceAsStream(resourceName);
-		List<String> lines = IOUtils.readLines(inputStream);
+		List<String> lines = IOUtils.readLines(inputStream, "UTF-8");
 		return StringUtils.join(lines, "\n");
 	}
 

@@ -10,6 +10,3 @@ var slimsteQuizzen = {
         this.mogelijkeQuizzen.push(quiz.titel);
     }
 };
-slimsteQuizzen.registerQuiz(voorbeeldQuiz);
-slimsteQuizzen.registerQuiz(dataDeSlimsteMensVan2014Data);
-slimsteQuizzen.registerQuiz(dataHetSlimsteKindVan2014);

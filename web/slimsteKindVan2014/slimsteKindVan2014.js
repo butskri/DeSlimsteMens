@@ -199,3 +199,4 @@ var dataHetSlimsteKindVan2014 = {
 		  antwoorden: ['TODO', 'TODO', 'TODO', 'TODO', 'TODO'] }
 	]
 };
+slimsteQuizzen.registerQuiz(dataHetSlimsteKindVan2014);

@@ -9,6 +9,7 @@
     <fileSets>
         <fileSet>
             <includes>
+                <include>*.bat</include>
                 <include>*.html</include>
                 <include>css/*</include>
                 <include>images/*</include>

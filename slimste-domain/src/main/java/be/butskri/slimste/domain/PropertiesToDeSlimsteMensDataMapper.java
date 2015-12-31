@@ -2,6 +2,7 @@ package be.butskri.slimste.domain;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
@@ -123,7 +124,14 @@ public class PropertiesToDeSlimsteMensDataMapper {
 		if (StringUtils.isEmpty(baseUrl)) {
 			return null;
 		}
-		return new Galerij(baseUrl, fotos(baseUrl));
+		return new Galerij(formatBaseUrl(baseUrl), fotos(baseUrl));
+	}
+
+	private String formatBaseUrl(String baseUrl) {
+		if (baseUrl.endsWith("/")) {
+			return baseUrl;
+		}
+		return baseUrl + "/";
 	}
 
 	private List<Foto> fotos(String baseUrl) {
